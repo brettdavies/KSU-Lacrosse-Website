@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#valid-input-message, #invalid-input-message
+{
+	display: none;
+	font: 13px/normal Arial, Helvetica, sans-serif;
+	margin-bottom: 5px;
+	border: 1px #ccc solid;
+	padding: 5px;
+	background-color: #fff;
+	color: #900;
+	text-align: center;	
+}
+
+input, textarea
+{
+	float: left;
+	clear: right;
+	width: 300px;
+	text-align: left;
+	background:#eee;
+	border:none;
+	padding:5px;
+	border: 1px #ccc solid;
+}
+
+.button {padding:5px;background:#febc11;color:#000;text-transform:uppercase;font-size:12px;width:55px;cursor:pointer;}
+
+input.no-label
+{
+	position: relative;
+	clear: both;
+	float: none;
+	display: block;
+	margin: 2px 0 0 140px;
+	text-align: center;
+}
+
+label
+{
+	float: left;
+	clear: left;
+	margin: 2px 0.5px 0.5px 0;
+	width: 140px;
+	text-align: left;
+}
+
+form br
+{
+	clear: both;
+}

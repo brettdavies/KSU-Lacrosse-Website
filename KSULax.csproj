@@ -1,0 +1,376 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{963E2E8B-BEEF-44DC-B95D-0089A7733AD1}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KSULax</RootNamespace>
+    <AssemblyName>KSULax</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="SquishIt.Framework, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\GamesController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
+    <Compile Include="Controllers\SponsorsController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AppHelpers.cs" />
+    <Compile Include="Helpers\HandleErrorAttribute.cs" />
+    <Compile Include="Models\CustomClasses.cs" />
+    <Compile Include="Models\DataModel.Designer.cs">
+      <DependentUpon>DataModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Games\GameTemplate.ascx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>GameTemplate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Players\PlayersTemplate.ascx.cs">
+      <DependentUpon>PlayersTemplate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\About\Index.aspx" />
+    <Content Include="Views\About\Management.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\css\forms.css" />
+    <Content Include="content\css\main.css" />
+    <Content Include="content\images\background.jpg" />
+    <Content Include="content\images\background.png" />
+    <Content Include="content\images\bios\team-shot.png" />
+    <Content Include="content\images\boxBottom.png" />
+    <Content Include="content\images\boxHeader.png" />
+    <Content Include="content\images\close.jpg" />
+    <Content Include="content\images\footer-bg.png" />
+    <Content Include="content\images\gray-arrow.png" />
+    <Content Include="content\images\head-bg.png" />
+    <Content Include="content\images\header.png" />
+    <Content Include="content\images\home-side.jpg" />
+    <Content Include="content\images\main-bg.png" />
+    <Content Include="content\images\nav-bg.png" />
+    <Content Include="content\images\sponsors\laxworld.jpg" />
+    <Content Include="content\images\submit_image.png" />
+    <Content Include="content\images\table-head-bg.png" />
+    <Content Include="content\images\teams\alabama_24.png" />
+    <Content Include="content\images\teams\alabama_32.png" />
+    <Content Include="content\images\teams\atl_club_24.png" />
+    <Content Include="content\images\teams\atl_club_32.png" />
+    <Content Include="content\images\teams\auburn_24.png" />
+    <Content Include="content\images\teams\auburn_32.png" />
+    <Content Include="content\images\teams\carleton_24.png" />
+    <Content Include="content\images\teams\carleton_32.png" />
+    <Content Include="content\images\teams\centenary_24.png" />
+    <Content Include="content\images\teams\centenary_32.png" />
+    <Content Include="content\images\teams\central_florida_24.png" />
+    <Content Include="content\images\teams\central_florida_32.png" />
+    <Content Include="content\images\teams\citadel_24.png" />
+    <Content Include="content\images\teams\citadel_32.png" />
+    <Content Include="content\images\teams\clemson_24.png" />
+    <Content Include="content\images\teams\clemson_32.png" />
+    <Content Include="content\images\teams\clemson_tourny_24.png" />
+    <Content Include="content\images\teams\clemson_tourny_32.png" />
+    <Content Include="content\images\teams\coastal_carolina_24.png" />
+    <Content Include="content\images\teams\coastal_carolina_32.png" />
+    <Content Include="content\images\teams\davenport_24.png" />
+    <Content Include="content\images\teams\davenport_32.png" />
+    <Content Include="content\images\teams\eckerd_24.png" />
+    <Content Include="content\images\teams\eckerd_32.png" />
+    <Content Include="content\images\teams\elon_24.png" />
+    <Content Include="content\images\teams\elon_32.png" />
+    <Content Include="content\images\teams\emory_24.png" />
+    <Content Include="content\images\teams\emory_32.png" />
+    <Content Include="content\images\teams\furman_24.png" />
+    <Content Include="content\images\teams\furman_32.png" />
+    <Content Include="content\images\teams\gcsu_24.png" />
+    <Content Include="content\images\teams\gcsu_32.png" />
+    <Content Include="content\images\teams\georgia_24.png" />
+    <Content Include="content\images\teams\georgia_32.png" />
+    <Content Include="content\images\teams\georgia_southern_24.png" />
+    <Content Include="content\images\teams\georgia_southern_32.png" />
+    <Content Include="content\images\teams\georgia_state_24.png" />
+    <Content Include="content\images\teams\georgia_state_32.png" />
+    <Content Include="content\images\teams\harding_24.png" />
+    <Content Include="content\images\teams\harding_32.png" />
+    <Content Include="content\images\teams\high_point_24.png" />
+    <Content Include="content\images\teams\high_point_32.png" />
+    <Content Include="content\images\teams\inferno_24.png" />
+    <Content Include="content\images\teams\inferno_32.png" />
+    <Content Include="content\images\teams\kennesaw_state_24.png" />
+    <Content Include="content\images\teams\kennesaw_state_32.png" />
+    <Content Include="content\images\teams\mercer_24.png" />
+    <Content Include="content\images\teams\mercer_32.png" />
+    <Content Include="content\images\teams\middle_tennessee_24.png" />
+    <Content Include="content\images\teams\middle_tennessee_32.png" />
+    <Content Include="content\images\teams\missouri_state_24.png" />
+    <Content Include="content\images\teams\missouri_state_32.png" />
+    <Content Include="content\images\teams\north_carolina_charlotte_24.png" />
+    <Content Include="content\images\teams\north_carolina_charlotte_32.png" />
+    <Content Include="content\images\teams\north_florida_24.png" />
+    <Content Include="content\images\teams\north_florida_32.png" />
+    <Content Include="content\images\teams\palm_beach_atlantic_24.png" />
+    <Content Include="content\images\teams\palm_beach_atlantic_32.png" />
+    <Content Include="content\images\teams\reinhardt_24.png" />
+    <Content Include="content\images\teams\reinhardt_32.png" />
+    <Content Include="content\images\teams\sam_houston_24.png" />
+    <Content Include="content\images\teams\sam_houston_32.png" />
+    <Content Include="content\images\teams\scad_24.png" />
+    <Content Include="content\images\teams\scad_32.png" />
+    <Content Include="content\images\teams\south_carolina_24.png" />
+    <Content Include="content\images\teams\south_carolina_32.png" />
+    <Content Include="content\images\teams\steve_tourny_24.png" />
+    <Content Include="content\images\teams\steve_tourny_32.png" />
+    <Content Include="content\images\teams\st_edwards_24.png" />
+    <Content Include="content\images\teams\st_edwards_32.png" />
+    <Content Include="content\images\teams\st_thomas_24.png" />
+    <Content Include="content\images\teams\st_thomas_32.png" />
+    <Content Include="content\images\teams\tennessee_24.png" />
+    <Content Include="content\images\teams\tennessee_32.png" />
+    <Content Include="content\images\teams\tennessee_chattanooga_24.png" />
+    <Content Include="content\images\teams\tennessee_chattanooga_32.png" />
+    <Content Include="content\images\teams\tennessee_wesleyan_24.png" />
+    <Content Include="content\images\teams\tennessee_wesleyan_32.png" />
+    <Content Include="content\images\teams\texas_san_antonio_24.png" />
+    <Content Include="content\images\teams\texas_san_antonio_32.png" />
+    <Content Include="content\images\teams\unc_greensboro_24.png" />
+    <Content Include="content\images\teams\unc_greensboro_32.png" />
+    <Content Include="content\images\teams\western_carolina_24.png" />
+    <Content Include="content\images\teams\western_carolina_32.png" />
+    <Content Include="content\images\title-bg.png" />
+    <Content Include="content\images\yellow-arrow.png" />
+    <Content Include="robots.txt" />
+    <Content Include="Views\About\Alumni.aspx" />
+    <Content Include="Views\About\Associations.aspx" />
+    <Content Include="Views\About\Contact.aspx" />
+    <Content Include="Views\About\Media-Guides.aspx" />
+    <Content Include="Views\About\Media.aspx" />
+    <Content Include="Views\About\Facilities.aspx" />
+    <Content Include="Views\About\FAQ.aspx" />
+    <Content Include="Views\About\History.aspx" />
+    <Content Include="Views\About\Message.aspx" />
+    <Content Include="Views\Shared\NewsTemplate.ascx" />
+    <Content Include="Views\News\Search.aspx" />
+    <Content Include="Views\News\Story.aspx" />
+    <Content Include="Views\News\Index.aspx" />
+    <Content Include="Views\Players\Index.aspx" />
+    <Content Include="Views\Players\PlayersTemplate.ascx" />
+    <Content Include="Views\Shared\About.Master" />
+    <Content Include="Views\Shared\GameSidebarTemplate.ascx" />
+    <Content Include="Views\Shared\SponsorsTemplate.ascx" />
+    <Content Include="Views\Sponsors\Index.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\DataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\images\collegelax.png" />
+    <Content Include="content\images\game_divisional.png" />
+    <Content Include="content\images\game_playoff.png" />
+    <Content Include="content\images\game_scrimage.png" />
+    <Content Include="content\images\kennesaw-carleton-march-16-large.jpg" />
+    <Content Include="content\images\kennesaw-carleton-march-16.jpg" />
+    <Content Include="content\images\laxpower_logo.png" />
+    <Content Include="content\images\mcla_lax_mag_logo.png" />
+    <Content Include="content\images\media-guides\2007.jpg" />
+    <Content Include="content\images\media-guides\2008.jpg" />
+    <Content Include="content\images\media-guides\2009.jpg" />
+    <Content Include="content\images\media-guides\2010.jpg" />
+    <Content Include="content\images\players\11177.png" />
+    <Content Include="content\images\players\11182.png" />
+    <Content Include="content\images\players\11190.png" />
+    <Content Include="content\images\players\11197.png" />
+    <Content Include="content\images\players\14187.png" />
+    <Content Include="content\images\players\14548.png" />
+    <Content Include="content\images\players\14551.png" />
+    <Content Include="content\images\players\14552.png" />
+    <Content Include="content\images\players\14556.png" />
+    <Content Include="content\images\players\14559.png" />
+    <Content Include="content\images\players\18262.png" />
+    <Content Include="content\images\players\18467.png" />
+    <Content Include="content\images\players\18852.png" />
+    <Content Include="content\images\players\18857.png" />
+    <Content Include="content\images\players\18859.png" />
+    <Content Include="content\images\players\18861.png" />
+    <Content Include="content\images\players\18865.png" />
+    <Content Include="content\images\players\20010.png" />
+    <Content Include="content\images\players\21412.png" />
+    <Content Include="content\images\players\21413.png" />
+    <Content Include="content\images\players\21414.png" />
+    <Content Include="content\images\players\21415.png" />
+    <Content Include="content\images\players\21416.png" />
+    <Content Include="content\images\players\21417.png" />
+    <Content Include="content\images\players\21418.png" />
+    <Content Include="content\images\players\21422.png" />
+    <Content Include="content\images\players\21429.png" />
+    <Content Include="content\images\players\21431.png" />
+    <Content Include="content\images\players\21433.png" />
+    <Content Include="content\images\players\21434.png" />
+    <Content Include="content\images\polls\CollegeLax.png" />
+    <Content Include="content\images\polls\Laxpower.png" />
+    <Content Include="content\images\polls\MCLAmag.png" />
+    <Content Include="content\images\teams\kennesaw_state_128.png" />
+    <Content Include="content\images\teams\kennesaw_state_48.png" />
+    <Content Include="content\images\teams\kennesaw_state_64.png" />
+    <Content Include="content\images\teams\kennesaw_state_96.png" />
+    <Content Include="content\images\teams\kennesaw_state_alumni_24.png" />
+    <Content Include="content\images\teams\kennesaw_state_alumni_32.png" />
+    <Content Include="content\images\teams\memphis_24.png" />
+    <Content Include="content\images\teams\memphis_32.png" />
+    <Content Include="content\images\teams\oglethorpe_24.png" />
+    <Content Include="content\images\teams\oglethorpe_32.png" />
+    <Content Include="content\pdf\2008-media-guide.pdf" />
+    <Content Include="content\pdf\2009-media-guide.pdf" />
+    <Content Include="content\pdf\Hi-Five-Digital-Productions.pdf" />
+    <Content Include="content\pdf\2007-media-guide.pdf" />
+    <Content Include="content\pdf\2010-media-guide.pdf" />
+    <Content Include="content\scripts\games.js" />
+    <Content Include="content\scripts\ksulax.js" />
+    <Content Include="content\scripts\extendGA.js" />
+    <None Include="content\scripts\jquery-1.4.1-vsdoc.js" />
+    <None Include="content\scripts\jquery-1.4.1.js" />
+    <Content Include="content\scripts\date.format.js" />
+    <None Include="lib\SquishIt\AjaxMin.dll" />
+    <None Include="lib\SquishIt\dotless.Core.dll" />
+    <None Include="lib\SquishIt\dotless.Core.pdb" />
+    <None Include="lib\SquishIt\EcmaScript.NET.modified.dll" />
+    <None Include="lib\SquishIt\SquishIt.Framework.dll" />
+    <None Include="lib\SquishIt\SquishIt.Framework.pdb" />
+    <None Include="lib\SquishIt\Yahoo.Yui.Compressor.dll" />
+    <Content Include="content\scripts\twitter.js" />
+    <None Include="content\scripts\unused.js" />
+    <Content Include="error.htm" />
+    <None Include="lib\ELMAH\Elmah.dll" />
+    <None Include="lib\ELMAH\Elmah.pdb" />
+    <None Include="lib\ELMAH\Elmah.xml" />
+    <None Include="lib\ELMAH\System.Data.SQLite.DLL" />
+    <None Include="lib\ELMAH\VistaDB.NET20.dll" />
+    <Content Include="sitemap.xml.gz" />
+    <Content Include="content\images\sponsors\hi-five-digital-productions.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="Views\Games\GameMeta.aspx" />
+    <Content Include="Views\Games\GameTemplate.ascx" />
+    <Content Include="Views\Games\Index.aspx" />
+    <Content Include="Views\Players\Player.aspx" />
+    <Content Include="Views\Shared\FacebookGraph.ascx" />
+    <Content Include="Views\Shared\TwitterTemplate.ascx" />
+    <Content Include="Views\Shared\FacebookTemplate.ascx" />
+    <Content Include="Views\Shared\RankingTemplate.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55945</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

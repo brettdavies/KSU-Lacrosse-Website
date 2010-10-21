@@ -1,0 +1,151 @@
+/* ------------------------------
+HTML Redefine Tags
+------------------------------ */
+body {background:url(../images/background.png) repeat-x #e5e5e5;margin:0; padding:0;font-family:Arial, Helvetica, sans-serif;font-size:12px;line-height:1.5em;color:#161616;}
+a {color:#febc11;text-decoration:none;}
+a:hover {color:#febc11;text-decoration:underline;}
+h1 {font-size:30px;text-transform:uppercase;color:#febc11;margin:5px 0 10px 0; padding:0 0 10px 0; border-bottom:8px solid #3e3e3e;line-height:1em;}
+h2 {font-size:16px;font-weight:bold; text-transform:uppercase;color:#3e3e3e;margin:0;padding:0 0 2px 0;}
+h3 {font-size:14px;font-weight:normal; color:#999;margin:0;padding:0; font-style:italic;}
+p {margin:0;padding:0;}
+
+/* ------------------------------
+PAGE STRUCTURE
+------------------------------ */
+/* #container has an absolute width (1004 pixel) */
+#container {width: 1004px; margin: 20px auto; padding:0;text-align:left;}
+#header {background: url(../images/header.png) no-repeat; width:1004px; height: 124px;}
+#nav {height:35px; width:1004px; background:url(../images/nav-bg.png);}
+#nav ul {margin:0; padding:10px 0 0 22px;}
+#nav ul li {display:inline;color:#febc11;font-weight:bold;font-size:14px;text-transform:uppercase;}
+#nav ul li a {color:#febc11;text-decoration:none;padding:0 22px;border-right:1px solid #404040;}
+#nav ul li.last a {border-right:none;}
+#nav ul li a:hover {background:#000;}
+#main {background:url(../images/main-bg.png) repeat-y;padding:20px 35px;margin:0;}
+#leftCol {float:left;width:222px;margin-right:20px;}
+#midCol {float:left;width:450px;margin-right:20px;}
+#rightCol {float:right;width:222px;}
+#mainCol {float:right; width:692px;}
+.breadcrumbs {font-size:11px; color:#a9a8a8;margin-bottom:10px;}
+.breadcrumbs a {color:#a9a8a8;}
+.breadcrumbs a:hover {color:#a9a8a8;text-decoration:underline;}
+.breadcrumbs a:active {color:#febc11;text-decoration:underline;}
+div.spacer {clear:both; height:1px; display:block;}
+#footer {clear:both;background:url(../images/footer-bg.png) no-repeat;width:1004px;height:65px;color:#e5e5e5;text-align:center;padding-top:17px;font-size:10px;}
+#footer ul {margin:0; padding:0;list-style:none;}
+#footer ul li {display:inline; border-left:1px solid #ccc;padding:0 10px;}
+#footer ul li:first-child {border:none;}
+#footer a {color:#e5e5e5;font-weight:bold;text-decoration:underline;}
+#footer a:hover {color:#febc11;}
+
+/* ------------------------------
+BOX ITEM STRUCTURE
+------------------------------ */
+.boxItem {width:222px;margin-bottom:20px;}
+.boxTitle {background:url(../images/boxHeader.png) no-repeat; height:26px;color:#FEBC11;font-weight:bold;text-transform:uppercase;padding:8px 0 0 15px;font-size:13px;}
+.boxTitle a, a:hover {color:#FEBC11; text-decoration:none;}
+.boxContent {background:#f6f6f6;padding:10px 15px 1px;}
+.boxBottom {background:url(../images/boxBottom.png) no-repeat; height:38px;text-align:right;padding-right:15px; color:#aaabab; font-size:11px; font-weight:bold; text-transform:uppercase;}
+.boxBottom a {color:#aaabab; text-decoration:none;}
+.boxBottom a:hover {color:#aaabab; text-decoration:underline;}
+.boxItem.sponsors .sponsorImg {margin:0 0 20px 0;border:1px solid #ccc;}
+.boxItem.sponsors .sponsorImglast {margin:0 0 20px 0;border:1px solid #ccc;margin-bottom:0px;}
+.boxItem.menu ul {padding: 0 1px 16px;margin-left: 0;width:188px;}
+.boxItem.menu ul li {list-style: none;margin: 0;text-align: left;border-left: 1em solid #ccc;}
+.boxItem.menu ul li:hover { border-left: 1em solid #febc11;}
+.boxItem.menu ul li a {display: block;padding: 1em;text-decoration: none;text-transform:uppercase;font-weight:bold;background:#ececec;border-bottom:1px solid #ccc;}
+.boxItem.menu ul li a:link { color: #c1c2c2; }
+.boxItem.menu ul li a:visited { color: #c1c2c2; }
+.boxItem.menu ul li a:hover {color: #000;background: #ececec; }
+.boxItem.menu ul li.active { border-left: 1em solid #febc11;background:#333;color:#000;}
+.boxItem.menu ul li.active a {color:#000;background:#dbdada;}
+.boxItem.menu .boxBottom {margin-top:-30px;}
+#rankingBox a {font-size:30px;text-transform:uppercase;color:#febc11;margin:5px 0 10px 0;line-height:1em;font-weight:bold;}
+
+/* ------------------------------
+GAMES BOX ITEM TABLE
+------------------------------ */
+#gamesBox {padding:0 0 10px;}
+#gamesBox ul#tabs {float:left;list-style:none outside none;margin:0;padding:0;background-color:#ccc;width:100%}
+#gamesBox ul#tabs li {float:left;padding:0 3px;cursor:pointer;font-size:11px; font-weight:bold; text-transform:uppercase;}
+#gamesBox ul#tabs li:hover {background: #febc11;color:#000;}
+#gamesBox ul#tabs li.active {background: #000;color:#febc11;}
+#gamesBoxTable {border-collapse:collapse;font-size:11px;}
+#gamesBoxTable td {padding:10px 5px;border-bottom: 1px solid #e0e1e1;}
+#gamesBoxTable td.nowrap {white-space:nowrap;}
+#gamesBoxTable tr.divisional {background:#fce5ab;}
+#gamesBoxTable tr.home {font-weight:bold;}
+
+/* ------------------------------
+HOMEPAGE SLIDES
+------------------------------ */
+#homeSlide {border:5px solid #000;margin-bottom:5px;}
+
+/* ------------------------------
+HOMEPAGE FEATURE
+------------------------------ */
+#homeFeature {padding:20px; border:1px dashed #ccc;margin-bottom:20px;background:#f6f6f6;}
+
+/* ------------------------------
+HOMEPAGE NEWS
+------------------------------ */
+.homeNews {border-bottom:5px solid #9fa0a0;padding:5px 0;font-weight:bold;font-size:16px;}
+.homeNews a {color:#161616;}
+.homeNewsItem {margin:10px 0; border-bottom:1px dashed #ccc;}
+.homeNewsItem h1 {font-size:14px; text-transform:uppercase;padding:0; margin:0;line-height:1em;border:none;}
+.homeNewsItem h1 a:hover {text-decoration:underline;}
+.homeNewsItem p {margin:5px 0 15px 0;}
+.homeNewsItem a:hover {text-decoration:underline;}
+.date {font-size:10px; color:#a9a8a8; text-transform:uppercase;}
+
+/* ------------------------------
+TABLES
+------------------------------ */
+.mainTable {margin: 0px 0 10px; width: 100%; text-align: left; border-collapse: collapse;background: #f6f6f6;}
+.mainTable tbody a {color:#161616; text-decoration:underline;font-weight:bold;}
+.mainTable thead tr {background: url('../images/table-head-bg.png'); font-weight:bold;color:#febc11;}
+.mainTable th {font-size: 13px;padding: 8px;border-bottom: 3px solid #febc11;}
+.mainTable td {padding: 8px; border-bottom: 1px solid #fff;border-top: 1px solid transparent;}
+.mainTable tbody tr:hover td {color: #161616;background: #febc11;}
+.mainTable tbody tr.more {background:#000; color:#ccc; border-left:1px solid #f6f6f6;border-bottom:1px solid #f6f6f6;border-right:1px solid #f6f6f6;padding:10px;}
+.mainTable tbody tr.more a {color:#ccc; text-decoration:underline;font-weight:bold;}
+.mainTable tbody tr.more p {padding:0px; margin:0px;}
+.mainTable tbody tr.more :hover {background:#000; color:#ccc;}
+.mainTable tbody tr.more td {padding:20px;font-size:11px;}
+.mainTable tbody td.nowrap {white-space:nowrap;}
+.tableButton {padding:5px;background:#febc11;color:#000;text-transform:uppercase;font-size:9px;text-decoration:underline;cursor:pointer;}
+.mainTable tbody tr:hover td .tableButton {padding:5px;background:#000;color:#fff;text-transform:uppercase;font-size:9px;text-decoration:none;}
+.alt {background:#dbdada;}
+.gametype {float:right;margin-top:4px;margin-right:-13px;}
+
+/* ------------------------------
+BIOS
+------------------------------ */
+.imgBorder {background:url(../images/table-head-bg.png); padding:5px;margin:0 0 20px 20px;}
+.imgBioBorder {background:url(../images/table-head-bg.png); padding:5px;margin-right:10px;float:left;border:none;}
+#imgCol .imgBioBorder {background:url(../images/table-head-bg.png); padding:5px;margin-right:0;border:none;float:none;}
+.bioBox img {float:left;margin-right:15px;}
+#bioTable {width:658px;text-align: left;border-collapse:collapse;background:#f6f6f6;}
+#bioTable td {border-right:20px solid #fff;border-bottom:20px solid #fff;}
+#bioTable .stats {padding:5px 0;}
+#bioTable .stats a {font-weight:bold;}
+#bioTable .stats a:hover {text-decoration:underline;}
+.statId {text-transform:uppercase; font-weight:bold; font-size:11px; color:#999999;}
+#imgCol {float:left;background:#f6f6f6;width:200px;}
+#bioCol {float:left;padding-left:20px;width:438px;}
+#indivBio {width:100%;}
+#indivBio td {padding: 10px;border-bottom:1px solid #fff;border-top:1px solid transparent;}
+#indivBio tbody tr:hover td {color:#161616;background:#febc11;}
+#indivBio tbody tr:hover td .statId {text-transform:uppercase;font-weight:bold;font-size:11px; color:#fff;}
+
+/* ------------------------------
+Lists
+------------------------------ */
+.sharing {float:right;list-style:none outside none;margin:2px 0 0;}
+.sharing li {float:left;vertical-align: bottom;}
+
+.badges {float:right;list-style:none outside none;margin:2px 0 0;padding:0;width:175px}
+.badges li {float:right;padding:0 0 5px 10px;}
+
+.mg {margin:0;padding:0;list-style:none outside none;}
+.mg li {padding:0 23px;float:left;text-align:center;margin-bottom:2em;}
