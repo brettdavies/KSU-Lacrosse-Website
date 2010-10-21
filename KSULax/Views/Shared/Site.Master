@@ -1,0 +1,51 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %><%@ Import Namespace="SquishIt.Framework" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head runat="server">
+<title><asp:Literal runat="server">KSU Lax : </asp:Literal><asp:ContentPlaceHolder ID="titleContent" runat="server" /></title>
+<% if (false) { %><script type="text/javascript" src="../../content/scripts/jquery-1.4.1.js"></script><% } %>
+<% if (false) { %><link href="../../content/css/main.css" rel="Stylesheet" type="text/css" /><% } %>
+<%= Bundle.Css()
+    .Add("~/content/css/main.css")
+    .Render("~/content/css/main_#.css")
+%>
+<%= "<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js'></script>" %>
+<%= Bundle.JavaScript()
+    .Add("~/content/scripts/date.format.js")
+    .Add("~/content/scripts/extendGA.js")
+    .Add("~/content/scripts/games.js")
+    .Add("~/content/scripts/twitter.js")
+    .Add("~/content/scripts/ksulax.js")
+    .Render("~/content/scripts/main_#.js")
+%>
+<script type="text/javascript">$(document).ready(ga);</script>
+<asp:ContentPlaceHolder ID="Header" runat="server" />
+</head>
+<body>
+<script type="text/javascript">var WRInitTime=(new Date()).getTime();</script>
+<div id="container">
+<div id="header"></div>
+<div id="nav">
+<ul>
+<li><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%></li>
+<li><%= Html.ActionLink("Players", "index", "players", new { id = string.Empty }, new { title = "KSU Lax Players" })%></li>
+<li><%= Html.ActionLink("Games", "index", "games", new { id = string.Empty }, new { title = "KSU Lax Games" })%></li>
+<li><%= Html.ActionLink("News", "index", "news", new { year = string.Empty, month = string.Empty, day = string.Empty, title = string.Empty }, new { title = "KSU Lax News" })%></li>
+<li><%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "KSU Lax Media Guides" })%></li>
+<li><%= Html.ActionLink("Sponsors", "index", "sponsors", null, new { title = "KSU Lax Sponsors" })%></li>
+<li><%= Html.ActionLink("About", "index", "about", null, new { title = "About KSU Lax" })%></li>
+<li class="last"><%= Html.ActionLink("Contact Us", "contact", "about", null, new { title="Contact KSU Lax" })%></li>
+</ul>
+</div>
+<div id="main"><asp:ContentPlaceHolder ID="MainContent" runat="server" />
+<div class="spacer"></div>
+</div>
+<div id="footer">
+<ul>
+<li>&copy; <%= DateTime.Now.Year %> by KSU Lacrosse Club</li>
+<li><asp:HyperLink NavigateUrl="http://www.ksuclubsports.com" Text="KSU Club Sports" ToolTip="KSU Club Sports" runat="server" /></li>
+<li><asp:HyperLink NavigateUrl="http://katie-keenan.com/" Text="Web Design" ToolTip="Web Design by Katie Keenan" runat="server" /></li>
+<li><asp:HyperLink NavigateUrl="http://www.arvixe.com/" Text="Web Hosting" ToolTip="Web Hosting by Arvixe" runat="server" /></li>
+<li><asp:HyperLink NavigateUrl="http://mcla.us" Text="Stats Powered by MCLA.us" ToolTip="MCLA.us" runat="server" /></li>
+</ul></div></div>
+<div id="ClickTaleDiv" style="display: none;"></div><script type="text/javascript">if (document.location.protocol != 'https:')document.write(unescape("%3Cscript%20src='http://s.clicktale.net/WRb.js'%20type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">if (typeof ClickTale == 'function') ClickTale(307, 1, "www03");</script>
+</body></html>

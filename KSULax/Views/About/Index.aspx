@@ -1,0 +1,19 @@
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/About.Master" Inherits="System.Web.Mvc.ViewPage" %>
+<asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">About</asp:Content>
+<asp:Content ContentPlaceHolderID="AboutContent" runat="server">
+<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("About", "Index", "about", null, new { title = "About" })%></div>
+<h1>About</h1>
+<p>Kennesaw State is a liberal arts university with strong professional programs and offers a variety of graduate and undergraduate programs through day and evening classes.</p>
+<p>Strong MCLA Lacrosse program entering its fifth season of play within the Southeastern Lacrosse Conference. An established team organization, quality facilities, dedicated and experienced coaches. A sound financial base promises unlimited potential for success in future seasons. This team is a virtual varsity model.</p>
+<p>WE GRANT OUT OF STATE TUITION WAIVERS FOR LACROSSE PLAYERS.</p>
+<p>In state/Out of state waiver is $2,100. Out of state is $6,900. Books are approximately $400 per term. Housing costs vary.</p>
+<p>Kennesaw State is Georgia&#8217;s third largest university and the choice of over 22,000 students. 70% of the faculty hold a technical degree and pride themselves in being a &#8220;teaching centered&#8221; academy.</p>
+<p>Vibrant campus and tradition rich college life located in the northwest region of greater Atlanta. Close proximity for Atlanta entertainment and optional fraternity life. Division I football team in 2013.</p>
+<p>Outstanding opportunity for internships and business networking via dynamic Atlanta business community and highly engaged alumni.</p>
+<h2>Virtual Varsity Model</h2>
+<p><b>Travel</b> - We only travel first class. We take chartered motor coaches to our away games. When we travel we stay in quality accommodations so that are players get a good night&#8217;s sleep, that have a hearty breakfast awaiting them and most importantly-internet access so that players can get some work done on the road. Being centrally located we are afforded the luxury of not traveling as much as our opponents. This allows our student-athletes to be students. We usually take two over night trips per season.</p>
+<p><b>Facilities</b> - Kennesaw State has great facilities. We have a world class workout facility with numerous cardio and weightlifting equipment. In 2010, we debued an artificial field with lights dedicated only for lacrosse. That will enable us to play in all weather conditions. Indoor facilities are available if needed.</p>
+<p><b>Equipment</b> - Various companies have already approached KSU. They have helped with sponsoring uniforms and equipment. Many of these companies have seen the positive growth of lacrosse in the Atlanta area. They understand the effort and impact KSU has made locally on the lacrosse community. This allows our players to get discounted clothing and equipment from various vendors.</p>
+<p><b>Support</b> - KSU has an experienced top level coaching staff. They possess a wealth of knowledge and respect for the game. The current coaching staff believes in the &#8220;student first, athlete second&#8221; philosophy. The coaches have developed a lacrosse program that is competitive, soon to be nationally recognized and also supportive of the college educational experience.</p>
+<p><b>Bottom Line</b> - Our program is based entirely on the student. The basis of our program is to enhance the college experience not take away from it. We operate in a virtual varsity model to support our players and make their stay at KSU more enjoyable. By operating in this model we have a tremendous amount of respect from the lacrosse world and will be considered one of the top programs in the nation.</p>
+</asp:Content>
