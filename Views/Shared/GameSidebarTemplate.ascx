@@ -29,7 +29,9 @@
 <td style="width:23%;"><%= Html.Encode(opp.abr)%></td>
 <td style="width:17%;" class="nowrap"><%= Html.Encode(((DateTime)game.game_date).ToString("M / d"))%></td>
 <td style="width:32%;" class="nowrap"><% if (!game.game_status.Equals("0")) { %><%= Html.Encode(game.game_status)%><% } %>
-<% else { %><%= gt.gameResult(game.home_team_score, game.away_team_score, home) %><% } %></td>
+<% else { var result = gt.gameResult(game.home_team_score, game.away_team_score, home); if(!result.Equals("-")) {%>
+<%= Html.ActionLink(result, "index", "games", new { id = game.game_season_id + "#" + game.id }, new { title = result })%>
+<% } else { %><%=result%><% }} %></td>
 </tr><% } %>
 </table>
 </div>
