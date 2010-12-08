@@ -3,11 +3,12 @@
 <asp:Content ContentPlaceHolderID="Header" runat="server">
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+<meta name="original-source" content="<%= !String.IsNullOrEmpty(Model.source_url) ? Html.Encode(Model.source_url) : Html.Encode(Page.Request) %>">
 <meta property="og:title" content="<%= Html.Encode(Model.title.Trim())%>"/>
 <meta property="og:url" content="<%= Html.Encode(Request.Url.ToString())%>"/>
 <meta property="og:description" name="description" content="<%= Html.Encode(Html.formatDesc(Model.story)) %>" />
 <meta property="og:type" content="article"/>
-<% Html.RenderPartial("FacebookGraph"); %>
+<% Html.RenderPartial("FacebookGraph");%>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol"><% Html.RenderPartial("SponsorsTemplate"); %></div>
