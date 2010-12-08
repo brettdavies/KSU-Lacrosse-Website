@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSULax", "KSULax.csproj", "{963E2E8B-BEEF-44DC-B95D-0089A7733AD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCLAImport", "..\MCLAImport\MCLAImport.csproj", "{0AE56C7C-06B7-49BD-AFD9-92E3B27658B4}"
