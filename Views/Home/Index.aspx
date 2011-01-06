@@ -13,7 +13,7 @@
 <div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.games); %></div>
 <div id="midCol">
 <div id="homeSlide"><img src="../../content/images/home-side.jpg" width="440" height="267" alt="" /></div>
-<div id="homeFeature"><img src="../../content/images/yellow-arrow.png" width="11" height="10" alt="" /> <b>Winter Skills Camp Registration Opens Thursday, January 6th!</b></div>
+<div id="homeFeature"><img src="../../content/images/yellow-arrow.png" width="11" height="10" alt="" /> <b><%= Html.ActionLink("Register for the Winter Skills Camp!", "winter-skills-clinic", "forms", null, new { title = "Winter Skills Camp Registration" })%></b></div>
 <div class="homeNews"><%= Html.ActionLink("News & Updates", "Index", "News", null, new { title = "News & Updates" })%></div>
 <% Html.RenderPartial("NewsTemplate", Model.news); %>
 </div>
