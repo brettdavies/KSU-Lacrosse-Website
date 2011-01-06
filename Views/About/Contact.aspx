@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/About.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.EmailModel>" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/About.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.ContactUsFormModel>" %>
 <asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">Contact Us</asp:Content>
 <asp:Content ContentPlaceHolderID="AboutContent" runat="server">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("About", "Index", "about", null, new { title = "About" })%> > <%= Html.ActionLink("Contact Us", "contact", "about", null, new { title = "Contact Us" })%></div>
