@@ -30,7 +30,7 @@ namespace KSULax.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Contact(EmailModel emailModel)
+        public ActionResult Contact(ContactUsFormModel emailModel)
         {
             if (!ModelState.IsValid) { return View(); }
 
