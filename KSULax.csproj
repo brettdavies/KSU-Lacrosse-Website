@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\GamesController.cs">
@@ -99,6 +100,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Models\Forms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Games\GameTemplate.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -124,6 +126,8 @@
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Views\Forms\Winter-Skills-Clinic.aspx" />
+    <Content Include="Views\Forms\Player-Registration.aspx" />
     <Content Include="Views\About\Index.aspx" />
     <Content Include="Views\About\Management.aspx" />
     <Content Include="Web.config" />
@@ -328,6 +332,8 @@
     <Content Include="content\scripts\games.js" />
     <Content Include="content\scripts\ksulax.js" />
     <Content Include="content\scripts\extendGA.js" />
+    <Content Include="content\pdf\KSU-Mens-Lacrosse-Winter-Skills-Clinic.pdf" />
+    <Content Include="content\pdf\Waiver-and-Release-Form.pdf" />
     <None Include="content\scripts\jquery-1.4.1-vsdoc.js" />
     <None Include="content\scripts\jquery-1.4.1.js" />
     <Content Include="content\scripts\date.format.js" />
