@@ -30,11 +30,11 @@
 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_paynow_LG.gif:NonHosted">
 <table>
 <tr><td><input type="hidden" name="on0" value="Name">Name</td></tr><tr><td><input type="text" name="os0" maxlength="60"></td></tr>
-<tr><td><input type="hidden" name="on1" value="Age">Email Address</td></tr><tr><td><input type="text" name="os1" maxlength="60"></td></tr>
+<tr><td><input type="hidden" name="on1" value="Email Address">Email Address</td></tr><tr><td><input type="text" name="os1" maxlength="60"></td></tr>
 <tr><td><input type="hidden" name="on2" value="Age">Age</td></tr><tr><td><input type="text" name="os2" maxlength="60"></td></tr>
-<tr><td><input type="hidden" name="on3" value="Age">Height</td></tr><tr><td><input type="text" name="os3" maxlength="60"></td></tr>
-<tr><td><input type="hidden" name="on4" value="Age">Weight</td></tr><tr><td><input type="text" name="os4" maxlength="60"></td></tr>
-<tr><td><input type="hidden" name="on5" value="Age">Position</td></tr><tr><td><select name="os5">
+<tr><td><input type="hidden" name="on3" value="Height">Height</td></tr><tr><td><input type="text" name="os3" maxlength="60"></td></tr>
+<tr><td><input type="hidden" name="on4" value="Weight">Weight</td></tr><tr><td><input type="text" name="os4" maxlength="60"></td></tr>
+<tr><td><input type="hidden" name="on5" value="Position">Position</td></tr><tr><td><select name="os5">
 	<option value="Attack">Attack</option>
 	<option value="Midfield">Midfield</option>
 	<option value="Defense">Defense</option>
@@ -48,14 +48,14 @@
 	<option value="4">4</option>
 	<option value="5+">5+</option>
 </select></td></tr>
-<tr><td><input type="hidden" name="on7" value="Age">T-Shirt Size</td></tr><tr><td><select name="os7">
+<tr><td><input type="hidden" name="on7" value="T-Shirt Size">T-Shirt Size</td></tr><tr><td><select name="os7">
 	<option value="Small">Small</option>
 	<option value="Medium">Medium</option>
 	<option value="Large">Large</option>
 	<option value="Extra Large">Extra Large</option>
 </select></td></tr>
-<tr><td><input type="hidden" name="on8" value="Age">Emergency Contact Name and Phone Number</td></tr><tr><td><input type="text" name="os8" maxlength="60"></td></tr>
-<tr><td><input type="hidden" name="on9" value="Age">Medical Conditions or Allergies</td></tr><tr><td><input type="text" name="os9" maxlength="60"></td></tr>
+<tr><td><input type="hidden" name="on8" value="Emergency Contact Name and Phone Number">Emergency Contact Name and Phone Number</td></tr><tr><td><input type="text" name="os8" maxlength="60"></td></tr>
+<tr><td><input type="hidden" name="on9" value="Medical Conditions or Allergies">Medical Conditions or Allergies</td></tr><tr><td><input type="text" name="os9" maxlength="60"></td></tr>
 </table>
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
