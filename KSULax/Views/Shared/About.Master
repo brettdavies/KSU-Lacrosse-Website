@@ -9,7 +9,6 @@
 <li><%= Html.ActionLink("About", "index", "about", null, new { title = "About" })%></li>
 <li><%= Html.ActionLink("Alumni", "alumni", "about", null, new { title = "Alumni" })%></li>
 <li><%= Html.ActionLink("Associations", "associations", "about", null, new { title = "Associations" })%></li>
-<li><%= Html.ActionLink("Contact Us", "contact", "about", null, new { title = "Contact Us" })%></li>
 <li><%= Html.ActionLink("Facilities", "facilities", "about", null, new { title = "Facilities" })%></li>
 <li><%= Html.ActionLink("FAQ", "faq", "about", null, new { title = "FAQ" })%></li>
 <li><%= Html.ActionLink("History", "history", "about", null, new { title = "History" })%></li>

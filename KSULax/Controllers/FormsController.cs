@@ -40,15 +40,69 @@ namespace KSULax.Controllers
             return err;
         }
 
+        public ActionResult Index() { return RedirectToAction("winter-skills-clinic", "forms", null); }
+
+        [ActionName("contact-us")]
         [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [ActionName("contact-us")]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Contact(ContactUsFormModel emailModel)
+        {
+            if (!ModelState.IsValid) { return View(); }
+
+            else
+            {
+                try
+                {
+                    //Setup MailMessage
+                    MailMessage msg = new MailMessage();
+                    msg.From = new MailAddress(emailModel.Email, emailModel.Name);
+                    msg.ReplyTo = msg.From;
+                    msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
+                    msg.Subject = emailModel.Subject;
+                    string body = "Name: " + emailModel.Name + "\n"
+                                + "Company Name: " + emailModel.CompanyName + "\n"
+                                + "Email: " + emailModel.Email + "\n"
+                                + "Phone: " + emailModel.Phone + "\n\n"
+                                + emailModel.Comments;
+
+                    msg.Body = body;
+                    msg.IsBodyHtml = false;
+
+                    //Send the Email
+                    smtpClient().Send(msg);
+
+                    msg.Dispose();
+
+                    MessageModel rcpt = new MessageModel();
+                    rcpt.Title = "Thanks " + emailModel.Name + "!";
+                    rcpt.Content = "We appreciate you taking the time to get in contact with us. We will do our best to be in touch with you quickly.";
+                    return View("Message", rcpt);
+                }
+
+                catch (Exception)
+                {
+                    //Show an error
+                    MessageModel err = new MessageModel();
+                    return View("Message", errorMessage());
+                }
+            }
+        }
+
         [ActionName("player-registration")]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult PlayerRegistration()
         {
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
         [ActionName("player-registration")]
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult PlayerRegistration(PlayerRegistrationModel emailModel)
         {
             if (!ModelState.IsValid) { return View(); }
@@ -105,8 +159,5 @@ namespace KSULax.Controllers
 
         [ActionName("winter-skills-clinic")]
         public ActionResult WinterSkillsClinic() { return View(); }
-
-        public ActionResult Index() { return RedirectToAction("winter-skills-clinic", "forms", null); }
-
     }
 }

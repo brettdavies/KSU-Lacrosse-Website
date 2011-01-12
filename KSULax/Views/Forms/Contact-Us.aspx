@@ -1,11 +1,15 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/About.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.ContactUsFormModel>" %>
-<asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">Contact Us</asp:Content>
-<asp:Content ContentPlaceHolderID="AboutContent" runat="server">
-<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("About", "Index", "about", null, new { title = "About" })%> > <%= Html.ActionLink("Contact Us", "contact", "about", null, new { title = "Contact Us" })%></div>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.ContactUsFormModel>" %>
+<asp:Content ContentPlaceHolderID="titleContent" runat="server">Contact Us</asp:Content>
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+<div id="leftCol">
+<% Html.RenderPartial("SponsorsTemplate"); %>
+</div>
+<div id="mainCol">
+<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Forms", "Index", null, null, new { title = "Forms" })%> > <%= Html.ActionLink("Contact Us", "contact-us", null, new { title = "Contact Us" })%></div>
 <h1>Contact Us</h1>
 <p>Kennesaw State University Lacrosse extends the opportunity for upcoming freshmen or transfer students enrolling at KSU to join the team. All players must be students of Kennesaw State University (no exceptions). If you are interested in participating in this program, please fill out the form below to receive more information. If you are not a student of the university, but would like to attend, please go to <a href="http://www.kennesaw.edu/admissions/ugadm.shtml" title="KSU Admissions">admissions</a> to apply.</p>
 <%= Html.ValidationSummary("Please correct the following errors and try again.") %>
-<% using (Html.BeginForm("Contact", "About", FormMethod.Post, new { id = "email_form" })) {%>
+<% using (Html.BeginForm("contact-us", "forms", FormMethod.Post, new { id = "email_form" })) {%>
 <table style="width:100%;" cellpadding="3">
 <tr>
 <td style="width:16%;" valign="middle" class="statId"><div style="text-align:right;">Subject:</div></td>
@@ -56,4 +60,5 @@
 </tr>
 </table>
 <% } %>
+</div>
 </asp:Content>
