@@ -43,14 +43,14 @@ namespace KSULax.Controllers
         public ActionResult Index() { return RedirectToAction("winter-skills-clinic", "forms", null); }
 
         [ActionName("contact-us")]
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public ActionResult Contact()
         {
             return View();
         }
 
         [ActionName("contact-us")]
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public ActionResult Contact(ContactUsFormModel emailModel)
         {
             if (!ModelState.IsValid) { return View(); }
@@ -95,14 +95,14 @@ namespace KSULax.Controllers
         }
 
         [ActionName("player-registration")]
-        [AcceptVerbs(HttpVerbs.Get)]
+        [HttpGet]
         public ActionResult PlayerRegistration()
         {
             return View();
         }
 
         [ActionName("player-registration")]
-        [AcceptVerbs(HttpVerbs.Post)]
+        [HttpPost]
         public ActionResult PlayerRegistration(PlayerRegistrationModel emailModel)
         {
             if (!ModelState.IsValid) { return View(); }
