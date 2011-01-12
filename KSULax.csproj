@@ -244,13 +244,13 @@
     <Content Include="robots.txt" />
     <Content Include="Views\About\Alumni.aspx" />
     <Content Include="Views\About\Associations.aspx" />
-    <Content Include="Views\About\Contact.aspx" />
+    <Content Include="Views\Forms\Contact-Us.aspx" />
     <Content Include="Views\About\Media-Guides.aspx" />
     <Content Include="Views\About\Media.aspx" />
     <Content Include="Views\About\Facilities.aspx" />
     <Content Include="Views\About\FAQ.aspx" />
     <Content Include="Views\About\History.aspx" />
-    <Content Include="Views\About\Message.aspx" />
+    <Content Include="Views\Forms\Message.aspx" />
     <Content Include="Views\Shared\NewsTemplate.ascx" />
     <Content Include="Views\News\Search.aspx" />
     <Content Include="Views\News\Story.aspx" />

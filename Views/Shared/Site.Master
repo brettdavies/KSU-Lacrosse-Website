@@ -33,7 +33,7 @@
 <li><%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "KSU Lax Media Guides" })%></li>
 <li><%= Html.ActionLink("Sponsors", "index", "sponsors", null, new { title = "KSU Lax Sponsors" })%></li>
 <li><%= Html.ActionLink("About", "index", "about", null, new { title = "About KSU Lax" })%></li>
-<li class="last"><%= Html.ActionLink("Contact Us", "contact", "about", null, new { title="Contact KSU Lax" })%></li>
+<li class="last"><%= Html.ActionLink("Contact Us", "contact-us", "forms", null, new { title="Contact KSU Lax" })%></li>
 </ul>
 </div>
 <div id="main"><asp:ContentPlaceHolder ID="MainContent" runat="server" />
