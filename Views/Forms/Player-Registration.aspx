@@ -1,11 +1,15 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/About.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.PlayerRegistrationModel>" %>
-<asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">Player Registration</asp:Content>
-<asp:Content ContentPlaceHolderID="AboutContent" runat="server">
-<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Player Registration", "player-registration", "home", null, new { title = "Player Registration" })%></div>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.PlayerRegistrationModel>" %>
+<asp:Content ContentPlaceHolderID="titleContent" runat="server">Player Registration</asp:Content>
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+<div id="leftCol">
+<% Html.RenderPartial("SponsorsTemplate"); %>
+</div>
+<div id="mainCol">
+<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Forms", "Index", null, new { title="Forms" })%> > <%= Html.ActionLink("Player Registration", "player-registration", null, new { title = "Player Registration" })%></div>
 <h1>Player Registration</h1>
 <p></p>
 <%= Html.ValidationSummary("Please correct the following errors and try again.") %>
-<% using (Html.BeginForm("Contact", "About", FormMethod.Post, new { id = "email_form" })) {%>
+<% using (Html.BeginForm("player-registration", "forms", FormMethod.Post, new { id = "email_form" })) {%>
 <table style="width:100%;" cellpadding="3">
 <tr>
 <td style="width:16%;" valign="middle" class="statId"><div style="text-align:right;">Subject:</div></td>
@@ -56,4 +60,5 @@
 </tr>
 </table>
 <% } %>
+</div>
 </asp:Content>
