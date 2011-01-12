@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using KSULax.Models;
 
 namespace KSULax
 {
@@ -54,6 +55,8 @@ namespace KSULax
             KSU.maxPlayerSeason = 2010;
 
             RegisterRoutes(RouteTable.Routes);
+
+            DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(EmailAttribute), typeof(EmailValidator));
         }
     }
 }
