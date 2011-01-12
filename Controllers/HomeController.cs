@@ -40,7 +40,7 @@ namespace KSULax.Controllers
             ranking.Add(RecentRankingbyPollID(3));
             ranking[2].datestr = ranking[2].date.ToString("MMMM dd, yyyy");
 
-            return this.Json(ranking);
+            return this.Json(ranking, JsonRequestBehavior.AllowGet);
         }
 
         private Ranking RecentRankingbyPollID(int pollID)
