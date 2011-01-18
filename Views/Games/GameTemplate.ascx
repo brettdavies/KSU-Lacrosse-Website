@@ -1,4 +1,4 @@
-<%@ Control Language="C#" CodeBehind="~/Views/Games/GameTemplate.ascx.cs" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<KSULax.Models.Game>>" %>
+<%@ Control Language="C#" CodeBehind="~/Views/Games/GameTemplate.ascx.cs" AutoEventWireup="true" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<KSULax.Models.GameEntity>>" %>
 <% if (false) { %><link rel="stylesheet" type="text/css" href="../../content/css/main.css" /><% } %>
 <% if (false) { %><style type="text/css">.hidden { display:none; }</style><% } %>
 <% KSULax.GameTemplate gt = new KSULax.GameTemplate();%>

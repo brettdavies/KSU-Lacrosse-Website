@@ -5,7 +5,7 @@ using System.Web.UI;
 
 namespace KSULax
 {
-    public partial class GameTemplate : ViewUserControl<KSULax.Models.Game>
+    public partial class GameTemplate : ViewUserControl<KSULax.Models.GameEntity>
     {
         public void page_load(object sender, EventArgs e) { }
 
