@@ -1,5 +1,5 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<KSULax.Models.Game>>" %>
-<asp:Content ContentPlaceHolderID="titleContent" runat="server"><% short? year = Model.ElementAtOrDefault<KSULax.Models.Game>(0).game_season_id; string title = ((year - 1) + " - " + year + " Game Schedule").Trim(); %><%= title %></asp:Content>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<KSULax.Models.GameEntity>>" %>
+<asp:Content ContentPlaceHolderID="titleContent" runat="server"><% short? year = Model.ElementAtOrDefault<KSULax.Models.GameEntity>(0).game_season_id; string title = ((year - 1) + " - " + year + " Game Schedule").Trim(); %><%= title %></asp:Content>
 <asp:Content ContentPlaceHolderID="Header" runat="server">
 <style type="text/css">.hidden { display:none; }</style>
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
@@ -23,7 +23,7 @@
 </div>
 <% Html.RenderPartial("SponsorsTemplate"); %>
 </div>
-<% short? year = Model.ElementAtOrDefault<KSULax.Models.Game>(0).game_season_id; string title = (year - 1) + " - " + year + " Game Schedule";%>
+<% short? year = Model.ElementAtOrDefault<KSULax.Models.GameEntity>(0).game_season_id; string title = (year - 1) + " - " + year + " Game Schedule";%>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Games", "Index", new { id = string.Empty }, new { title="Games" })%> > <%= Html.ActionLink(year.ToString(), year.ToString(), null, new { title = year.ToString() })%></div>
 <h1><%= title %></h1>
