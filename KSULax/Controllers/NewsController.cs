@@ -5,160 +5,154 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using KSULax.Models;
+using KSULax.Models.News;
+using KSULax.Logic;
 
 namespace KSULax.Controllers
 {
     [HandleError]
     public class NewsController : Controller
     {
-        KSULaxEntities entities;
+        private KSULaxEntities _entities;
+        private NewsBL _newsBL;
 
-        public NewsController() { entities = new KSULaxEntities(); }
+        public NewsController()
+        {
+            _entities = new KSULaxEntities();
+            _newsBL = new NewsBL(_entities);
+        }
 
         public ActionResult Index(int? year, int? month, int? day, string url_title)
         {
+            //if everything is null or an empty string return all stories
             if (!year.HasValue && !month.HasValue && !day.HasValue && string.IsNullOrEmpty(url_title))
             {
-                ViewData.Model = NewsList(1000);
-                return View();
+                return View(_newsBL.NewsList(1000));
             }
-            
-            DateTime storyDate;
-            List<News> Stories = new List<News>();
 
-            if (DateTime.TryParse(year.ToString() + "/" + month.ToString() + "/" + day.ToString(), out storyDate))
+            return Search(year, month, day, url_title);
+        }
+
+        public ActionResult Search(int? year, int? month, int? day, string url_title)
+        {
+            //if year exists
+            if (year.HasValue)
             {
-                if (!string.IsNullOrEmpty(url_title))
+                //is year valid
+                if (year.Value > DateTime.Now.Year)
                 {
-                    Stories = Story(storyDate, url_title);
-
-                    if (Stories.Count > 0) { ViewData.Model = Stories.ElementAt<News>(0); }
-                    else { throw new Exception("KSULAX||we can't find the the story you requested"); }
-
-                    return View("Story");
+                    throw new Exception("KSULAX||the year " + year.Value + " is in the future.");
                 }
 
-                else
+                //if month exists
+                if (month.HasValue)
                 {
-                    Stories = NewsYearMonthDay(storyDate);
-                    if (Stories.Count > 0)
+                    //is month valid
+                    if (month.Value >= 1 && month.Value <= 12)
                     {
-                        ViewData.Model = Stories;
-                        return View("Search");
-                    }
-                    else { throw new Exception("KSULAX||we don't have any stories from " + storyDate.ToShortDateString()); }
-                }
-            }
+                        if (year.Value.Equals(DateTime.Now.Year) && month.Value > DateTime.Now.Month)
+                        {
+                            throw new Exception("KSULAX||" + new DateTime(year.Value, month.Value, 1).ToString("MMMM yyyy") + " is in the future.");
+                        }
 
-            else
-            {//must check if exists then in nested check if it is valid (check month/day) or not (throw exception)
-                //if the year is valid
-                if (year.HasValue && year.Value >= 2006 && year.Value <= DateTime.Now.Year)
-                {
-                    //if the month is valid
-                    if (month.HasValue && month.Value >= 1 && month.Value <= 12)
-                    {
-                        //if the day is valid
-                        if (day.HasValue && day.Value >= 1 && day.Value <= DateTime.DaysInMonth(year.Value, month.Value))
-                        { Stories = NewsYearMonthDay(new DateTime(year.Value, month.Value, day.Value)); }
+                        //if day exists
+                        if (day.HasValue)
+                        {
+                            //is day valid
+                            if (day.Value >= 1 && day.Value <= DateTime.DaysInMonth(year.Value, month.Value))
+                            {
+                                //if day is in the future
+                                if (year.Value.Equals(DateTime.Now.Year) && month.Value.Equals(DateTime.Now.Month) && day.Value > DateTime.Now.Day)
+                                {
+                                    throw new Exception("KSULAX||" + new DateTime(year.Value, month.Value, day.Value).ToString("dd MMMM yyyy") + " is in the future.");
+                                }
+
+                                //if url_title is empty
+                                if (string.IsNullOrEmpty(url_title))
+                                {
+                                    var stories = _newsBL.NewsYearMonthDay(new DateTime(year.Value, month.Value, day.Value));
+
+                                    if (stories.Count > 0)
+                                    {
+                                        return View("Search", stories);
+                                    }
+                                    else
+                                    {
+                                        throw new Exception("KSULAX||we don't have any stories for " + new DateTime(year.Value, month.Value, day.Value).ToString("dd MMMM yyyy") + ".");
+                                    }
+                                }
+
+                                return Story(year.Value, month.Value, day.Value, url_title);
+                            }
+                            else
+                            {
+                                throw new Exception("KSULAX||" + year.GetValueOrDefault() + "/" +
+                                   month.GetValueOrDefault() + "/" +
+                                   day.GetValueOrDefault() + " is not a valid date.");
+                            }
+                        }
                         else
-                        { Stories = NewsYearMonth(new DateTime(year.Value, month.Value, 1)); }
+                        {
+                            var stories = _newsBL.NewsYearMonth(new DateTime(year.Value, month.Value, 1));
+
+                            if (stories.Count > 0)
+                            {
+                                return View("Search", stories);
+                            }
+                            else
+                            {
+                                throw new Exception("KSULAX||we don't have any stories for " + new DateTime(year.Value, month.Value, 1).ToString("MMMM yyyy") + ".");
+                            }
+                        }
                     }
                     else
-                    { Stories = NewsYear(new DateTime(year.Value, 1, 1)); }
+                    {
+                        throw new Exception("KSULAX||" + year.GetValueOrDefault() + "/" +
+                                  month.GetValueOrDefault() + "/" +
+                                  day.GetValueOrDefault() + " is not a valid date.");
+                    }
                 }
                 else
                 {
-                    throw new Exception("KSULAX||"+year.GetValueOrDefault() + "/" +
-                        month.GetValueOrDefault() + "/" +
-                        day.GetValueOrDefault() + " is not a valid date.");
+                    var stories = _newsBL.NewsYear(new DateTime(year.Value, 1, 1));
+
+                    if (stories.Count > 0)
+                    {
+                        return View("Search", stories);
+                    }
+                    else
+                    {
+                        throw new Exception("KSULAX||we don't have any stories for the year " + year.Value + ".");
+                    }
                 }
-                
-                if (Stories.Count > 0)
-                {
-                    ViewData.Model = Stories;
-                    return View("Search");
-                }
-                else
-                { throw new Exception("KSULAX||there aren't any stories in the range you specified"); }
+            }
+            else
+            {
+                throw new Exception("KSULAX||" + year.GetValueOrDefault() + "/" +
+                    month.GetValueOrDefault() + "/" +
+                    day.GetValueOrDefault() + " is not a valid date.");
             }
         }
 
-        public List<News> Story(DateTime storyDate, string url_title)
+        public ActionResult Story(int year, int month, int day, string url_title)
         {
-            return (entities.NewsSet
-                      .Where("it.date = CAST('" + storyDate + "' as System.DateTime)")
-                      .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                      .Where("it.url_title like '" + Server.HtmlEncode(url_title) + "'")
-                      .OrderBy("it.date desc")
-                      .ToList());
-        }
+            DateTime storyDate;
 
-        public List<News> NewsList(int numStories)
-        {
-            List<News> news = new List<News>(
-                entities.NewsSet
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .Take(numStories)
-                  .ToList());
-            
-            GamesController gc = new GamesController();
-            news.AddRange(gc.GameListNewsList(gc.GameSummary(numStories)));
+            if (!DateTime.TryParse(year.ToString() + "/" + month.ToString() + "/" + day.ToString(), out storyDate))
+            {
+                throw new Exception("KSULAX||" + year + "/" +
+                   month+ "/" +
+                   day + " is not a valid date.");
+            }
 
-            news.Sort((x, y) => DateTime.Compare(y.date, x.date));
-            return news.GetRange(0, (news.Count < numStories) ? news.Count : numStories );
-        }
+            var story = _newsBL.GetStory(storyDate, url_title);
 
-        public List<News> NewsYear(DateTime date)
-        {
-            List<News> news = new List<News>
-                (entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddYears(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
+            if (null == story)
+            {
+                throw new Exception("KSULAX||we can't find the the story you requested");
+            }
 
-            GamesController gc = new GamesController();
-            news.AddRange(gc.GameListNewsList(gc.GameSummaryYear(date)));
-
-            news.Sort((x, y) => DateTime.Compare(y.date, x.date));
-            return news;
-        }
-
-        public List<News> NewsYearMonth(DateTime date)
-        {
-            List<News> news = new List<News>
-                (entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddMonths(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
-
-            GamesController gc = new GamesController();
-            news.AddRange(gc.GameListNewsList(gc.GameSummaryYearMonth(date)));
-
-            news.Sort((x, y) => DateTime.Compare(y.date, x.date));
-            return news;
-        }
-
-        public List<News> NewsYearMonthDay(DateTime date)
-        {
-            List<News> news = new List<News>
-                (entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddDays(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
-
-            GamesController gc = new GamesController();
-            news.AddRange(gc.GameListNewsList(gc.GameSummaryYearMonthDay(date)));
-
-            news.Sort((x, y) => DateTime.Compare(y.date, x.date));
-            return news;
+            return View("Story", new StoryModel(story, this.Request.Url.ToString()));
         }
     }
 }
