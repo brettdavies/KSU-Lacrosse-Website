@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 using System.Text.RegularExpressions;
+using System;
 
 namespace KSULax.Helpers
 {
@@ -32,6 +33,11 @@ namespace KSULax.Helpers
             }
 
             return desc;
+        }
+
+        public static string formatDate(this HtmlHelper helper, DateTime date)
+        {
+            return helper.Encode(date.ToString("MMMM dd, yyyy"));
         }
     }
 
