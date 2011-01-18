@@ -1,6 +1,6 @@
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<KSULax.Models.Game>>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IEnumerable<KSULax.Models.GameEntity>>" %>
 <% if (false) { %><link rel="stylesheet" type="text/css" href="../../content/css/main.css" /><% } %>
-<% KSULax.GameTemplate gt = new KSULax.GameTemplate();int season = Model.ElementAtOrDefault<KSULax.Models.Game>(0).game_season_id.GetValueOrDefault();%>
+<% KSULax.GameTemplate gt = new KSULax.GameTemplate(); int season = Model.ElementAtOrDefault<KSULax.Models.GameEntity>(0).game_season_id;%>
 <script type="text/javascript">$(document).ready(gameSelector); </script>
 <div>
 <div class="boxTitle"><%= Html.ActionLink(season + " Game Schedule", "Index", "Games", new { id = season }, new { title = season + " Game Schedule" })%></div>
@@ -23,7 +23,7 @@
             home = false;
         }
 %>
-<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Value.Year) ? "fall" : "spring" %>">
+<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Year) ? "fall" : "spring" %>">
 <td style="width:28%;"><div style="text-align:center;"><img style="vertical-align:middle;" src="../../content/images/teams/
 <%= Html.Encode(opp.slug)%>_32.png" alt="<%= Html.Encode(opp.abr) %>&apos;s Logo" title="<%= Html.Encode(opp.abr) %>'s Logo" width="32" height="32" /></div></td>
 <td style="width:23%;"><%= Html.Encode(opp.abr)%></td>
