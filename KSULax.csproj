@@ -27,6 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -89,11 +90,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\NewsBE.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppHelpers.cs" />
     <Compile Include="Helpers\HandleErrorAttribute.cs" />
+    <Compile Include="Logic\NewsBL.cs" />
     <Compile Include="Models\CustomClasses.cs" />
     <Compile Include="Models\DataModel.Designer.cs">
       <DependentUpon>DataModel.edmx</DependentUpon>
@@ -101,6 +104,8 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Forms.cs" />
+    <Compile Include="Models\News\TemplateModel.cs" />
+    <Compile Include="Models\News\StoryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Games\GameTemplate.ascx.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -112,6 +117,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\scripts\MicrosoftAjax.debug.js" />
+    <Content Include="content\scripts\MicrosoftAjax.js" />
+    <Content Include="content\scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="content\scripts\MicrosoftMvcValidation.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
