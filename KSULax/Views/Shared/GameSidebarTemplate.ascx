@@ -23,7 +23,7 @@
             home = false;
         }
 %>
-<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Year) ? "fall" : "spring" %>">
+<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Year) ? "fall" : "spring" %>" style="<%= (game.game_season_id > game.game_date.Year) ? "display:none;" : "" %>">
 <td style="width:28%;"><div style="text-align:center;"><img style="vertical-align:middle;" src="../../content/images/teams/
 <%= Html.Encode(opp.slug)%>_32.png" alt="<%= Html.Encode(opp.abr) %>&apos;s Logo" title="<%= Html.Encode(opp.abr) %>'s Logo" width="32" height="32" /></div></td>
 <td style="width:23%;"><%= Html.Encode(opp.abr)%></td>

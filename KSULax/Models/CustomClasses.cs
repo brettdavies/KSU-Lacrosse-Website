@@ -4,18 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using KSULax.Entities;
+using KSULax.Models.News;
 
 namespace KSULax.Models
 {
     public class HomepageData
     {
-        public List<Game> games { get; set; }
-        public List<News> news { get; set; }
+        public List<GameEntity> games { get; set; }
+        public List<StoryModel> Stories { get; set; }
     }
 
     public class RosterData
     {
-        public List<Game> games { get; set; }
+        public List<GameEntity> games { get; set; }
         public List<PlayerSeason> players { get; set; }
     }
 

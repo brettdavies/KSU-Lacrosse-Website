@@ -34,7 +34,7 @@
             home = false;
         }
 %>
-<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Value.Year) ? "fall" : "spring" %>">
+<tr class="<%= home ? "home":"away" %> <%= game.game_type %> <%= (game.game_season_id > game.game_date.Year) ? "fall" : "spring" %>" style="<%= (game.game_season_id > game.game_date.Year) ? "display:none;" : "" %>">
 <td class="nowrap"><%= Html.Encode(((DateTime)game.game_date).ToString("ddd"))%></td>
 <td class="nowrap"><%= Html.Encode(((DateTime)game.game_date).ToString("MMM dd"))%></td>
 <td class="nowrap"><%= Html.Encode(((DateTime)game.game_time).ToString("hh:mm tt"))%></td>
