@@ -12,7 +12,7 @@ namespace KSULax.Controllers
     {
         public ActionResult Index()
         {
-            HomepageData homedata = new HomepageData();
+            HomepageDataModel homedata = new HomepageDataModel();
 
             GamesController gc = new GamesController();
             homedata.games = gc.GamesList(KSU.maxGameSeason);

@@ -13,12 +13,12 @@ namespace KSULax.Controllers
     public class GamesController : Controller
     {
         private KSULaxEntities _entities;
-        //private GamesBL _gamesBL;
+        private GameBL _gamesBL;
 
         public GamesController()
         {
             _entities = new KSULaxEntities();
-            //_gamesBL = new GamesBL(_entities);
+            _gamesBL = new GameBL(_entities);
         }
 
         [HandleError]
@@ -168,8 +168,8 @@ namespace KSULax.Controllers
             HttpContextWrapper httpContextWrapper = new HttpContextWrapper(System.Web.HttpContext.Current);
             UrlHelper urlHelper = new UrlHelper(new RequestContext(httpContextWrapper, RouteTable.Routes.GetRouteData(httpContextWrapper)));
             NewsEntity summary = new NewsEntity();
-            Team ksu = new Team();
-            Team opp = new Team();
+            TeamEntity ksu = new TeamEntity();
+            TeamEntity opp = new TeamEntity();
             bool home = true;
 
             if (game.HomeTeam.slug.Equals("kennesaw_state"))
