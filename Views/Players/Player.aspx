@@ -1,88 +1,54 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Player>" %><%@ Import Namespace="KSULax.Helpers" %>
-<asp:Content ContentPlaceHolderID="titleContent" runat="server"><% string title = Model.first + " " + Model.last; %><%= title %> &#35;<%= Model.PlayerSeason.ElementAt(0).jersey%></asp:Content>
-<asp:Content ContentPlaceHolderID="Header" runat="server"><% string title = Model.first + " " + Model.last; %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Player.PlayerModel>" %><%@ Import Namespace="KSULax.Helpers" %>
+
+<asp:Content ContentPlaceHolderID="titleContent" runat="server"><%= Model.FullName %> &#35;<%= Model.RecentJerseyNum %></asp:Content>
+
+<asp:Content ContentPlaceHolderID="Header" runat="server">
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-<meta property="og:title" content="<%= title %> #<%= Model.PlayerSeason.ElementAt(0).jersey%>"/>
-<meta property="og:url" content="http://ksulax.com/players/<%= title.Replace(' ', '-').ToLower() %>"/>
-<meta property="og:description" name="description" content="<%= Html.formatDesc(Model.bio) %>" />
+<meta property="og:title" content="<%= Model.FullName %> #<%= Model.RecentJerseyNum %>"/>
+<meta property="og:url" content="http://ksulax.com/players/<%= Model.FullNameURL %>"/>
+<meta property="og:description" name="description" content="<%= Html.formatDesc(Model.Bio) %>" />
 <meta property="og:type" content="article"/>
 <% Html.RenderPartial("FacebookGraph"); %>
 </asp:Content>
-<asp:Content ContentPlaceHolderID="MainContent" runat="server">
-<% 
-   string title = Model.first + " " + Model.last;
-   List<KSULax.Models.PlayerSeason> PSs = new List<KSULax.Models.PlayerSeason>();
-   bool curPlayer = false;
-   if (Model.PlayerSeason.Count > 0)
-   {
-       PSs = Model.PlayerSeason.ToList<KSULax.Models.PlayerSeason>();
-       PSs.Sort((x, y) => string.Compare(y.season_id.ToString(), x.season_id.ToString()));
-       curPlayer = short.Equals(PSs[0].season_id, KSULax.KSU.maxPlayerSeason);
-   }
-%>
 
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
 <% Html.RenderPartial("SponsorsTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs">
-<%= Html.ActionLink("Home","","", null, new { title="Home" })%> > <%= Html.ActionLink("Players", "Index", new { id = string.Empty }, new { title = "Players" })%> > <%= Html.ActionLink(title, title.Replace(' ', '-').ToLower(), null, new { title = title })%></div>
+<%= Html.ActionLink("Home","","", null, new { title = "Home" })%> > <%= Html.ActionLink("Players", "Index", new { id = string.Empty }, new { title = "Players" })%> > <%= Html.ActionLink(Model.FullName, Model.FullNameURL, null, new { title = Model.FullName })%></div>
 <ul class="sharing">
-<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax" data-text="<%= Html.Encode(title)%> Profile Page"></a></li>
+<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax" data-text="<%= Html.Encode(Model.FullName)%> Profile Page"></a></li>
 <li><fb:like href="http://ksulax.com<%= Html.Encode(Request.Path) %>" show_faces="false" layout="button_count"/></li>
 </ul>
-<h1><%= title %> <% if (curPlayer) { %>&#35;<%= PSs[0].jersey%><% } %></h1>
-<% 
-    string imagePath = "/content/images/players/"+Model.id+".png";
-    if (!new System.IO.FileInfo(Server.MapPath(imagePath)).Exists)
-    {
-        imagePath = "/content/images/teams/kennesaw_state_128.png";
-    }
-
-    string alt = "Gold Assists Per Game";
-%>
-
-<ul class="badges">
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-<li><%= Html.Image("", "~/content/images/teams/coastal_carolina_32.png", alt, new { height = 32, width = 32, title = alt })%></li>
-</ul>
-
-<img class="imgBorder" src="<%= imagePath %>" alt="Photo of <%= title %>" title="Photo of <%= title %>" width="100" height="133" align="left" />
+<h1><%= Model.FullName %> <% if (Model.isCurPlayer) { %>&#35;<%= Model.RecentJerseyNum %><% } %></h1>
+<img class="imgBorder" src="<%= Model.ImagePath %>" alt="Photo of <%= Model.FullName %>" title="Photo of <%= Model.FullName %>" width="100" height="133" align="left" />
 <table>
 <tbody><tr><td>
 <table><tbody>
-<tr><td><strong>Name</strong></td><td><%= title %></td></tr>
-<tr><td><strong>Highschool</strong></td><td><%= Model.highschool%></td></tr>
-<tr><td><strong>Hometown</strong></td><td><%= Model.hometown%>, <%= Model.homestate%></td></tr>
-<% if (curPlayer) { %><tr><td><strong>Position</strong></td><td><%= PSs[0].position%></td></tr><% } %>
-<% if (curPlayer) { %><tr><td><strong>Class Year</strong></td><td><%= PSs[0].@class%></td></tr><% } %>
+<tr><td><strong>Name</strong></td><td><%= Model.FullName %></td></tr>
+<tr><td><strong>Highschool</strong></td><td><%= Model.HighSchool %></td></tr>
+<tr><td><strong>Hometown</strong></td><td><%= Model.Home %></td></tr>
+<% if (Model.isCurPlayer) { %><tr><td><strong>Position</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().Position %></td></tr><% } %>
+<% if (Model.isCurPlayer) { %><tr><td><strong>Class Year</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().ClassYr%></td></tr><% } %>
 </tbody></table>
 </td>
 <td>
 <table><tbody>
-<tr><td><strong>Height</strong></td><td><%= PSs[0].height%></td></tr>
-<tr><td><strong>Weight</strong></td><td><%= PSs[0].weight%> lbs.</td></tr>
-<tr><td><strong>Major</strong></td><td>Communications</td></tr>
-<% if (curPlayer) { %><tr><td><strong>Age</strong></td><td>20</td></tr><% } %>
-<% if (curPlayer) { %><tr><td><strong>Eligibility</strong></td><td><%= PSs[0].eligibility%></td></tr><% } %>
+<tr><td><strong>Height</strong></td><td><%= Model.HeightFeet %></td></tr>
+<tr><td><strong>Weight</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().Weight %> lbs.</td></tr>
+<tr><td><strong>Major</strong></td><td><%= Model.Major %></td></tr>
+<% if (Model.isCurPlayer) { %><tr><td><strong>Age</strong></td><td>20</td></tr><% } %>
+<% if (Model.isCurPlayer) { %><tr><td><strong>Eligibility</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().EligibilityYr %></td></tr><% } %>
 </tbody></table>
 </td></tr>
 </tbody></table>
 
 <table class="mainTable" style="clear:both;">
 <thead><tr><th scope="col">Player Bio</th></tr></thead>
-<tbody><tr><td><%= Model.bio %></td></tr></tbody></table>
+<tbody><tr><td><%= Model.Bio %></td></tr></tbody></table>
 
 <br/>
 
@@ -90,22 +56,18 @@
 <thead><tr><th colspan="9">Season Stats</th></tr></thead>
 <tbody>
 <tr><td>Season</td><td>Class</td><td>Games Played</td><td>Assists</td><td>Assists Per Game</td><td>Goals</td><td>Goals Per Game</td><td>Points</td><td>Points Per Game</td></tr>
-<% foreach (KSULax.Models.PlayerSeason PS in PSs) { %>
-<tr><td><%= PS.season_id %></td><td><%= PS.@class %></td><td><%= Model.PlayerGame.Count %></td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<% foreach (KSULax.Models.Player.PlayerGameTotalModel pgtm in Model.PlayerGameTotal) { %>
+<tr><td><%= pgtm.SeasonID %></td><td><%= pgtm.ClassYr %></td><td><%= pgtm.GamesPlayed %></td><td><%= pgtm.Assists %></td><td><%= pgtm.Assists / pgtm.GamesPlayed %></td><td><%= pgtm.Goals %></td><td><%= pgtm.Goals / pgtm.GamesPlayed %></td><td><%= pgtm.Goals +  pgtm.Assists %></td><td><%= (pgtm.Goals + pgtm.Assists) / pgtm.GamesPlayed %></td></tr>
 <% } %>
-<tr><td>Career</td><td>-</td><td>0</td><td>4</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Career</td><td>-</td><td><%= Model.CareerGames %></td><td><%= Model.CareerAssists %></td><td><%= Model.CareerAssists / Model.CareerGames %></td><td><%= Model.CareerGoals %></td><td><%= Model.CareerGoals / Model.CareerGames %></td><td><%= Model.CareerGoals +  Model.CareerAssists %></td><td><%= (Model.CareerGoals +  Model.CareerAssists) / Model.CareerGames %></td></tr>
 </tbody></table>
-
-<% if (Model.PlayerAward.Count > 0) {
-       List<KSULax.Models.PlayerAward> PAs = Model.PlayerAward.ToList<KSULax.Models.PlayerAward>();
-           PAs.Sort((x, y) => DateTime.Compare(y.date, x.date));
-       %>
 <br/>
+<% if (Model.PlayerHasAwards) { %>
 <table class="mainTable">
 <thead><tr><th colspan="2">Awards</th></tr></thead>
 <tbody>
-<% foreach (KSULax.Models.PlayerAward PA in PAs) { %>
-<tr><td><%= PA.date.Year + " " + PA.Award.name %> <%if (PA.award_id.Equals(29)){ %>(Week of <%= PA.date.ToString("MMM dd") %>)<% } %></td></tr>
+<% foreach (KSULax.Entities.PlayerAwardBE pa in Model.PlayerAward) { %>
+<tr><td><%= pa.Date.Year + " " + pa.Award.Name %> <%if (pa.AwardID.Equals(29)){ %>(Week of <%= pa.Date.ToString("MMM dd") %>)<% } %></td></tr>
 <%}%>
 </tbody></table>
 <% } %>
@@ -145,20 +107,20 @@
     int careerPointsGoldCount = 0;
     int careerPointsSilverCount = 0;
     
-    foreach (KSULax.Models.PlayerGame game in Model.PlayerGame.ToList()) {
+    foreach (KSULax.Entities.PlayerGameBE game in Model.PlayerGame.ToList()) {
         //add to career totals
-        careerGoals+= game.goals;
-        careerAssists += game.assists;
+        careerGoals+= game.Goals;
+        careerAssists += game.Assists;
         
         //check game records
-        if (game.assists >= gameAssistsGold) { gameAssistsGoldCount++; }
-        else if (game.assists >= gameAssistsSilver) { gameAssistsSilverCount++; }
+        if (game.Assists >= gameAssistsGold) { gameAssistsGoldCount++; }
+        else if (game.Assists >= gameAssistsSilver) { gameAssistsSilverCount++; }
 
-        if (game.goals >= gameGoalsGold) { gameGoalsGoldCount++; }
-        else if (game.goals >= gameGoalsSilver) { gameGoalsSilverCount++; }
+        if (game.Goals >= gameGoalsGold) { gameGoalsGoldCount++; }
+        else if (game.Goals >= gameGoalsSilver) { gameGoalsSilverCount++; }
 
-        if (game.goals + game.assists >= gamePointsGold) { gamePointsGoldCount++; }
-        else if (game.goals + game.assists >= gamePointsSilver) { gamePointsSilverCount++; }
+        if (game.Goals + game.Assists >= gamePointsGold) { gamePointsGoldCount++; }
+        else if (game.Goals + game.Assists >= gamePointsSilver) { gamePointsSilverCount++; }
     }
     
     //check career records
@@ -176,13 +138,12 @@
     int officerCount = 0;
     int captainCount = 0;
     
-    foreach (KSULax.Models.PlayerSeason PS in PSs)
+    foreach (KSULax.Entities.PlayerSeasonBE ps in Model.PlayerSeason)
     {
-        if (PS.president.HasValue && PS.president.Value.Equals(true)) { presidentCount++; }
-        if (PS.officer.HasValue && PS.officer.Value.Equals(true)) { officerCount++; }
-        if (PS.captain.HasValue && PS.captain.Value.Equals(true)) { captainCount++; }
-    }
-    
+        if (ps.President) { presidentCount++; }
+        if (ps.Officer) { officerCount++; }
+        if (ps.Captain) { captainCount++; }
+    }    
     %>
 <table class="mainTable">
 <thead><tr><th colspan="3">Achievements</th></tr></thead>

@@ -5,7 +5,7 @@ using System.Web.UI;
 
 namespace KSULax
 {
-    public partial class PlayersTemplate : ViewUserControl<KSULax.Models.PlayerSeason>
+    public partial class PlayersTemplate : ViewUserControl<KSULax.Models.PlayerSeasonEntity>
     {
         public void page_load(object sender, EventArgs e) {}
 
