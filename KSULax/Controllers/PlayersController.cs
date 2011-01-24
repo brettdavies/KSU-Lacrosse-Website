@@ -5,15 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using KSULax.Models;
+using KSULax.Logic;
+using KSULax.Entities;
+using KSULax.Models.Player;
 
 namespace KSULax.Controllers
 {
     [HandleError]
     public class PlayersController : Controller
     {
-        KSULaxEntities entities;
+        private KSULaxEntities _entities;
+        private PlayerBL _playerBL;
 
-        public PlayersController() { entities = new KSULaxEntities(); }
+        public PlayersController()
+        {
+            _entities = new KSULaxEntities();
+            _playerBL = new PlayerBL(_entities);
+        }
 
         public ActionResult Index(string id)
         {
@@ -28,10 +36,10 @@ namespace KSULax.Controllers
                 if (player_id >= 2010 && player_id <= KSU.maxPlayerSeason)
                 {
                     GamesController gc = new GamesController();
-                    RosterData data = new RosterData();
+                    RosterDataModel data = new RosterDataModel();
 
                     data.games = gc.GamesList(player_id);
-                    data.players = PlayersList(player_id);
+                    data.players = _playerBL.PlayersBySeason(player_id);
 
                     if (data.players.Count.Equals(0))
                     {
@@ -40,8 +48,7 @@ namespace KSULax.Controllers
 
                     else
                     {
-                        ViewData.Model = data;
-                        return View();
+                        return View(data);
                     }
                 }
 
@@ -49,7 +56,7 @@ namespace KSULax.Controllers
                 else
                 {
                     string name = string.Empty;
-                    if (getPlayerNamebyID(player_id, out name))
+                    if (_playerBL.getPlayerNamebyID(player_id, out name))
                     {
                         return RedirectToAction("Index", "players", new { id = name });
                     }
@@ -66,35 +73,13 @@ namespace KSULax.Controllers
             {
                 if (string.Compare(id, id.ToLower()).Equals(0))
                 {
-                    string first = string.Empty;
-                    string last = string.Empty;
+                    PlayerBE result = new PlayerBE();
 
-                    try
+                    if (_playerBL.PlayerByName(id, out result))
                     {
-                        first = id.Substring(0, id.IndexOf("-"));
-                        last = id.Substring(id.IndexOf("-") + 1);
-
-                        List<Player> result = entities.PlayerSet
-                             .Include("PlayerGame")
-                             .Include("PlayerSeason")
-                             .Include("PlayerAward")
-                             .Include("PlayerAward.Award")
-                             .Where("it.first like ('" + first + "')")
-                             .Where("it.last like ('" + last + "')")
-                             .Take(1)
-                             .ToList();
-
-                        if (result.Count > 0)
-                        {
-                            ViewData.Model = result.ElementAt<Player>(0);
-                            return View("Player");
-                        }
-                        else
-                        {
-                            throw new Exception();
-                        }
+                        return View("Story", result);
                     }
-                    catch (Exception)
+                    else
                     {
                         throw new Exception("KSULAX||we can't find the player you requested");
                     }
@@ -104,34 +89,6 @@ namespace KSULax.Controllers
                     return RedirectToAction("Index", "players", new { id = id.ToLower() });
                 }
             }
-        }
-
-        private bool getPlayerNamebyID(short player_id, out string name)
-        {
-            List<Player> result = entities.PlayerSet
-                      .Where("it.id = " + player_id)
-                      .Take(1)
-                      .ToList();
-
-            if (result.Count() > 0)
-            {
-                name = (result.ElementAt<Player>(0).first + "-" + result.ElementAt<Player>(0).last).ToLower();
-                return true;
-            }
-            else
-            {
-                name = string.Empty;
-                return false;
-            }
-        }
-
-        public List<PlayerSeason> PlayersList(int id)
-        {
-            return (entities.PlayerSeasonSet
-                      .Include("Player")
-                      .Where("it.season_id = " + id)
-                      .OrderBy("it.jersey")
-                      .ToList());
         }
     }
 }
