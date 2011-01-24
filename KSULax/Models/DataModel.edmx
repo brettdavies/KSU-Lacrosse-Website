@@ -366,7 +366,7 @@
       <Schema Namespace="KSULaxModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
         <EntityContainer Name="KSULaxEntities">
           <EntitySet Name="GameSet" EntityType="KSULaxModel.GameEntity" />
-          <EntitySet Name="TeamSet" EntityType="KSULaxModel.Team" />
+          <EntitySet Name="TeamSet" EntityType="KSULaxModel.TeamEntity" />
           <AssociationSet Name="FK_Games_AwaySlug" Association="KSULaxModel.FK_Games_AwaySlug">
             <End Role="Teams" EntitySet="TeamSet" />
             <End Role="Games" EntitySet="GameSet" />
@@ -376,14 +376,14 @@
             <End Role="Games" EntitySet="GameSet" />
           </AssociationSet>
           <EntitySet Name="NewsSet" EntityType="KSULaxModel.NewsEntity" />
-          <EntitySet Name="PlayerSet" EntityType="KSULaxModel.Player" />
-          <EntitySet Name="PlayerSeasonSet" EntityType="KSULaxModel.PlayerSeason" />
+          <EntitySet Name="PlayerSet" EntityType="KSULaxModel.PlayerEntity" />
+          <EntitySet Name="PlayerSeasonSet" EntityType="KSULaxModel.PlayerSeasonEntity" />
           <AssociationSet Name="FK_PlayerSeason_Players" Association="KSULaxModel.FK_PlayerSeason_Players">
             <End Role="Players" EntitySet="PlayerSet" />
             <End Role="PlayersSeason" EntitySet="PlayerSeasonSet" /></AssociationSet>
-          <EntitySet Name="PhotoGallerySet" EntityType="KSULaxModel.PhotoGallery" />
-          <EntitySet Name="PhotographerSet" EntityType="KSULaxModel.Photographer" />
-          <EntitySet Name="PhotoSet" EntityType="KSULaxModel.Photo" />
+          <EntitySet Name="PhotoGallerySet" EntityType="KSULaxModel.PhotoGalleryEntity" />
+          <EntitySet Name="PhotographerSet" EntityType="KSULaxModel.PhotographerEntity" />
+          <EntitySet Name="PhotoSet" EntityType="KSULaxModel.PhotoEntity" />
           <AssociationSet Name="FK_PhotoGalleries_Games" Association="KSULaxModel.FK_PhotoGalleries_Games">
             <End Role="Game" EntitySet="GameSet" />
             <End Role="PhotoGalleries" EntitySet="PhotoGallerySet" /></AssociationSet>
@@ -396,20 +396,20 @@
           <AssociationSet Name="FK_Photos_Photographers" Association="KSULaxModel.FK_Photos_Photographers">
             <End Role="Photographers" EntitySet="PhotographerSet" />
             <End Role="Photos" EntitySet="PhotoSet" /></AssociationSet>
-          <EntitySet Name="PollSet" EntityType="KSULaxModel.Poll" />
-          <EntitySet Name="PollSourceSet" EntityType="KSULaxModel.PollSource" />
+          <EntitySet Name="PollSet" EntityType="KSULaxModel.PollEntity" />
+          <EntitySet Name="PollSourceSet" EntityType="KSULaxModel.PollSourceEntity" />
           <AssociationSet Name="FK_Polls_PollsSource" Association="KSULaxModel.FK_Polls_PollsSource">
             <End Role="PollsSource" EntitySet="PollSourceSet" />
             <End Role="Polls" EntitySet="PollSet" /></AssociationSet>
-          <EntitySet Name="PlayerGameSet" EntityType="KSULaxModel.PlayerGame" />
+          <EntitySet Name="PlayerGameSet" EntityType="KSULaxModel.PlayerGameEntity" />
           <AssociationSet Name="FK_PlayersGames_Games" Association="KSULaxModel.FK_PlayersGames_Games">
             <End Role="Game" EntitySet="GameSet" />
             <End Role="PlayersGames" EntitySet="PlayerGameSet" /></AssociationSet>
           <AssociationSet Name="FK_PlayersGames_Players" Association="KSULaxModel.FK_PlayersGames_Players">
             <End Role="Player" EntitySet="PlayerSet" />
             <End Role="PlayersGames" EntitySet="PlayerGameSet" /></AssociationSet>
-          <EntitySet Name="AwardSet" EntityType="KSULaxModel.Award" />
-          <EntitySet Name="PlayerAwardSet" EntityType="KSULaxModel.PlayerAward" />
+          <EntitySet Name="AwardSet" EntityType="KSULaxModel.AwardEntity" />
+          <EntitySet Name="PlayerAwardSet" EntityType="KSULaxModel.PlayerAwardEntity" />
           <AssociationSet Name="FK_PlayersAwards_Awards" Association="KSULaxModel.FK_PlayersAwards_Awards">
             <End Role="Awards" EntitySet="AwardSet" />
             <End Role="PlayersAwards" EntitySet="PlayerAwardSet" /></AssociationSet>
@@ -435,7 +435,7 @@
           <NavigationProperty Name="PhotoGalleries" Relationship="KSULaxModel.FK_PhotoGalleries_Games" FromRole="Game" ToRole="PhotoGalleries" />
           <NavigationProperty Name="Photos" Relationship="KSULaxModel.FK_Photos_Games" FromRole="Game" ToRole="Photos" />
           <NavigationProperty Name="PlayerGames" Relationship="KSULaxModel.FK_PlayersGames_Games" FromRole="Game" ToRole="PlayersGames" /></EntityType>
-        <EntityType Name="Team">
+        <EntityType Name="TeamEntity">
           <Key>
             <PropertyRef Name="slug" />
           </Key>
@@ -449,11 +449,11 @@
           <NavigationProperty Name="HomeGame" Relationship="KSULaxModel.FK_Games_HomeSlug" FromRole="Teams" ToRole="Games" />
         </EntityType>
         <Association Name="FK_Games_AwaySlug">
-          <End Role="Teams" Type="KSULaxModel.Team" Multiplicity="0..1" />
+          <End Role="Teams" Type="KSULaxModel.TeamEntity" Multiplicity="0..1" />
           <End Role="Games" Type="KSULaxModel.GameEntity" Multiplicity="*" />
         </Association>
         <Association Name="FK_Games_HomeSlug">
-          <End Role="Teams" Type="KSULaxModel.Team" Multiplicity="0..1" />
+          <End Role="Teams" Type="KSULaxModel.TeamEntity" Multiplicity="0..1" />
           <End Role="Games" Type="KSULaxModel.GameEntity" Multiplicity="*" />
         </Association>
         <EntityType Name="NewsEntity">
@@ -467,7 +467,7 @@
           <Property Name="author" Type="String" Nullable="true" />
           <Property Name="source" Type="String" Nullable="true" />
           <Property Name="source_url" Type="String" Nullable="true" /></EntityType>
-        <EntityType Name="Player">
+        <EntityType Name="PlayerEntity">
           <Key>
             <PropertyRef Name="id" /></Key>
           <Property Name="id" Type="Int16" Nullable="false" />
@@ -482,7 +482,7 @@
           <NavigationProperty Name="PlayerGame" Relationship="KSULaxModel.FK_PlayersGames_Players" FromRole="Player" ToRole="PlayersGames" />
           <Property Name="bio" Type="String" Nullable="true" />
           <NavigationProperty Name="PlayerAward" Relationship="KSULaxModel.FK_PlayersAwards_Players" FromRole="Player" ToRole="PlayersAwards" /></EntityType>
-        <EntityType Name="PlayerSeason">
+        <EntityType Name="PlayerSeasonEntity">
           <Key>
             <PropertyRef Name="player_id" />
             <PropertyRef Name="season_id" /></Key>
@@ -499,14 +499,14 @@
           <Property Name="officer" Type="Boolean" Nullable="true" />
           <Property Name="captain" Type="Boolean" Nullable="true" /></EntityType>
         <Association Name="FK_PlayerSeason_Players">
-          <End Type="KSULaxModel.Player" Role="Players" Multiplicity="1" />
-          <End Type="KSULaxModel.PlayerSeason" Role="PlayersSeason" Multiplicity="*" />
+          <End Type="KSULaxModel.PlayerEntity" Role="Players" Multiplicity="1" />
+          <End Type="KSULaxModel.PlayerSeasonEntity" Role="PlayersSeason" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Players">
               <PropertyRef Name="id" /></Principal>
             <Dependent Role="PlayersSeason">
               <PropertyRef Name="player_id" /></Dependent></ReferentialConstraint></Association>
-        <EntityType Name="PhotoGallery">
+        <EntityType Name="PhotoGalleryEntity">
           <Key>
             <PropertyRef Name="guid" /></Key>
           <Property Name="url" Type="String" Nullable="false" />
@@ -514,7 +514,7 @@
           <Property Name="guid" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Game" Relationship="KSULaxModel.FK_PhotoGalleries_Games" FromRole="PhotoGalleries" ToRole="Game" />
           <NavigationProperty Name="Photographer" Relationship="KSULaxModel.FK_PhotoGalleries_Photographers" FromRole="PhotoGalleries" ToRole="Photographers" /></EntityType>
-        <EntityType Name="Photographer">
+        <EntityType Name="PhotographerEntity">
           <Key>
             <PropertyRef Name="photographer_id" /></Key>
           <Property Name="photographer_id" Type="Int32" Nullable="false" />
@@ -523,7 +523,7 @@
           <Property Name="url" Type="String" Nullable="false" />
           <NavigationProperty Name="PhotoGalleries" Relationship="KSULaxModel.FK_PhotoGalleries_Photographers" FromRole="Photographers" ToRole="PhotoGalleries" />
           <NavigationProperty Name="Photos" Relationship="KSULaxModel.FK_Photos_Photographers" FromRole="Photographers" ToRole="Photos" /></EntityType>
-        <EntityType Name="Photo">
+        <EntityType Name="PhotoEntity">
           <Key>
             <PropertyRef Name="guid" /></Key>
           <Property Name="url" Type="String" Nullable="false" />
@@ -533,17 +533,17 @@
           <NavigationProperty Name="Photographer" Relationship="KSULaxModel.FK_Photos_Photographers" FromRole="Photos" ToRole="Photographers" /></EntityType>
         <Association Name="FK_PhotoGalleries_Games">
           <End Type="KSULaxModel.GameEntity" Role="Game" Multiplicity="1" />
-          <End Type="KSULaxModel.PhotoGallery" Role="PhotoGalleries" Multiplicity="*" /></Association>
+          <End Type="KSULaxModel.PhotoGalleryEntity" Role="PhotoGalleries" Multiplicity="*" /></Association>
         <Association Name="FK_Photos_Games">
           <End Type="KSULaxModel.GameEntity" Role="Game" Multiplicity="1" />
-          <End Type="KSULaxModel.Photo" Role="Photos" Multiplicity="*" /></Association>
+          <End Type="KSULaxModel.PhotoEntity" Role="Photos" Multiplicity="*" /></Association>
         <Association Name="FK_PhotoGalleries_Photographers">
-          <End Type="KSULaxModel.Photographer" Role="Photographers" Multiplicity="1" />
-          <End Type="KSULaxModel.PhotoGallery" Role="PhotoGalleries" Multiplicity="*" /></Association>
+          <End Type="KSULaxModel.PhotographerEntity" Role="Photographers" Multiplicity="1" />
+          <End Type="KSULaxModel.PhotoGalleryEntity" Role="PhotoGalleries" Multiplicity="*" /></Association>
         <Association Name="FK_Photos_Photographers">
-          <End Type="KSULaxModel.Photographer" Role="Photographers" Multiplicity="1" />
-          <End Type="KSULaxModel.Photo" Role="Photos" Multiplicity="*" /></Association>
-        <EntityType Name="Poll">
+          <End Type="KSULaxModel.PhotographerEntity" Role="Photographers" Multiplicity="1" />
+          <End Type="KSULaxModel.PhotoEntity" Role="Photos" Multiplicity="*" /></Association>
+        <EntityType Name="PollEntity">
           <Key>
             <PropertyRef Name="pollsource_id" />
             <PropertyRef Name="date" /></Key>
@@ -552,7 +552,7 @@
           <Property Name="url" Type="String" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="PollSource" Relationship="KSULaxModel.FK_Polls_PollsSource" FromRole="Polls" ToRole="PollsSource" /></EntityType>
-        <EntityType Name="PollSource">
+        <EntityType Name="PollSourceEntity">
           <Key>
             <PropertyRef Name="poll_id" /></Key>
           <Property Name="poll_id" Type="Int16" Nullable="false" />
@@ -560,14 +560,14 @@
           <Property Name="url" Type="String" Nullable="false" />
           <NavigationProperty Name="Poll" Relationship="KSULaxModel.FK_Polls_PollsSource" FromRole="PollsSource" ToRole="Polls" /></EntityType>
         <Association Name="FK_Polls_PollsSource">
-          <End Type="KSULaxModel.PollSource" Role="PollsSource" Multiplicity="1" />
-          <End Type="KSULaxModel.Poll" Role="Polls" Multiplicity="*" />
+          <End Type="KSULaxModel.PollSourceEntity" Role="PollsSource" Multiplicity="1" />
+          <End Type="KSULaxModel.PollEntity" Role="Polls" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PollsSource">
               <PropertyRef Name="poll_id" /></Principal>
             <Dependent Role="Polls">
               <PropertyRef Name="pollsource_id" /></Dependent></ReferentialConstraint></Association>
-        <EntityType Name="PlayerGame">
+        <EntityType Name="PlayerGameEntity">
           <Key>
             <PropertyRef Name="game_id" />
             <PropertyRef Name="player_id" /></Key>
@@ -581,27 +581,27 @@
           <NavigationProperty Name="Player" Relationship="KSULaxModel.FK_PlayersGames_Players" FromRole="PlayersGames" ToRole="Player" /></EntityType>
         <Association Name="FK_PlayersGames_Games">
           <End Type="KSULaxModel.GameEntity" Role="Game" Multiplicity="1" />
-          <End Type="KSULaxModel.PlayerGame" Role="PlayersGames" Multiplicity="*" />
+          <End Type="KSULaxModel.PlayerGameEntity" Role="PlayersGames" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Game">
               <PropertyRef Name="id" /></Principal>
             <Dependent Role="PlayersGames">
               <PropertyRef Name="game_id" /></Dependent></ReferentialConstraint></Association>
         <Association Name="FK_PlayersGames_Players">
-          <End Type="KSULaxModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="KSULaxModel.PlayerGame" Role="PlayersGames" Multiplicity="*" />
+          <End Type="KSULaxModel.PlayerEntity" Role="Player" Multiplicity="1" />
+          <End Type="KSULaxModel.PlayerGameEntity" Role="PlayersGames" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
               <PropertyRef Name="id" /></Principal>
             <Dependent Role="PlayersGames">
               <PropertyRef Name="player_id" /></Dependent></ReferentialConstraint></Association>
-        <EntityType Name="Award">
+        <EntityType Name="AwardEntity">
           <Key>
             <PropertyRef Name="id" /></Key>
           <Property Name="id" Type="Int16" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" />
           <NavigationProperty Name="PlayerAward" Relationship="KSULaxModel.FK_PlayersAwards_Awards" FromRole="Awards" ToRole="PlayersAwards" /></EntityType>
-        <EntityType Name="PlayerAward">
+        <EntityType Name="PlayerAwardEntity">
           <Key>
             <PropertyRef Name="player_id" />
             <PropertyRef Name="award_id" />
@@ -612,16 +612,16 @@
           <NavigationProperty Name="Award" Relationship="KSULaxModel.FK_PlayersAwards_Awards" FromRole="PlayersAwards" ToRole="Awards" />
           <NavigationProperty Name="Player" Relationship="KSULaxModel.FK_PlayersAwards_Players" FromRole="PlayersAwards" ToRole="Player" /></EntityType>
         <Association Name="FK_PlayersAwards_Awards">
-          <End Type="KSULaxModel.Award" Role="Awards" Multiplicity="1" />
-          <End Type="KSULaxModel.PlayerAward" Role="PlayersAwards" Multiplicity="*" />
+          <End Type="KSULaxModel.AwardEntity" Role="Awards" Multiplicity="1" />
+          <End Type="KSULaxModel.PlayerAwardEntity" Role="PlayersAwards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Awards">
               <PropertyRef Name="id" /></Principal>
             <Dependent Role="PlayersAwards">
               <PropertyRef Name="award_id" /></Dependent></ReferentialConstraint></Association>
         <Association Name="FK_PlayersAwards_Players">
-          <End Type="KSULaxModel.Player" Role="Player" Multiplicity="1" />
-          <End Type="KSULaxModel.PlayerAward" Role="PlayersAwards" Multiplicity="*" />
+          <End Type="KSULaxModel.PlayerEntity" Role="Player" Multiplicity="1" />
+          <End Type="KSULaxModel.PlayerAwardEntity" Role="PlayersAwards" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Player">
               <PropertyRef Name="id" /></Principal>
@@ -649,7 +649,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeamSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Team)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.TeamEntity)">
               <MappingFragment StoreEntitySet="Teams">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -690,7 +690,7 @@
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="date" ColumnName="date" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PlayerSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Player)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerEntity)">
               <MappingFragment StoreEntitySet="Players">
                 <ScalarProperty Name="bio" ColumnName="bio" />
                 <ScalarProperty Name="major" ColumnName="major" />
@@ -702,7 +702,7 @@
                 <ScalarProperty Name="first" ColumnName="first" />
                 <ScalarProperty Name="id" ColumnName="id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PlayerSeasonSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerSeason)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerSeasonEntity)">
               <MappingFragment StoreEntitySet="PlayersSeason">
                 <ScalarProperty Name="captain" ColumnName="captain" />
                 <ScalarProperty Name="officer" ColumnName="officer" />
@@ -722,20 +722,20 @@
             <EndProperty Name="Players">
               <ScalarProperty Name="id" ColumnName="player_id" /></EndProperty></AssociationSetMapping>
           <EntitySetMapping Name="PhotoGallerySet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PhotoGallery)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PhotoGalleryEntity)">
               <MappingFragment StoreEntitySet="PhotoGalleries">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="url" ColumnName="url" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PhotographerSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Photographer)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PhotographerEntity)">
               <MappingFragment StoreEntitySet="Photographers">
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="company" ColumnName="company" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="photographer_id" ColumnName="photographer_id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PhotoSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Photo)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PhotoEntity)">
               <MappingFragment StoreEntitySet="Photos">
                 <ScalarProperty Name="guid" ColumnName="guid" />
                 <ScalarProperty Name="local_url" ColumnName="local_url" />
@@ -761,14 +761,14 @@
             <EndProperty Name="Photographers">
               <ScalarProperty Name="photographer_id" ColumnName="photographer_id" /></EndProperty></AssociationSetMapping>
           <EntitySetMapping Name="PollSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Poll)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PollEntity)">
               <MappingFragment StoreEntitySet="Polls">
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="rank" ColumnName="rank" />
                 <ScalarProperty Name="pollsource_id" ColumnName="pollsource_id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PollSourceSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PollSource)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PollSourceEntity)">
               <MappingFragment StoreEntitySet="PollsSource">
                 <ScalarProperty Name="url" ColumnName="url" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -780,7 +780,7 @@
             <EndProperty Name="PollsSource">
               <ScalarProperty Name="poll_id" ColumnName="pollsource_id" /></EndProperty></AssociationSetMapping>
           <EntitySetMapping Name="PlayerGameSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerGame)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerGameEntity)">
               <MappingFragment StoreEntitySet="PlayersGames">
                 <ScalarProperty Name="ga" ColumnName="ga" />
                 <ScalarProperty Name="saves" ColumnName="saves" />
@@ -801,12 +801,12 @@
             <EndProperty Name="Player">
               <ScalarProperty Name="id" ColumnName="player_id" /></EndProperty></AssociationSetMapping>
           <EntitySetMapping Name="AwardSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.Award)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.AwardEntity)">
               <MappingFragment StoreEntitySet="Awards">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="PlayerAwardSet">
-            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerAward)">
+            <EntityTypeMapping TypeName="IsTypeOf(KSULaxModel.PlayerAwardEntity)">
               <MappingFragment StoreEntitySet="PlayersAwards">
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="award_id" ColumnName="award_id" />
@@ -844,7 +844,7 @@
     <edmx:Diagrams>
       <Diagram Name="GamesModel" ZoomLevel="100">
         <EntityTypeShape EntityType="KSULaxModel.GameEntity" Width="1.5" PointX="4.375" PointY="0.5" Height="3.9033007812499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="KSULaxModel.Team" Width="1.5" PointX="2.375" PointY="0.5" Height="2.5571907552083331" IsExpanded="true" />
+        <EntityTypeShape EntityType="KSULaxModel.TeamEntity" Width="1.5" PointX="2.375" PointY="0.5" Height="2.5571907552083331" IsExpanded="true" />
         <AssociationConnector Association="KSULaxModel.FK_Games_AwaySlug" ManuallyRouted="false">
           <ConnectorPoint PointX="3.875" PointY="1.7785953776041665" />
           <ConnectorPoint PointX="4.375" PointY="1.7785953776041665" /></AssociationConnector>
@@ -852,14 +852,14 @@
           <ConnectorPoint PointX="3.875" PointY="1.0767976888020834" />
           <ConnectorPoint PointX="4.375" PointY="1.0767976888020834" /></AssociationConnector>
         <EntityTypeShape EntityType="KSULaxModel.NewsEntity" Width="1.5" PointX="0.5" PointY="0.5" Height="2.5571907552083331" />
-        <EntityTypeShape EntityType="KSULaxModel.Player" Width="1.5" PointX="6.125" PointY="0.5" Height="2.9417936197916661" />
-        <EntityTypeShape EntityType="KSULaxModel.PlayerSeason" Width="1.5" PointX="8" PointY="0.5" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="KSULaxModel.PlayerEntity" Width="1.5" PointX="6.125" PointY="0.5" Height="2.9417936197916661" />
+        <EntityTypeShape EntityType="KSULaxModel.PlayerSeasonEntity" Width="1.5" PointX="8" PointY="0.5" Height="2.7494921874999996" />
         <AssociationConnector Association="KSULaxModel.FK_PlayerSeason_Players" >
           <ConnectorPoint PointX="7.625" PointY="1.8747460937499998" />
           <ConnectorPoint PointX="8" PointY="1.8747460937499998" /></AssociationConnector>
-        <EntityTypeShape EntityType="KSULaxModel.PhotoGallery" Width="1.5" PointX="2.375" PointY="3.375" Height="1.9802864583333335" />
-        <EntityTypeShape EntityType="KSULaxModel.Photographer" Width="1.5" PointX="0.5" PointY="3.375" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="KSULaxModel.Photo" Width="1.5" PointX="4.25" PointY="4.75" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="KSULaxModel.PhotoGalleryEntity" Width="1.5" PointX="2.375" PointY="3.375" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="KSULaxModel.PhotographerEntity" Width="1.5" PointX="0.5" PointY="3.375" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="KSULaxModel.PhotoEntity" Width="1.5" PointX="4.25" PointY="4.75" Height="1.9802864583333335" />
         <AssociationConnector Association="KSULaxModel.FK_PhotoGalleries_Games" >
           <ConnectorPoint PointX="4.375" PointY="3.889150390625" />
           <ConnectorPoint PointX="3.875" PointY="3.889150390625" />
@@ -875,12 +875,12 @@
           <ConnectorPoint PointX="2" PointY="5.4826871744791665" />
           <ConnectorPoint PointX="4.25" PointY="5.4826871744791665" />
           </AssociationConnector>
-        <EntityTypeShape EntityType="KSULaxModel.Poll" Width="1.5" PointX="11.625" PointY="0.5" Height="1.9802864583333335" />
-        <EntityTypeShape EntityType="KSULaxModel.PollSource" Width="1.5" PointX="9.75" PointY="0.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="KSULaxModel.PollEntity" Width="1.5" PointX="11.625" PointY="0.5" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="KSULaxModel.PollSourceEntity" Width="1.5" PointX="9.75" PointY="0.5" Height="1.7879850260416674" />
         <AssociationConnector Association="KSULaxModel.FK_Polls_PollsSource" >
           <ConnectorPoint PointX="11.25" PointY="1.3939925130208337" />
           <ConnectorPoint PointX="11.625" PointY="1.3939925130208337" /></AssociationConnector>
-        <EntityTypeShape EntityType="KSULaxModel.PlayerGame" Width="1.5" PointX="6.125" PointY="4.625" Height="2.5571907552083335" />
+        <EntityTypeShape EntityType="KSULaxModel.PlayerGameEntity" Width="1.5" PointX="6.125" PointY="4.625" Height="2.5571907552083335" />
         <AssociationConnector Association="KSULaxModel.FK_PlayersGames_Games" >
           <ConnectorPoint PointX="5.500002" PointY="4.40330078125" />
           <ConnectorPoint PointX="5.500002" PointY="4.49705078125" />
@@ -892,8 +892,8 @@
           <ConnectorPoint PointX="6.53125" PointY="3.826396484375" />
           <ConnectorPoint PointX="6.53125" PointY="4.625" />
           </AssociationConnector>
-        <EntityTypeShape EntityType="KSULaxModel.Award" Width="1.5" PointX="10" PointY="4.25" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="KSULaxModel.PlayerAward" Width="1.5" PointX="8" PointY="4.25" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="KSULaxModel.AwardEntity" Width="1.5" PointX="10" PointY="4.25" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="KSULaxModel.PlayerAwardEntity" Width="1.5" PointX="8" PointY="4.25" Height="1.9802864583333335" />
         <AssociationConnector Association="KSULaxModel.FK_PlayersAwards_Awards" >
           <ConnectorPoint PointX="10" PointY="5.047841796875" />
           <ConnectorPoint PointX="9.5" PointY="5.047841796875" />
