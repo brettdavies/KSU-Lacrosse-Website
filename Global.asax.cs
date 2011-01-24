@@ -52,7 +52,7 @@ namespace KSULax
         protected void Application_Start()
         {
             KSU.maxGameSeason = 2011;
-            KSU.maxPlayerSeason = 2010;
+            KSU.maxPlayerSeason = 2011;
 
             RegisterRoutes(RouteTable.Routes);
 
