@@ -133,30 +133,5 @@ namespace KSULax.Controllers
                       .OrderBy("it.jersey")
                       .ToList());
         }
-
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public JsonResult GetBio(int? id)
-        //{
-        //    if (!id.HasValue)
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        var result = from player in entities.Player.Where("it.id = " + id).Take(1)
-        //                     select new
-        //                     {
-        //                         name = player.first + " " + player.last,
-        //                         highschool = player.highschool,
-        //                         hometown = player.hometown,
-        //                         homestate = player.homestate
-        //                     };
-        //        if (result.Count() > 0)
-        //        {
-        //            return this.Json(result.First());
-        //        }
-        //        return null;
-        //    }
-        //}
     }
 }
