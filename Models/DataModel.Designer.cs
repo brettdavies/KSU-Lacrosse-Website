@@ -9,21 +9,21 @@
 //------------------------------------------------------------------------------
 
 [assembly: global::System.Data.Objects.DataClasses.EdmSchemaAttribute()]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Games_AwaySlug", "Teams", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(KSULax.Models.Team), "Games", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.GameEntity))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Games_HomeSlug", "Teams", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(KSULax.Models.Team), "Games", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.GameEntity))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayerSeason_Players", "Players", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Player), "PlayersSeason", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerSeason))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGallery))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.Photo))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Photographer), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGallery))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Photographer), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.Photo))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Polls_PollsSource", "PollsSource", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PollSource), "Polls", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.Poll))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGame))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Player), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGame))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersAwards_Awards", "Awards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Award), "PlayersAwards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerAward))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersAwards_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.Player), "PlayersAwards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerAward))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Games_AwaySlug", "Teams", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(KSULax.Models.TeamEntity), "Games", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.GameEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Games_HomeSlug", "Teams", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(KSULax.Models.TeamEntity), "Games", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.GameEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayerSeason_Players", "Players", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersSeason", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerSeasonEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGalleryEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PhotographerEntity), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGalleryEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PhotographerEntity), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Polls_PollsSource", "PollsSource", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PollSourceEntity), "Polls", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PollEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGameEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGameEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersAwards_Awards", "Awards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.AwardEntity), "PlayersAwards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerAwardEntity))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersAwards_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersAwards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerAwardEntity))]
 
 // Original file name:
-// Generation date: 1/17/2011 10:55:14 PM
+// Generation date: 1/23/2011 7:24:20 PM
 namespace KSULax.Models
 {
     
@@ -78,19 +78,19 @@ namespace KSULax.Models
         /// There are no comments for TeamSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Team> TeamSet
+        public global::System.Data.Objects.ObjectQuery<TeamEntity> TeamSet
         {
             get
             {
                 if ((this._TeamSet == null))
                 {
-                    this._TeamSet = base.CreateQuery<Team>("[TeamSet]");
+                    this._TeamSet = base.CreateQuery<TeamEntity>("[TeamSet]");
                 }
                 return this._TeamSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Team> _TeamSet;
+        private global::System.Data.Objects.ObjectQuery<TeamEntity> _TeamSet;
         /// <summary>
         /// There are no comments for NewsSet in the schema.
         /// </summary>
@@ -112,172 +112,172 @@ namespace KSULax.Models
         /// There are no comments for PlayerSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Player> PlayerSet
+        public global::System.Data.Objects.ObjectQuery<PlayerEntity> PlayerSet
         {
             get
             {
                 if ((this._PlayerSet == null))
                 {
-                    this._PlayerSet = base.CreateQuery<Player>("[PlayerSet]");
+                    this._PlayerSet = base.CreateQuery<PlayerEntity>("[PlayerSet]");
                 }
                 return this._PlayerSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Player> _PlayerSet;
+        private global::System.Data.Objects.ObjectQuery<PlayerEntity> _PlayerSet;
         /// <summary>
         /// There are no comments for PlayerSeasonSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PlayerSeason> PlayerSeasonSet
+        public global::System.Data.Objects.ObjectQuery<PlayerSeasonEntity> PlayerSeasonSet
         {
             get
             {
                 if ((this._PlayerSeasonSet == null))
                 {
-                    this._PlayerSeasonSet = base.CreateQuery<PlayerSeason>("[PlayerSeasonSet]");
+                    this._PlayerSeasonSet = base.CreateQuery<PlayerSeasonEntity>("[PlayerSeasonSet]");
                 }
                 return this._PlayerSeasonSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PlayerSeason> _PlayerSeasonSet;
+        private global::System.Data.Objects.ObjectQuery<PlayerSeasonEntity> _PlayerSeasonSet;
         /// <summary>
         /// There are no comments for PhotoGallerySet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PhotoGallery> PhotoGallerySet
+        public global::System.Data.Objects.ObjectQuery<PhotoGalleryEntity> PhotoGallerySet
         {
             get
             {
                 if ((this._PhotoGallerySet == null))
                 {
-                    this._PhotoGallerySet = base.CreateQuery<PhotoGallery>("[PhotoGallerySet]");
+                    this._PhotoGallerySet = base.CreateQuery<PhotoGalleryEntity>("[PhotoGallerySet]");
                 }
                 return this._PhotoGallerySet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PhotoGallery> _PhotoGallerySet;
+        private global::System.Data.Objects.ObjectQuery<PhotoGalleryEntity> _PhotoGallerySet;
         /// <summary>
         /// There are no comments for PhotographerSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Photographer> PhotographerSet
+        public global::System.Data.Objects.ObjectQuery<PhotographerEntity> PhotographerSet
         {
             get
             {
                 if ((this._PhotographerSet == null))
                 {
-                    this._PhotographerSet = base.CreateQuery<Photographer>("[PhotographerSet]");
+                    this._PhotographerSet = base.CreateQuery<PhotographerEntity>("[PhotographerSet]");
                 }
                 return this._PhotographerSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Photographer> _PhotographerSet;
+        private global::System.Data.Objects.ObjectQuery<PhotographerEntity> _PhotographerSet;
         /// <summary>
         /// There are no comments for PhotoSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Photo> PhotoSet
+        public global::System.Data.Objects.ObjectQuery<PhotoEntity> PhotoSet
         {
             get
             {
                 if ((this._PhotoSet == null))
                 {
-                    this._PhotoSet = base.CreateQuery<Photo>("[PhotoSet]");
+                    this._PhotoSet = base.CreateQuery<PhotoEntity>("[PhotoSet]");
                 }
                 return this._PhotoSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Photo> _PhotoSet;
+        private global::System.Data.Objects.ObjectQuery<PhotoEntity> _PhotoSet;
         /// <summary>
         /// There are no comments for PollSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Poll> PollSet
+        public global::System.Data.Objects.ObjectQuery<PollEntity> PollSet
         {
             get
             {
                 if ((this._PollSet == null))
                 {
-                    this._PollSet = base.CreateQuery<Poll>("[PollSet]");
+                    this._PollSet = base.CreateQuery<PollEntity>("[PollSet]");
                 }
                 return this._PollSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Poll> _PollSet;
+        private global::System.Data.Objects.ObjectQuery<PollEntity> _PollSet;
         /// <summary>
         /// There are no comments for PollSourceSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PollSource> PollSourceSet
+        public global::System.Data.Objects.ObjectQuery<PollSourceEntity> PollSourceSet
         {
             get
             {
                 if ((this._PollSourceSet == null))
                 {
-                    this._PollSourceSet = base.CreateQuery<PollSource>("[PollSourceSet]");
+                    this._PollSourceSet = base.CreateQuery<PollSourceEntity>("[PollSourceSet]");
                 }
                 return this._PollSourceSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PollSource> _PollSourceSet;
+        private global::System.Data.Objects.ObjectQuery<PollSourceEntity> _PollSourceSet;
         /// <summary>
         /// There are no comments for PlayerGameSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PlayerGame> PlayerGameSet
+        public global::System.Data.Objects.ObjectQuery<PlayerGameEntity> PlayerGameSet
         {
             get
             {
                 if ((this._PlayerGameSet == null))
                 {
-                    this._PlayerGameSet = base.CreateQuery<PlayerGame>("[PlayerGameSet]");
+                    this._PlayerGameSet = base.CreateQuery<PlayerGameEntity>("[PlayerGameSet]");
                 }
                 return this._PlayerGameSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PlayerGame> _PlayerGameSet;
+        private global::System.Data.Objects.ObjectQuery<PlayerGameEntity> _PlayerGameSet;
         /// <summary>
         /// There are no comments for AwardSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<Award> AwardSet
+        public global::System.Data.Objects.ObjectQuery<AwardEntity> AwardSet
         {
             get
             {
                 if ((this._AwardSet == null))
                 {
-                    this._AwardSet = base.CreateQuery<Award>("[AwardSet]");
+                    this._AwardSet = base.CreateQuery<AwardEntity>("[AwardSet]");
                 }
                 return this._AwardSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<Award> _AwardSet;
+        private global::System.Data.Objects.ObjectQuery<AwardEntity> _AwardSet;
         /// <summary>
         /// There are no comments for PlayerAwardSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PlayerAward> PlayerAwardSet
+        public global::System.Data.Objects.ObjectQuery<PlayerAwardEntity> PlayerAwardSet
         {
             get
             {
                 if ((this._PlayerAwardSet == null))
                 {
-                    this._PlayerAwardSet = base.CreateQuery<PlayerAward>("[PlayerAwardSet]");
+                    this._PlayerAwardSet = base.CreateQuery<PlayerAwardEntity>("[PlayerAwardSet]");
                 }
                 return this._PlayerAwardSet;
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PlayerAward> _PlayerAwardSet;
+        private global::System.Data.Objects.ObjectQuery<PlayerAwardEntity> _PlayerAwardSet;
         /// <summary>
         /// There are no comments for GameSet in the schema.
         /// </summary>
@@ -290,9 +290,9 @@ namespace KSULax.Models
         /// There are no comments for TeamSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToTeamSet(Team team)
+        public void AddToTeamSet(TeamEntity teamEntity)
         {
-            base.AddObject("TeamSet", team);
+            base.AddObject("TeamSet", teamEntity);
         }
         /// <summary>
         /// There are no comments for NewsSet in the schema.
@@ -306,81 +306,81 @@ namespace KSULax.Models
         /// There are no comments for PlayerSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPlayerSet(Player player)
+        public void AddToPlayerSet(PlayerEntity playerEntity)
         {
-            base.AddObject("PlayerSet", player);
+            base.AddObject("PlayerSet", playerEntity);
         }
         /// <summary>
         /// There are no comments for PlayerSeasonSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPlayerSeasonSet(PlayerSeason playerSeason)
+        public void AddToPlayerSeasonSet(PlayerSeasonEntity playerSeasonEntity)
         {
-            base.AddObject("PlayerSeasonSet", playerSeason);
+            base.AddObject("PlayerSeasonSet", playerSeasonEntity);
         }
         /// <summary>
         /// There are no comments for PhotoGallerySet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPhotoGallerySet(PhotoGallery photoGallery)
+        public void AddToPhotoGallerySet(PhotoGalleryEntity photoGalleryEntity)
         {
-            base.AddObject("PhotoGallerySet", photoGallery);
+            base.AddObject("PhotoGallerySet", photoGalleryEntity);
         }
         /// <summary>
         /// There are no comments for PhotographerSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPhotographerSet(Photographer photographer)
+        public void AddToPhotographerSet(PhotographerEntity photographerEntity)
         {
-            base.AddObject("PhotographerSet", photographer);
+            base.AddObject("PhotographerSet", photographerEntity);
         }
         /// <summary>
         /// There are no comments for PhotoSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPhotoSet(Photo photo)
+        public void AddToPhotoSet(PhotoEntity photoEntity)
         {
-            base.AddObject("PhotoSet", photo);
+            base.AddObject("PhotoSet", photoEntity);
         }
         /// <summary>
         /// There are no comments for PollSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPollSet(Poll poll)
+        public void AddToPollSet(PollEntity pollEntity)
         {
-            base.AddObject("PollSet", poll);
+            base.AddObject("PollSet", pollEntity);
         }
         /// <summary>
         /// There are no comments for PollSourceSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPollSourceSet(PollSource pollSource)
+        public void AddToPollSourceSet(PollSourceEntity pollSourceEntity)
         {
-            base.AddObject("PollSourceSet", pollSource);
+            base.AddObject("PollSourceSet", pollSourceEntity);
         }
         /// <summary>
         /// There are no comments for PlayerGameSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPlayerGameSet(PlayerGame playerGame)
+        public void AddToPlayerGameSet(PlayerGameEntity playerGameEntity)
         {
-            base.AddObject("PlayerGameSet", playerGame);
+            base.AddObject("PlayerGameSet", playerGameEntity);
         }
         /// <summary>
         /// There are no comments for AwardSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToAwardSet(Award award)
+        public void AddToAwardSet(AwardEntity awardEntity)
         {
-            base.AddObject("AwardSet", award);
+            base.AddObject("AwardSet", awardEntity);
         }
         /// <summary>
         /// There are no comments for PlayerAwardSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPlayerAwardSet(PlayerAward playerAward)
+        public void AddToPlayerAwardSet(PlayerAwardEntity playerAwardEntity)
         {
-            base.AddObject("PlayerAwardSet", playerAward);
+            base.AddObject("PlayerAwardSet", playerAwardEntity);
         }
     }
     /// <summary>
@@ -689,15 +689,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Team AwayTeam
+        public TeamEntity AwayTeam
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_AwaySlug", "Teams").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_AwaySlug", "Teams").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_AwaySlug", "Teams").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_AwaySlug", "Teams").Value = value;
             }
         }
         /// <summary>
@@ -706,17 +706,17 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Team> AwayTeamReference
+        public global::System.Data.Objects.DataClasses.EntityReference<TeamEntity> AwayTeamReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_AwaySlug", "Teams");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_AwaySlug", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Team>("KSULaxModel.FK_Games_AwaySlug", "Teams", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<TeamEntity>("KSULaxModel.FK_Games_AwaySlug", "Teams", value);
                 }
             }
         }
@@ -728,15 +728,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Team HomeTeam
+        public TeamEntity HomeTeam
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_HomeSlug", "Teams").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_HomeSlug", "Teams").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_HomeSlug", "Teams").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_HomeSlug", "Teams").Value = value;
             }
         }
         /// <summary>
@@ -745,17 +745,17 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Team> HomeTeamReference
+        public global::System.Data.Objects.DataClasses.EntityReference<TeamEntity> HomeTeamReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Team>("KSULaxModel.FK_Games_HomeSlug", "Teams");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<TeamEntity>("KSULaxModel.FK_Games_HomeSlug", "Teams");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Team>("KSULaxModel.FK_Games_HomeSlug", "Teams", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<TeamEntity>("KSULaxModel.FK_Games_HomeSlug", "Teams", value);
                 }
             }
         }
@@ -767,17 +767,17 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoGallery> PhotoGalleries
+        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoGalleryEntity> PhotoGalleries
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoGallery>("KSULaxModel.FK_PhotoGalleries_Games", "PhotoGalleries");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Games", "PhotoGalleries");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGallery>("KSULaxModel.FK_PhotoGalleries_Games", "PhotoGalleries", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Games", "PhotoGalleries", value);
                 }
             }
         }
@@ -789,17 +789,17 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Photo> Photos
+        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoEntity> Photos
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Photo>("KSULaxModel.FK_Photos_Games", "Photos");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Games", "Photos");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Photo>("KSULaxModel.FK_Photos_Games", "Photos", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Games", "Photos", value);
                 }
             }
         }
@@ -811,44 +811,44 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerGame> PlayerGames
+        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerGameEntity> PlayerGames
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerGame>("KSULaxModel.FK_PlayersGames_Games", "PlayersGames");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerGameEntity>("KSULaxModel.FK_PlayersGames_Games", "PlayersGames");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerGame>("KSULaxModel.FK_PlayersGames_Games", "PlayersGames", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerGameEntity>("KSULaxModel.FK_PlayersGames_Games", "PlayersGames", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Team in the schema.
+    /// There are no comments for KSULaxModel.TeamEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// slug
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Team")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="TeamEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Team : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class TeamEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Team object.
+        /// Create a new TeamEntity object.
         /// </summary>
         /// <param name="id">Initial value of id.</param>
         /// <param name="slug">Initial value of slug.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Team CreateTeam(short id, string slug)
+        public static TeamEntity CreateTeamEntity(short id, string slug)
         {
-            Team team = new Team();
-            team.id = id;
-            team.slug = slug;
-            return team;
+            TeamEntity teamEntity = new TeamEntity();
+            teamEntity.id = id;
+            teamEntity.slug = slug;
+            return teamEntity;
         }
         /// <summary>
         /// There are no comments for property id in the schema.
@@ -1305,26 +1305,26 @@ namespace KSULax.Models
         partial void Onsource_urlChanged();
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Player in the schema.
+    /// There are no comments for KSULaxModel.PlayerEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Player")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Player : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PlayerEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Player object.
+        /// Create a new PlayerEntity object.
         /// </summary>
         /// <param name="id">Initial value of id.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Player CreatePlayer(short id)
+        public static PlayerEntity CreatePlayerEntity(short id)
         {
-            Player player = new Player();
-            player.id = id;
-            return player;
+            PlayerEntity playerEntity = new PlayerEntity();
+            playerEntity.id = id;
+            return playerEntity;
         }
         /// <summary>
         /// There are no comments for property id in the schema.
@@ -1577,17 +1577,17 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerSeason> PlayerSeason
+        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerSeasonEntity> PlayerSeason
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerSeason>("KSULaxModel.FK_PlayerSeason_Players", "PlayersSeason");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerSeasonEntity>("KSULaxModel.FK_PlayerSeason_Players", "PlayersSeason");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerSeason>("KSULaxModel.FK_PlayerSeason_Players", "PlayersSeason", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerSeasonEntity>("KSULaxModel.FK_PlayerSeason_Players", "PlayersSeason", value);
                 }
             }
         }
@@ -1599,17 +1599,17 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerGame> PlayerGame
+        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerGameEntity> PlayerGame
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerGame>("KSULaxModel.FK_PlayersGames_Players", "PlayersGames");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerGameEntity>("KSULaxModel.FK_PlayersGames_Players", "PlayersGames");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerGame>("KSULaxModel.FK_PlayersGames_Players", "PlayersGames", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerGameEntity>("KSULaxModel.FK_PlayersGames_Players", "PlayersGames", value);
                 }
             }
         }
@@ -1621,45 +1621,45 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerAward> PlayerAward
+        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerAwardEntity> PlayerAward
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerAward>("KSULaxModel.FK_PlayersAwards_Players", "PlayersAwards");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerAwardEntity>("KSULaxModel.FK_PlayersAwards_Players", "PlayersAwards");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerAward>("KSULaxModel.FK_PlayersAwards_Players", "PlayersAwards", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerAwardEntity>("KSULaxModel.FK_PlayersAwards_Players", "PlayersAwards", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.PlayerSeason in the schema.
+    /// There are no comments for KSULaxModel.PlayerSeasonEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// player_id
     /// season_id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerSeason")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerSeasonEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class PlayerSeason : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PlayerSeasonEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new PlayerSeason object.
+        /// Create a new PlayerSeasonEntity object.
         /// </summary>
         /// <param name="player_id">Initial value of player_id.</param>
         /// <param name="season_id">Initial value of season_id.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PlayerSeason CreatePlayerSeason(short player_id, short season_id)
+        public static PlayerSeasonEntity CreatePlayerSeasonEntity(short player_id, short season_id)
         {
-            PlayerSeason playerSeason = new PlayerSeason();
-            playerSeason.player_id = player_id;
-            playerSeason.season_id = season_id;
-            return playerSeason;
+            PlayerSeasonEntity playerSeasonEntity = new PlayerSeasonEntity();
+            playerSeasonEntity.player_id = player_id;
+            playerSeasonEntity.season_id = season_id;
+            return playerSeasonEntity;
         }
         /// <summary>
         /// There are no comments for property player_id in the schema.
@@ -1966,15 +1966,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Player Player
+        public PlayerEntity Player
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayerSeason_Players", "Players").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayerSeason_Players", "Players").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayerSeason_Players", "Players").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayerSeason_Players", "Players").Value = value;
             }
         }
         /// <summary>
@@ -1983,46 +1983,46 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Player> PlayerReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PlayerEntity> PlayerReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayerSeason_Players", "Players");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayerSeason_Players", "Players");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Player>("KSULaxModel.FK_PlayerSeason_Players", "Players", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayerSeason_Players", "Players", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.PhotoGallery in the schema.
+    /// There are no comments for KSULaxModel.PhotoGalleryEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// guid
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PhotoGallery")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PhotoGalleryEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class PhotoGallery : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PhotoGalleryEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new PhotoGallery object.
+        /// Create a new PhotoGalleryEntity object.
         /// </summary>
         /// <param name="url">Initial value of url.</param>
         /// <param name="text">Initial value of text.</param>
         /// <param name="guid">Initial value of guid.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PhotoGallery CreatePhotoGallery(string url, string text, global::System.Guid guid)
+        public static PhotoGalleryEntity CreatePhotoGalleryEntity(string url, string text, global::System.Guid guid)
         {
-            PhotoGallery photoGallery = new PhotoGallery();
-            photoGallery.url = url;
-            photoGallery.text = text;
-            photoGallery.guid = guid;
-            return photoGallery;
+            PhotoGalleryEntity photoGalleryEntity = new PhotoGalleryEntity();
+            photoGalleryEntity.url = url;
+            photoGalleryEntity.text = text;
+            photoGalleryEntity.guid = guid;
+            return photoGalleryEntity;
         }
         /// <summary>
         /// There are no comments for property url in the schema.
@@ -2152,15 +2152,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Photographer Photographer
+        public PhotographerEntity Photographer
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers").Value = value;
             }
         }
         /// <summary>
@@ -2169,48 +2169,48 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Photographer> PhotographerReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PhotographerEntity> PhotographerReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Photographer>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PhotographerEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "Photographers", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Photographer in the schema.
+    /// There are no comments for KSULaxModel.PhotographerEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// photographer_id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Photographer")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PhotographerEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Photographer : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PhotographerEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Photographer object.
+        /// Create a new PhotographerEntity object.
         /// </summary>
         /// <param name="photographer_id">Initial value of photographer_id.</param>
         /// <param name="name">Initial value of name.</param>
         /// <param name="company">Initial value of company.</param>
         /// <param name="url">Initial value of url.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Photographer CreatePhotographer(int photographer_id, string name, string company, string url)
+        public static PhotographerEntity CreatePhotographerEntity(int photographer_id, string name, string company, string url)
         {
-            Photographer photographer = new Photographer();
-            photographer.photographer_id = photographer_id;
-            photographer.name = name;
-            photographer.company = company;
-            photographer.url = url;
-            return photographer;
+            PhotographerEntity photographerEntity = new PhotographerEntity();
+            photographerEntity.photographer_id = photographer_id;
+            photographerEntity.name = name;
+            photographerEntity.company = company;
+            photographerEntity.url = url;
+            return photographerEntity;
         }
         /// <summary>
         /// There are no comments for property photographer_id in the schema.
@@ -2328,17 +2328,17 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoGallery> PhotoGalleries
+        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoGalleryEntity> PhotoGalleries
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoGallery>("KSULaxModel.FK_PhotoGalleries_Photographers", "PhotoGalleries");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "PhotoGalleries");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGallery>("KSULaxModel.FK_PhotoGalleries_Photographers", "PhotoGalleries", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "PhotoGalleries", value);
                 }
             }
         }
@@ -2350,46 +2350,46 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Photo> Photos
+        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoEntity> Photos
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Photo>("KSULaxModel.FK_Photos_Photographers", "Photos");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Photographers", "Photos");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Photo>("KSULaxModel.FK_Photos_Photographers", "Photos", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Photographers", "Photos", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Photo in the schema.
+    /// There are no comments for KSULaxModel.PhotoEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// guid
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Photo")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PhotoEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Photo : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PhotoEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Photo object.
+        /// Create a new PhotoEntity object.
         /// </summary>
         /// <param name="url">Initial value of url.</param>
         /// <param name="local_url">Initial value of local_url.</param>
         /// <param name="guid">Initial value of guid.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Photo CreatePhoto(string url, string local_url, global::System.Guid guid)
+        public static PhotoEntity CreatePhotoEntity(string url, string local_url, global::System.Guid guid)
         {
-            Photo photo = new Photo();
-            photo.url = url;
-            photo.local_url = local_url;
-            photo.guid = guid;
-            return photo;
+            PhotoEntity photoEntity = new PhotoEntity();
+            photoEntity.url = url;
+            photoEntity.local_url = local_url;
+            photoEntity.guid = guid;
+            return photoEntity;
         }
         /// <summary>
         /// There are no comments for property url in the schema.
@@ -2519,15 +2519,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Photographer Photographer
+        public PhotographerEntity Photographer
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value = value;
             }
         }
         /// <summary>
@@ -2536,49 +2536,49 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Photographer> PhotographerReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PhotographerEntity> PhotographerReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Photographer>("KSULaxModel.FK_Photos_Photographers", "Photographers");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Photographer>("KSULaxModel.FK_Photos_Photographers", "Photographers", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Poll in the schema.
+    /// There are no comments for KSULaxModel.PollEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// pollsource_id
     /// date
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Poll")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PollEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Poll : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PollEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Poll object.
+        /// Create a new PollEntity object.
         /// </summary>
         /// <param name="pollsource_id">Initial value of pollsource_id.</param>
         /// <param name="rank">Initial value of rank.</param>
         /// <param name="url">Initial value of url.</param>
         /// <param name="date">Initial value of date.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Poll CreatePoll(short pollsource_id, short rank, string url, global::System.DateTime date)
+        public static PollEntity CreatePollEntity(short pollsource_id, short rank, string url, global::System.DateTime date)
         {
-            Poll poll = new Poll();
-            poll.pollsource_id = pollsource_id;
-            poll.rank = rank;
-            poll.url = url;
-            poll.date = date;
-            return poll;
+            PollEntity pollEntity = new PollEntity();
+            pollEntity.pollsource_id = pollsource_id;
+            pollEntity.rank = rank;
+            pollEntity.url = url;
+            pollEntity.date = date;
+            return pollEntity;
         }
         /// <summary>
         /// There are no comments for property pollsource_id in the schema.
@@ -2696,15 +2696,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public PollSource PollSource
+        public PollSourceEntity PollSource
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSource>("KSULaxModel.FK_Polls_PollsSource", "PollsSource").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSourceEntity>("KSULaxModel.FK_Polls_PollsSource", "PollsSource").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSource>("KSULaxModel.FK_Polls_PollsSource", "PollsSource").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSourceEntity>("KSULaxModel.FK_Polls_PollsSource", "PollsSource").Value = value;
             }
         }
         /// <summary>
@@ -2713,46 +2713,46 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<PollSource> PollSourceReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PollSourceEntity> PollSourceReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSource>("KSULaxModel.FK_Polls_PollsSource", "PollsSource");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PollSourceEntity>("KSULaxModel.FK_Polls_PollsSource", "PollsSource");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PollSource>("KSULaxModel.FK_Polls_PollsSource", "PollsSource", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PollSourceEntity>("KSULaxModel.FK_Polls_PollsSource", "PollsSource", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.PollSource in the schema.
+    /// There are no comments for KSULaxModel.PollSourceEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// poll_id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PollSource")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PollSourceEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class PollSource : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PollSourceEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new PollSource object.
+        /// Create a new PollSourceEntity object.
         /// </summary>
         /// <param name="poll_id">Initial value of poll_id.</param>
         /// <param name="name">Initial value of name.</param>
         /// <param name="url">Initial value of url.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PollSource CreatePollSource(short poll_id, string name, string url)
+        public static PollSourceEntity CreatePollSourceEntity(short poll_id, string name, string url)
         {
-            PollSource pollSource = new PollSource();
-            pollSource.poll_id = poll_id;
-            pollSource.name = name;
-            pollSource.url = url;
-            return pollSource;
+            PollSourceEntity pollSourceEntity = new PollSourceEntity();
+            pollSourceEntity.poll_id = poll_id;
+            pollSourceEntity.name = name;
+            pollSourceEntity.url = url;
+            return pollSourceEntity;
         }
         /// <summary>
         /// There are no comments for property poll_id in the schema.
@@ -2843,35 +2843,35 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<Poll> Poll
+        public global::System.Data.Objects.DataClasses.EntityCollection<PollEntity> Poll
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Poll>("KSULaxModel.FK_Polls_PollsSource", "Polls");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PollEntity>("KSULaxModel.FK_Polls_PollsSource", "Polls");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Poll>("KSULaxModel.FK_Polls_PollsSource", "Polls", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PollEntity>("KSULaxModel.FK_Polls_PollsSource", "Polls", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.PlayerGame in the schema.
+    /// There are no comments for KSULaxModel.PlayerGameEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// game_id
     /// player_id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerGame")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerGameEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class PlayerGame : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PlayerGameEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new PlayerGame object.
+        /// Create a new PlayerGameEntity object.
         /// </summary>
         /// <param name="game_id">Initial value of game_id.</param>
         /// <param name="player_id">Initial value of player_id.</param>
@@ -2880,16 +2880,16 @@ namespace KSULax.Models
         /// <param name="saves">Initial value of saves.</param>
         /// <param name="ga">Initial value of ga.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PlayerGame CreatePlayerGame(short game_id, short player_id, short assists, short goals, short saves, short ga)
+        public static PlayerGameEntity CreatePlayerGameEntity(short game_id, short player_id, short assists, short goals, short saves, short ga)
         {
-            PlayerGame playerGame = new PlayerGame();
-            playerGame.game_id = game_id;
-            playerGame.player_id = player_id;
-            playerGame.assists = assists;
-            playerGame.goals = goals;
-            playerGame.saves = saves;
-            playerGame.ga = ga;
-            return playerGame;
+            PlayerGameEntity playerGameEntity = new PlayerGameEntity();
+            playerGameEntity.game_id = game_id;
+            playerGameEntity.player_id = player_id;
+            playerGameEntity.assists = assists;
+            playerGameEntity.goals = goals;
+            playerGameEntity.saves = saves;
+            playerGameEntity.ga = ga;
+            return playerGameEntity;
         }
         /// <summary>
         /// There are no comments for property game_id in the schema.
@@ -3100,15 +3100,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Player Player
+        public PlayerEntity Player
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersGames_Players", "Player").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersGames_Players", "Player").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersGames_Players", "Player").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersGames_Players", "Player").Value = value;
             }
         }
         /// <summary>
@@ -3117,44 +3117,44 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Player> PlayerReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PlayerEntity> PlayerReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersGames_Players", "Player");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersGames_Players", "Player");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Player>("KSULaxModel.FK_PlayersGames_Players", "Player", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersGames_Players", "Player", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.Award in the schema.
+    /// There are no comments for KSULaxModel.AwardEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// id
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="Award")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="AwardEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class Award : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class AwardEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new Award object.
+        /// Create a new AwardEntity object.
         /// </summary>
         /// <param name="id">Initial value of id.</param>
         /// <param name="name">Initial value of name.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static Award CreateAward(short id, string name)
+        public static AwardEntity CreateAwardEntity(short id, string name)
         {
-            Award award = new Award();
-            award.id = id;
-            award.name = name;
-            return award;
+            AwardEntity awardEntity = new AwardEntity();
+            awardEntity.id = id;
+            awardEntity.name = name;
+            return awardEntity;
         }
         /// <summary>
         /// There are no comments for property id in the schema.
@@ -3218,48 +3218,48 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerAward> PlayerAward
+        public global::System.Data.Objects.DataClasses.EntityCollection<PlayerAwardEntity> PlayerAward
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerAward>("KSULaxModel.FK_PlayersAwards_Awards", "PlayersAwards");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PlayerAwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "PlayersAwards");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerAward>("KSULaxModel.FK_PlayersAwards_Awards", "PlayersAwards", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PlayerAwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "PlayersAwards", value);
                 }
             }
         }
     }
     /// <summary>
-    /// There are no comments for KSULaxModel.PlayerAward in the schema.
+    /// There are no comments for KSULaxModel.PlayerAwardEntity in the schema.
     /// </summary>
     /// <KeyProperties>
     /// player_id
     /// award_id
     /// date
     /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerAward")]
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PlayerAwardEntity")]
     [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
     [global::System.Serializable()]
-    public partial class PlayerAward : global::System.Data.Objects.DataClasses.EntityObject
+    public partial class PlayerAwardEntity : global::System.Data.Objects.DataClasses.EntityObject
     {
         /// <summary>
-        /// Create a new PlayerAward object.
+        /// Create a new PlayerAwardEntity object.
         /// </summary>
         /// <param name="player_id">Initial value of player_id.</param>
         /// <param name="award_id">Initial value of award_id.</param>
         /// <param name="date">Initial value of date.</param>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PlayerAward CreatePlayerAward(short player_id, short award_id, global::System.DateTime date)
+        public static PlayerAwardEntity CreatePlayerAwardEntity(short player_id, short award_id, global::System.DateTime date)
         {
-            PlayerAward playerAward = new PlayerAward();
-            playerAward.player_id = player_id;
-            playerAward.award_id = award_id;
-            playerAward.date = date;
-            return playerAward;
+            PlayerAwardEntity playerAwardEntity = new PlayerAwardEntity();
+            playerAwardEntity.player_id = player_id;
+            playerAwardEntity.award_id = award_id;
+            playerAwardEntity.date = date;
+            return playerAwardEntity;
         }
         /// <summary>
         /// There are no comments for property player_id in the schema.
@@ -3350,15 +3350,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Award Award
+        public AwardEntity Award
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Award>("KSULaxModel.FK_PlayersAwards_Awards", "Awards").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<AwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "Awards").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Award>("KSULaxModel.FK_PlayersAwards_Awards", "Awards").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<AwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "Awards").Value = value;
             }
         }
         /// <summary>
@@ -3367,17 +3367,17 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Award> AwardReference
+        public global::System.Data.Objects.DataClasses.EntityReference<AwardEntity> AwardReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Award>("KSULaxModel.FK_PlayersAwards_Awards", "Awards");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<AwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "Awards");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Award>("KSULaxModel.FK_PlayersAwards_Awards", "Awards", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<AwardEntity>("KSULaxModel.FK_PlayersAwards_Awards", "Awards", value);
                 }
             }
         }
@@ -3389,15 +3389,15 @@ namespace KSULax.Models
         [global::System.Xml.Serialization.XmlIgnoreAttribute()]
         [global::System.Xml.Serialization.SoapIgnoreAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public Player Player
+        public PlayerEntity Player
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersAwards_Players", "Player").Value;
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersAwards_Players", "Player").Value;
             }
             set
             {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersAwards_Players", "Player").Value = value;
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersAwards_Players", "Player").Value = value;
             }
         }
         /// <summary>
@@ -3406,17 +3406,17 @@ namespace KSULax.Models
         [global::System.ComponentModel.BrowsableAttribute(false)]
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<Player> PlayerReference
+        public global::System.Data.Objects.DataClasses.EntityReference<PlayerEntity> PlayerReference
         {
             get
             {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Player>("KSULaxModel.FK_PlayersAwards_Players", "Player");
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersAwards_Players", "Player");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Player>("KSULaxModel.FK_PlayersAwards_Players", "Player", value);
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PlayerEntity>("KSULaxModel.FK_PlayersAwards_Players", "Player", value);
                 }
             }
         }
