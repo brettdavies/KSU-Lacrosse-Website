@@ -10,8 +10,10 @@
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Forms", "Index", null, new { title="Forms" })%> > <%= Html.ActionLink("Winter Skills Clinic Information and Registration", "winter-skills-clinic", null, new { title = "Winter Skills Clinic Information and Registration" })%></div>
 <h1>Winter Skills Clinic Information and Registration</h1>
 <p>The Kennesaw State Men's lacrosse club is excited to give back to the community and offer a winter skills tune-up clinic. All the information about the clinic can be found in the <asp:HyperLink NavigateUrl="~/content/pdf/KSU-Mens-Lacrosse-Winter-Skills-Clinic.pdf" Text="clinic's brochure" ToolTip="Winter Skills Clinic Brochure" runat="server" />.</p><br />
-<h2>Only 50 Spots Left!</h2>
+<h2>SOLD OUT!</h2>
 <h3>Registration</h3>
+<p>Registration is closed at this time. See you on the 22nd!</p>
+<%--
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="Z753TVXHDWGHQ">
@@ -63,5 +65,6 @@
 <p>Note: $15 of the $75 registration fee is non-refundable.</p>
 <br />
 <p>Please print out this waiver and have the player bring it signed and completed with him to the clinic. <asp:HyperLink NavigateUrl="~/content/pdf/Waiver-and-Release-Form.pdf" Text="Owls Nest Waiver and Release Form" ToolTip="Owls Nest Waiver and Release Form" runat="server" /></p>
+--%>
 </div>
 </asp:Content>
