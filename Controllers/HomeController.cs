@@ -5,24 +5,31 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using KSULax.Models;
+using KSULax.Logic;
+using KSULax.Models.News;
+using KSULax.Entities;
 
 namespace KSULax.Controllers
 {
     [HandleError]
     public class HomeController : Controller
     {
-        KSULaxEntities entities;
+        private KSULaxEntities _entities;
+        private NewsBL _newsBL;
 
-        public HomeController() { entities = new KSULaxEntities(); }
+        public HomeController()
+        {
+            _entities = new KSULaxEntities();
+            _newsBL = new NewsBL(_entities);
+        }
 
         public ActionResult Index()
         {
             HomepageData homedata = new HomepageData();
             GamesController gc = new GamesController();
-            NewsController nc = new NewsController();
 
             homedata.games = gc.GamesList(KSU.maxGameSeason);
-            homedata.news = nc.NewsList(6);
+            homedata.Stories = GetStoryModels(_newsBL.NewsList(6), this.Request.Url.ToString());
 
             ViewData.Model = homedata;
 
@@ -45,7 +52,7 @@ namespace KSULax.Controllers
 
         private Ranking RecentRankingbyPollID(int pollID)
         {
-            var result = from Rank in entities.PollSet.Where("it.pollsource_id = " + pollID).OrderBy("it.date desc").Take(1)
+            var result = from Rank in _entities.PollSet.Where("it.pollsource_id = " + pollID).OrderBy("it.date desc").Take(1)
                          select new Ranking
                          {
                              pollSource = Rank.pollsource_id,
@@ -55,6 +62,18 @@ namespace KSULax.Controllers
                          };
 
             return result.First<Ranking>();
+        }
+
+        protected List<StoryModel> GetStoryModels(List<NewsBE> news, string requestUrl)
+        {
+            var Stories = new List<StoryModel>();
+
+            foreach (var story in news)
+            {
+                Stories.Add(new StoryModel(story, requestUrl));
+            }
+
+            return Stories;
         }
     }
 }

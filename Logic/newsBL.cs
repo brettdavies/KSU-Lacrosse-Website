@@ -57,7 +57,7 @@ namespace KSULax.Logic
             {
                 result.Add(GetEntity(newsE));
             }
-            return result.GetRange(0, (news.Count < numStories) ? news.Count : numStories);
+            return result.GetRange(0, (result.Count < numStories) ? result.Count : numStories);
         }
 
         /// <summary>
