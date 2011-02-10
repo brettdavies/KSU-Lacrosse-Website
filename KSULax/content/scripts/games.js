@@ -50,6 +50,8 @@ function displayGames() {
     if ($('#gamesBoxTable tr:visible').size() == 0) {
         $('#gamesBoxTable tr.nogame').show();
     }
+
+    $('#gamesBoxTable tr.fall').hide();
 };
 
 function gameSelector() {

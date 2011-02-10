@@ -20,7 +20,7 @@
 <h1><%= Html.Encode(Model.Title)%></h1>
 <div class="homeNewsItem">
 <ul class="sharing">
-<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax"></a></li>
+<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-counturl="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax"></a></li>
 <li><fb:like href="http://ksulax.com<%= Html.Encode(Request.Path) %>" show_faces="false" layout="button_count"/></li>
 </ul>
 <div class="date"><%= Html.formatDate(Model.Date)%></div>

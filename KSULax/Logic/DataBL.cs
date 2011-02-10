@@ -5,12 +5,13 @@ using System.Web;
 using KSULax.Entities;
 using KSULax.Models;
 using KSULax.Controllers;
+using System.Data.Objects;
 
 namespace KSULax.Logic
 {
     public class DataBL
     {
-        KSULaxEntities _entities;
+        private KSULaxEntities _entities;
 
         public DataBL(KSULaxEntities entitity) { _entities = entitity; }
 
@@ -33,16 +34,19 @@ namespace KSULax.Logic
 
         private TeamRankingBE RecentRankingbyPollID(int pollID)
         {
-            var result = from Rank in _entities.PollSet.Where("it.pollsource_id = " + pollID).OrderBy("it.date desc").Take(1)
-                         select new TeamRankingBE
-                         {
-                             pollSource = Rank.pollsource_id,
-                             date = Rank.date,
-                             rank = Rank.rank,
-                             rankUrl = Rank.url
-                         };
+            var award = ((from ps in _entities.PollSet
+                           where ps.pollsource_id == pollID
+                           orderby ps.date descending
+                           select ps) as ObjectQuery<PollEntity>)
+                           .Take(1);
 
-            return result.First<TeamRankingBE>();
+            return new TeamRankingBE
+            {
+                date = award.FirstOrDefault<PollEntity>().date,
+                pollSource = award.FirstOrDefault<PollEntity>().pollsource_id,
+                rank = award.FirstOrDefault<PollEntity>().rank,
+                rankUrl = award.FirstOrDefault<PollEntity>().url
+            };
         }
     }
 }

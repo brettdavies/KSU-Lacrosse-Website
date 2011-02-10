@@ -8,6 +8,7 @@ using KSULax.Models;
 using KSULax.Logic;
 using KSULax.Entities;
 using KSULax.Models.Player;
+using KSULax.Models.Game;
 
 namespace KSULax.Controllers
 {
@@ -16,11 +17,15 @@ namespace KSULax.Controllers
     {
         private KSULaxEntities _entities;
         private PlayerBL _playerBL;
+        private GameBL _gameBL;
+        private AwardBL _awardBL;
 
         public PlayersController()
         {
             _entities = new KSULaxEntities();
             _playerBL = new PlayerBL(_entities);
+            _gameBL = new GameBL(_entities);
+            _awardBL = new AwardBL(_entities);
         }
 
         public ActionResult Index(string id)
@@ -35,17 +40,15 @@ namespace KSULax.Controllers
             {
                 if (player_id >= 2010 && player_id <= KSU.maxPlayerSeason)
                 {
-                    GamesController gc = new GamesController();
-                    RosterDataModel data = new RosterDataModel();
+                    RosterModel data = new RosterModel();
 
-                    data.games = gc.GamesList(player_id);
-                    data.players = _playerBL.PlayersBySeason(player_id);
+                    data.Players = GetPlayerModelLst(_playerBL.PlayersBySeason(player_id));
+                    data.Games = new GameListModel(_gameBL.GamesBySeason(player_id));
 
-                    if (data.players.Count.Equals(0))
+                    if (data.Players.Count.Equals(0))
                     {
                         throw new Exception("KSULAX||we can't find the roster you requested");
                     }
-
                     else
                     {
                         return View(data);
@@ -60,7 +63,6 @@ namespace KSULax.Controllers
                     {
                         return RedirectToAction("Index", "players", new { id = name });
                     }
-
                     else
                     {
                         throw new Exception("KSULAX||we can't find the player id you requested");
@@ -73,22 +75,39 @@ namespace KSULax.Controllers
             {
                 if (string.Compare(id, id.ToLower()).Equals(0))
                 {
-                    PlayerBE result = new PlayerBE();
-
-                    if (_playerBL.PlayerByName(id, out result))
-                    {
-                        return View("Story", result);
-                    }
-                    else
+                    PlayerBE player = _playerBL.PlayerByName(id);
+                    if (null == player)
                     {
                         throw new Exception("KSULAX||we can't find the player you requested");
                     }
+
+                    PlayerBioModel result = new PlayerBioModel();
+
+                    result.PlayerInfo = new PlayerModel(player);
+
+                    result.PlayerStatList = new PlayerGameStatListModel(_gameBL.PlayerGameStats(playerID: player.PlayerID));
+
+                    result.PlayerAwardList = new PlayerAwardModelList(_awardBL.AwardsByPlayerID(player.PlayerID));
+
+                    return View("Player", result);
                 }
                 else
                 {
                     return RedirectToAction("Index", "players", new { id = id.ToLower() });
                 }
             }
+        }
+        
+        private List<PlayerModel> GetPlayerModelLst(List<PlayerBE> PlayerBeLst)
+        {
+            var Players = new List<PlayerModel>();
+
+            foreach (var player in PlayerBeLst)
+            {
+                Players.Add(new PlayerModel(player));
+            }
+
+            return Players;
         }
     }
 }

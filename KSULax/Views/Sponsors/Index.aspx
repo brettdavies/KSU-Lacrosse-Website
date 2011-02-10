@@ -1,7 +1,7 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.HomepageData>" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Game.GameListModel>" %>
 <asp:Content ContentPlaceHolderID="titleContent" runat="server">Sponsors</asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-<div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.games); %></div>
+<div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model); %></div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Sponsors", "Index", "sponsors", null, new { title = "Sponsors" })%></div>
 <h1>Sponsors</h1>

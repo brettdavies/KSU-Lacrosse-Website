@@ -5,14 +5,20 @@ using System.Web;
 using KSULax.Entities;
 using KSULax.Models;
 using KSULax.Controllers;
+using System.Data.Objects;
 
 namespace KSULax.Logic
 {
     public class NewsBL
     {
-        KSULaxEntities _entities;
+        private KSULaxEntities _entities;
+        private GameBL _gameBL;
 
-        public NewsBL(KSULaxEntities entitity) { _entities = entitity; }
+        public NewsBL(KSULaxEntities entitity)
+        {
+            _entities = entitity;
+            _gameBL = new GameBL(entitity);
+        }
 
         /// <summary>
         /// Gets a story based on date and title
@@ -22,13 +28,14 @@ namespace KSULax.Logic
         /// <returns></returns>
         public NewsBE GetStory(DateTime storyDate, string urlTitle)
         {
-            var result = _entities.NewsSet
-                .Where("it.date = CAST('" + storyDate + "' as System.DateTime)")
-                .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                .Where("it.url_title like '" + urlTitle + "'")
-                .OrderBy("it.date desc")
-                .Take<NewsEntity>(1)
-                .FirstOrDefault<NewsEntity>();
+            var result = ((from n in _entities.NewsSet
+                           where n.date == storyDate
+                           && n.date <= DateTime.Now
+                           && n.url_title == urlTitle
+                           orderby n.date descending
+                           select n) as ObjectQuery<NewsEntity>)
+                           .Take<NewsEntity>(1)
+                           .FirstOrDefault<NewsEntity>();
 
             return GetEntity(result);
         }
@@ -40,23 +47,23 @@ namespace KSULax.Logic
         /// <returns></returns>
         public List<NewsBE> NewsList(int numStories)
         {
-            var news = new List<NewsEntity>(
-                _entities.NewsSet
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .Take(numStories)
-                  .ToList());
-
-            //GamesController gc = new GamesController();
-            //news.AddRange(gc.GameListNewsList(gc.GameSummary(numStories)));
-
-            //news.Sort((x, y) => DateTime.Compare(y.date, x.date));
+            var news = ((from n in _entities.NewsSet
+                         where n.date <= DateTime.Now
+                         orderby n.date descending
+                         select n) as ObjectQuery<NewsEntity>)
+                         .Take(numStories);
 
             var result = new List<NewsBE>();
+
             foreach (NewsEntity newsE in news)
             {
                 result.Add(GetEntity(newsE));
             }
+
+            result.AddRange(_gameBL.GameListNewsList(_gameBL.GameSummary(numStories)));
+
+            result.Sort((x, y) => DateTime.Compare(y.Date, x.Date));
+
             return result.GetRange(0, (result.Count < numStories) ? result.Count : numStories);
         }
 
@@ -67,24 +74,25 @@ namespace KSULax.Logic
         /// <returns></returns>
         public List<NewsBE> NewsYear(DateTime date)
         {
-            var news = new List<NewsEntity>
-                (_entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddYears(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
-
-            //GamesController gc = new GamesController();
-            //news.AddRange(gc.GameListNewsList(gc.GameSummaryYear(date)));
-
-            //news.Sort((x, y) => DateTime.Compare(y.date, x.date));
+            DateTime date2 = date.AddYears(1);
+            var news = (from n in _entities.NewsSet
+                         where n.date >= date
+                         && n.date <= date2
+                         && n.date <= DateTime.Now
+                         orderby n.date descending
+                         select n) as ObjectQuery<NewsEntity>;
 
             var result = new List<NewsBE>();
+
             foreach (NewsEntity newsE in news)
             {
                 result.Add(GetEntity(newsE));
             }
+
+            result.AddRange(_gameBL.GameListNewsList(_gameBL.GameSummaryYear(date)));
+            
+            result.Sort((x, y) => DateTime.Compare(y.Date, x.Date));
+
             return result;
         }
 
@@ -95,24 +103,25 @@ namespace KSULax.Logic
         /// <returns></returns>
         public List<NewsBE> NewsYearMonth(DateTime date)
         {
-            var news = new List<NewsEntity>
-                (_entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddMonths(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
-
-            //GamesController gc = new GamesController();
-            //news.AddRange(gc.GameListNewsList(gc.GameSummaryYearMonth(date)));
-
-            //news.Sort((x, y) => DateTime.Compare(y.date, x.date));
+            DateTime date2 = date.AddMonths(1);
+            var news = (from n in _entities.NewsSet
+                        where n.date >= date
+                        && n.date <= date2
+                        && n.date <= DateTime.Now
+                        orderby n.date descending
+                        select n) as ObjectQuery<NewsEntity>;
             
             var result = new List<NewsBE>();
+
             foreach (NewsEntity newsE in news)
             {
                 result.Add(GetEntity(newsE));
             }
+
+            result.AddRange(_gameBL.GameListNewsList(_gameBL.GameSummaryYearMonth(date)));
+
+            result.Sort((x, y) => DateTime.Compare(y.Date, x.Date));
+
             return result;
         }
 
@@ -123,24 +132,25 @@ namespace KSULax.Logic
         /// <returns></returns>
         public List<NewsBE> NewsYearMonthDay(DateTime date)
         {
-            var news = new List<NewsEntity>
-                (_entities.NewsSet
-                  .Where("it.date BETWEEN CAST('" + date + "' as System.DateTime)" +
-                        "AND CAST('" + date.AddDays(1) + "' as System.DateTime)")
-                  .Where("it.date <= CAST('" + DateTime.Now + "' as System.DateTime)")
-                  .OrderBy("it.date desc")
-                  .ToList());
-
-            //GamesController gc = new GamesController();
-            //news.AddRange(gc.GameListNewsList(gc.GameSummaryYearMonthDay(date)));
-
-            //news.Sort((x, y) => DateTime.Compare(y.date, x.date));
+            DateTime date2 = date.AddDays(1);
+            var news = (from n in _entities.NewsSet
+                        where n.date >= date
+                        && n.date <= date2
+                        && n.date <= DateTime.Now
+                        orderby n.date descending
+                        select n) as ObjectQuery<NewsEntity>;
 
             var result = new List<NewsBE>();
+
             foreach (NewsEntity newsE in news)
             {
                 result.Add(GetEntity(newsE));
             }
+
+            result.AddRange(_gameBL.GameListNewsList(_gameBL.GameSummaryYearMonth(date)));
+
+            result.Sort((x, y) => DateTime.Compare(y.Date, x.Date));
+
             return result;
         }
 

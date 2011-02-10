@@ -1,14 +1,14 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Player.PlayerModel>" %><%@ Import Namespace="KSULax.Helpers" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Player.PlayerBioModel>" %><%@ Import Namespace="KSULax.Helpers" %>
 
-<asp:Content ContentPlaceHolderID="titleContent" runat="server"><%= Model.FullName %> &#35;<%= Model.RecentJerseyNum %></asp:Content>
+<asp:Content ContentPlaceHolderID="titleContent" runat="server"><%= Model.PlayerInfo.FullName %><% if (Model.PlayerInfo.isCurPlayer) { %> &#35;<%= Model.PlayerInfo.JerseyNum %><% } %></asp:Content>
 
 <asp:Content ContentPlaceHolderID="Header" runat="server">
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
-<meta property="og:title" content="<%= Model.FullName %> #<%= Model.RecentJerseyNum %>"/>
-<meta property="og:url" content="http://ksulax.com/players/<%= Model.FullNameURL %>"/>
-<meta property="og:description" name="description" content="<%= Html.formatDesc(Model.Bio) %>" />
-<meta property="og:type" content="article"/>
+<meta property="og:title" content="<%= Model.PlayerInfo.FullName %> #<%= Model.PlayerInfo.JerseyNum %>" />
+<meta property="og:url" content="http://ksulax.com/players/<%= Model.PlayerInfo.FullNameURL %>" />
+<meta property="og:description" name="description" content="<%= Html.formatDesc(Model.PlayerInfo.Bio) %>" />
+<meta property="og:type" content="article" />
 <% Html.RenderPartial("FacebookGraph"); %>
 </asp:Content>
 
@@ -18,62 +18,18 @@
 </div>
 <div id="mainCol">
 <div class="breadcrumbs">
-<%= Html.ActionLink("Home","","", null, new { title = "Home" })%> > <%= Html.ActionLink("Players", "Index", new { id = string.Empty }, new { title = "Players" })%> > <%= Html.ActionLink(Model.FullName, Model.FullNameURL, null, new { title = Model.FullName })%></div>
+<%= Html.ActionLink("Home","","", null, new { title = "Home" })%> > <%= Html.ActionLink("Players", "Index", new { id = string.Empty }, new { title = "Players" })%> > <%= Html.ActionLink(Model.PlayerInfo.FullName, Model.PlayerInfo.FullNameURL, null, new { title = Model.PlayerInfo.FullName })%></div>
 <ul class="sharing">
-<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax" data-text="<%= Html.Encode(Model.FullName)%> Profile Page"></a></li>
+<li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-counturl="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax" data-text="<%= Html.Encode(Model.PlayerInfo.FullName)%> Profile Page"></a></li>
 <li><fb:like href="http://ksulax.com<%= Html.Encode(Request.Path) %>" show_faces="false" layout="button_count"/></li>
 </ul>
-<h1><%= Model.FullName %> <% if (Model.isCurPlayer) { %>&#35;<%= Model.RecentJerseyNum %><% } %></h1>
-<img class="imgBorder" src="<%= Model.ImagePath %>" alt="Photo of <%= Model.FullName %>" title="Photo of <%= Model.FullName %>" width="100" height="133" align="left" />
-<table>
-<tbody><tr><td>
-<table><tbody>
-<tr><td><strong>Name</strong></td><td><%= Model.FullName %></td></tr>
-<tr><td><strong>Highschool</strong></td><td><%= Model.HighSchool %></td></tr>
-<tr><td><strong>Hometown</strong></td><td><%= Model.Home %></td></tr>
-<% if (Model.isCurPlayer) { %><tr><td><strong>Position</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().Position %></td></tr><% } %>
-<% if (Model.isCurPlayer) { %><tr><td><strong>Class Year</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().ClassYr%></td></tr><% } %>
-</tbody></table>
-</td>
-<td>
-<table><tbody>
-<tr><td><strong>Height</strong></td><td><%= Model.HeightFeet %></td></tr>
-<tr><td><strong>Weight</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().Weight %> lbs.</td></tr>
-<tr><td><strong>Major</strong></td><td><%= Model.Major %></td></tr>
-<% if (Model.isCurPlayer) { %><tr><td><strong>Age</strong></td><td>20</td></tr><% } %>
-<% if (Model.isCurPlayer) { %><tr><td><strong>Eligibility</strong></td><td><%= Model.RecentSeason.GetValueOrDefault().EligibilityYr %></td></tr><% } %>
-</tbody></table>
-</td></tr>
-</tbody></table>
-
-<table class="mainTable" style="clear:both;">
-<thead><tr><th scope="col">Player Bio</th></tr></thead>
-<tbody><tr><td><%= Model.Bio %></td></tr></tbody></table>
-
+<% Html.RenderPartial("PlayerBio", Model.PlayerInfo); %>
 <br/>
-
-<table class="mainTable">
-<thead><tr><th colspan="9">Season Stats</th></tr></thead>
-<tbody>
-<tr><td>Season</td><td>Class</td><td>Games Played</td><td>Assists</td><td>Assists Per Game</td><td>Goals</td><td>Goals Per Game</td><td>Points</td><td>Points Per Game</td></tr>
-<% foreach (KSULax.Models.Player.PlayerGameTotalModel pgtm in Model.PlayerGameTotal) { %>
-<tr><td><%= pgtm.SeasonID %></td><td><%= pgtm.ClassYr %></td><td><%= pgtm.GamesPlayed %></td><td><%= pgtm.Assists %></td><td><%= pgtm.Assists / pgtm.GamesPlayed %></td><td><%= pgtm.Goals %></td><td><%= pgtm.Goals / pgtm.GamesPlayed %></td><td><%= pgtm.Goals +  pgtm.Assists %></td><td><%= (pgtm.Goals + pgtm.Assists) / pgtm.GamesPlayed %></td></tr>
-<% } %>
-<tr><td>Career</td><td>-</td><td><%= Model.CareerGames %></td><td><%= Model.CareerAssists %></td><td><%= Model.CareerAssists / Model.CareerGames %></td><td><%= Model.CareerGoals %></td><td><%= Model.CareerGoals / Model.CareerGames %></td><td><%= Model.CareerGoals +  Model.CareerAssists %></td><td><%= (Model.CareerGoals +  Model.CareerAssists) / Model.CareerGames %></td></tr>
-</tbody></table>
-<br/>
-<% if (Model.PlayerHasAwards) { %>
-<table class="mainTable">
-<thead><tr><th colspan="2">Awards</th></tr></thead>
-<tbody>
-<% foreach (KSULax.Entities.PlayerAwardBE pa in Model.PlayerAward) { %>
-<tr><td><%= pa.Date.Year + " " + pa.Award.Name %> <%if (pa.AwardID.Equals(29)){ %>(Week of <%= pa.Date.ToString("MMM dd") %>)<% } %></td></tr>
-<%}%>
-</tbody></table>
-<% } %>
-
+<% Html.RenderPartial("PlayerStats", Model.PlayerStatList); %>
 <br />
-<%
+<% Html.RenderPartial("PlayerAwards", Model.PlayerAwardList); %>
+<br />
+<%--<%
     int careerGoals = 0;
     int careerAssists = 0;
 
@@ -154,6 +110,6 @@
 <tr><td>Game Gold Assists: <%= gameAssistsGoldCount %></td><td>Game Gold Goals: <%= gameGoalsGoldCount %></td><td>Game Gold Points: <%= gamePointsGoldCount%></td></tr>
 <tr><td>Game Silver Assists: <%= gameAssistsSilverCount %></td><td>Game Silver Goals: <%= gameGoalsSilverCount %></td><td>Game Silver Points: <%= gamePointsSilverCount%></td></tr>
 <tr><td>President: <%= presidentCount %></td><td>Officer: <%= officerCount %></td><td>Team Captain: <%= captainCount %></td></tr>
-</tbody></table>
+</tbody></table>--%>
 </div>
 </asp:Content>
