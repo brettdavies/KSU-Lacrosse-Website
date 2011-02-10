@@ -13,9 +13,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Games_HomeSlug", "Teams", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(KSULax.Models.TeamEntity), "Games", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.GameEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayerSeason_Players", "Players", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersSeason", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerSeasonEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGalleryEntity))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PhotoGalleries_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PhotographerEntity), "PhotoGalleries", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoGalleryEntity))]
-[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Photos_Photographers", "Photographers", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PhotographerEntity), "Photos", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PhotoEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_Polls_PollsSource", "PollsSource", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PollSourceEntity), "Polls", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PollEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Games", "Game", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.GameEntity), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGameEntity))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersGames_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersGames", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerGameEntity))]
@@ -23,7 +21,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("KSULaxModel", "FK_PlayersAwards_Players", "Player", global::System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(KSULax.Models.PlayerEntity), "PlayersAwards", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(KSULax.Models.PlayerAwardEntity))]
 
 // Original file name:
-// Generation date: 1/23/2011 7:24:20 PM
+// Generation date: 1/26/2011 11:18:38 PM
 namespace KSULax.Models
 {
     
@@ -177,23 +175,6 @@ namespace KSULax.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         private global::System.Data.Objects.ObjectQuery<PhotographerEntity> _PhotographerSet;
         /// <summary>
-        /// There are no comments for PhotoSet in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Data.Objects.ObjectQuery<PhotoEntity> PhotoSet
-        {
-            get
-            {
-                if ((this._PhotoSet == null))
-                {
-                    this._PhotoSet = base.CreateQuery<PhotoEntity>("[PhotoSet]");
-                }
-                return this._PhotoSet;
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Data.Objects.ObjectQuery<PhotoEntity> _PhotoSet;
-        /// <summary>
         /// There are no comments for PollSet in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
@@ -333,14 +314,6 @@ namespace KSULax.Models
         public void AddToPhotographerSet(PhotographerEntity photographerEntity)
         {
             base.AddObject("PhotographerSet", photographerEntity);
-        }
-        /// <summary>
-        /// There are no comments for PhotoSet in the schema.
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public void AddToPhotoSet(PhotoEntity photoEntity)
-        {
-            base.AddObject("PhotoSet", photoEntity);
         }
         /// <summary>
         /// There are no comments for PollSet in the schema.
@@ -778,28 +751,6 @@ namespace KSULax.Models
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Games", "PhotoGalleries", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for Photos in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_Photos_Games", "Photos")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoEntity> Photos
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Games", "Photos");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Games", "Photos", value);
                 }
             }
         }
@@ -1543,33 +1494,6 @@ namespace KSULax.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OnmajorChanged();
         /// <summary>
-        /// There are no comments for property bio in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string bio
-        {
-            get
-            {
-                return this._bio;
-            }
-            set
-            {
-                this.OnbioChanging(value);
-                this.ReportPropertyChanging("bio");
-                this._bio = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
-                this.ReportPropertyChanged("bio");
-                this.OnbioChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _bio;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnbioChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnbioChanged();
-        /// <summary>
         /// There are no comments for PlayerSeason in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_PlayerSeason_Players", "PlayersSeason")]
@@ -1959,6 +1883,33 @@ namespace KSULax.Models
         [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
         partial void OncaptainChanged();
         /// <summary>
+        /// There are no comments for property bio in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        public string bio
+        {
+            get
+            {
+                return this._bio;
+            }
+            set
+            {
+                this.OnbioChanging(value);
+                this.ReportPropertyChanging("bio");
+                this._bio = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("bio");
+                this.OnbioChanged();
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        private string _bio;
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnbioChanging(string value);
+        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
+        partial void OnbioChanged();
+        /// <summary>
         /// There are no comments for Player in the schema.
         /// </summary>
         [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_PlayerSeason_Players", "Players")]
@@ -2339,214 +2290,6 @@ namespace KSULax.Models
                 if ((value != null))
                 {
                     ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoGalleryEntity>("KSULaxModel.FK_PhotoGalleries_Photographers", "PhotoGalleries", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for Photos in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_Photos_Photographers", "Photos")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityCollection<PhotoEntity> Photos
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Photographers", "Photos");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<PhotoEntity>("KSULaxModel.FK_Photos_Photographers", "Photos", value);
-                }
-            }
-        }
-    }
-    /// <summary>
-    /// There are no comments for KSULaxModel.PhotoEntity in the schema.
-    /// </summary>
-    /// <KeyProperties>
-    /// guid
-    /// </KeyProperties>
-    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="KSULaxModel", Name="PhotoEntity")]
-    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
-    [global::System.Serializable()]
-    public partial class PhotoEntity : global::System.Data.Objects.DataClasses.EntityObject
-    {
-        /// <summary>
-        /// Create a new PhotoEntity object.
-        /// </summary>
-        /// <param name="url">Initial value of url.</param>
-        /// <param name="local_url">Initial value of local_url.</param>
-        /// <param name="guid">Initial value of guid.</param>
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public static PhotoEntity CreatePhotoEntity(string url, string local_url, global::System.Guid guid)
-        {
-            PhotoEntity photoEntity = new PhotoEntity();
-            photoEntity.url = url;
-            photoEntity.local_url = local_url;
-            photoEntity.guid = guid;
-            return photoEntity;
-        }
-        /// <summary>
-        /// There are no comments for property url in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string url
-        {
-            get
-            {
-                return this._url;
-            }
-            set
-            {
-                this.OnurlChanging(value);
-                this.ReportPropertyChanging("url");
-                this._url = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("url");
-                this.OnurlChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _url;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnurlChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnurlChanged();
-        /// <summary>
-        /// There are no comments for property local_url in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public string local_url
-        {
-            get
-            {
-                return this._local_url;
-            }
-            set
-            {
-                this.Onlocal_urlChanging(value);
-                this.ReportPropertyChanging("local_url");
-                this._local_url = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
-                this.ReportPropertyChanged("local_url");
-                this.Onlocal_urlChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private string _local_url;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void Onlocal_urlChanging(string value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void Onlocal_urlChanged();
-        /// <summary>
-        /// There are no comments for property guid in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        public global::System.Guid guid
-        {
-            get
-            {
-                return this._guid;
-            }
-            set
-            {
-                this.OnguidChanging(value);
-                this.ReportPropertyChanging("guid");
-                this._guid = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
-                this.ReportPropertyChanged("guid");
-                this.OnguidChanged();
-            }
-        }
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        private global::System.Guid _guid;
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnguidChanging(global::System.Guid value);
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        partial void OnguidChanged();
-        /// <summary>
-        /// There are no comments for Game in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_Photos_Games", "Game")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public GameEntity Game
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<GameEntity>("KSULaxModel.FK_Photos_Games", "Game").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<GameEntity>("KSULaxModel.FK_Photos_Games", "Game").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for Game in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<GameEntity> GameReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<GameEntity>("KSULaxModel.FK_Photos_Games", "Game");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<GameEntity>("KSULaxModel.FK_Photos_Games", "Game", value);
-                }
-            }
-        }
-        /// <summary>
-        /// There are no comments for Photographer in the schema.
-        /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("KSULaxModel", "FK_Photos_Photographers", "Photographers")]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
-        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public PhotographerEntity Photographer
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value;
-            }
-            set
-            {
-                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers").Value = value;
-            }
-        }
-        /// <summary>
-        /// There are no comments for Photographer in the schema.
-        /// </summary>
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        [global::System.CodeDom.Compiler.GeneratedCode("System.Data.Entity.Design.EntityClassGenerator", "4.0.0.0")]
-        [global::System.Runtime.Serialization.DataMemberAttribute()]
-        public global::System.Data.Objects.DataClasses.EntityReference<PhotographerEntity> PhotographerReference
-        {
-            get
-            {
-                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<PhotographerEntity>("KSULaxModel.FK_Photos_Photographers", "Photographers", value);
                 }
             }
         }

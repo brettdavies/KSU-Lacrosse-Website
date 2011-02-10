@@ -28,11 +28,7 @@ namespace KSULax.Controllers
             //if everything is null or an empty string return all stories
             if (!year.HasValue && !month.HasValue && !day.HasValue && string.IsNullOrEmpty(url_title))
             {
-                return View(new StoryListModel
-                        {
-                            Stories = GetStoryModels(_newsBL.NewsList(1000), this.Request.Url.ToString())
-                        }
-                    );
+                return View(new StoryListModel(_newsBL.NewsList(1000), this.Request.Url.ToString()));
             }
 
             return Search(year, month, day, url_title);
@@ -75,16 +71,11 @@ namespace KSULax.Controllers
                                 //if url_title is empty
                                 if (string.IsNullOrEmpty(url_title))
                                 {
-                                    var stories = GetStoryModels(_newsBL.NewsYearMonthDay(new DateTime(year.Value, month.Value, day.Value)), this.Request.Url.ToString());
+                                    var stories = new StoryListModel(_newsBL.NewsYearMonthDay(new DateTime(year.Value, month.Value, day.Value)), this.Request.Url.ToString());
 
-                                    if (stories.Count > 0)
+                                    if (stories.Stories.Count > 0)
                                     {
-                                        var model = new StoryListModel
-                                        {
-                                            Stories = stories
-                                        };
-
-                                        return View("Search", model);
+                                        return View("Search", stories);
                                     }
                                     else
                                     {
@@ -103,16 +94,11 @@ namespace KSULax.Controllers
                         }
                         else
                         {
-                            var stories = GetStoryModels(_newsBL.NewsYearMonth(new DateTime(year.Value, month.Value, 1)), this.Request.Url.ToString());
+                            var stories = new StoryListModel(_newsBL.NewsYearMonth(new DateTime(year.Value, month.Value, 1)), this.Request.Url.ToString());
 
-                            if (stories.Count > 0)
+                            if (stories.Stories.Count > 0)
                             {
-                                var model = new StoryListModel
-                                {
-                                    Stories = stories
-                                };
-
-                                return View("Search", model);
+                                return View("Search", stories);
                             }
                             else
                             {
@@ -129,16 +115,11 @@ namespace KSULax.Controllers
                 }
                 else
                 {
-                    var stories = GetStoryModels(_newsBL.NewsYear(new DateTime(year.Value, 1, 1)), this.Request.Url.ToString());
+                    var stories = new StoryListModel(_newsBL.NewsYear(new DateTime(year.Value, 1, 1)), this.Request.Url.ToString());
 
-                    if (stories.Count > 0)
+                    if (stories.Stories.Count > 0)
                     {
-                        var model = new StoryListModel
-                        {
-                            Stories = stories
-                        };
-
-                        return View("Search", model);
+                        return View("Search", stories);
                     }
                     else
                     {
@@ -173,18 +154,6 @@ namespace KSULax.Controllers
             }
 
             return View("Story", new StoryModel(story, this.Request.Url.ToString()));
-        }
-
-        protected List<StoryModel> GetStoryModels(List<NewsBE> news, string requestUrl)
-        {
-            var Stories = new List<StoryModel>();
-
-            foreach (var story in news)
-            {
-                Stories.Add(new StoryModel(story, requestUrl));
-            }
-
-            return Stories;
         }
     }
 }

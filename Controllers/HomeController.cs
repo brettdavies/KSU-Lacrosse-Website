@@ -8,6 +8,8 @@ using KSULax.Models;
 using KSULax.Logic;
 using KSULax.Models.News;
 using KSULax.Entities;
+using KSULax.Models.Home;
+using KSULax.Models.Game;
 
 namespace KSULax.Controllers
 {
@@ -16,36 +18,23 @@ namespace KSULax.Controllers
     {
         private KSULaxEntities _entities;
         private NewsBL _newsBL;
+        private GameBL _gameBL;
 
         public HomeController()
         {
             _entities = new KSULaxEntities();
             _newsBL = new NewsBL(_entities);
+            _gameBL = new GameBL(_entities);
         }
 
         public ActionResult Index()
         {
             HomepageDataModel homedata = new HomepageDataModel();
-            GamesController gc = new GamesController();
 
-            homedata.games = gc.GamesList(KSU.maxGameSeason);
-            homedata.Stories = GetStoryModels(_newsBL.NewsList(6), this.Request.Url.ToString());
+            homedata.games = new GameListModel(_gameBL.GamesBySeason(KSU.maxGameSeason));
+            homedata.Stories = new StoryListModel(_newsBL.NewsList(6), this.Request.Url.ToString());
 
-            ViewData.Model = homedata;
-
-            return View();
-        }
-
-        protected List<StoryModel> GetStoryModels(List<NewsBE> news, string requestUrl)
-        {
-            var Stories = new List<StoryModel>();
-
-            foreach (var story in news)
-            {
-                Stories.Add(new StoryModel(story, requestUrl));
-            }
-
-            return Stories;
+            return View(homedata);
         }
     }
 }

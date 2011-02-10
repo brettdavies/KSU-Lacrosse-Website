@@ -1,5 +1,5 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<KSULax.Models.GameEntity>>" %>
-<asp:Content ContentPlaceHolderID="titleContent" runat="server"><% short? year = Model.ElementAtOrDefault<KSULax.Models.GameEntity>(0).game_season_id; string title = ((year - 1) + " - " + year + " Game Schedule").Trim(); %><%= title %></asp:Content>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Game.GameScheduleModelList>" %>
+<asp:Content ContentPlaceHolderID="titleContent" runat="server"><%= (Model.SeasonID - 1) + " - " + Model.SeasonID + " Game Schedule" %></asp:Content>
 <asp:Content ContentPlaceHolderID="Header" runat="server">
 <style type="text/css">.hidden { display:none; }</style>
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
@@ -23,11 +23,10 @@
 </div>
 <% Html.RenderPartial("SponsorsTemplate"); %>
 </div>
-<% short? year = Model.ElementAtOrDefault<KSULax.Models.GameEntity>(0).game_season_id; string title = (year - 1) + " - " + year + " Game Schedule";%>
 <div id="mainCol">
-<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Games", "Index", new { id = string.Empty }, new { title="Games" })%> > <%= Html.ActionLink(year.ToString(), year.ToString(), null, new { title = year.ToString() })%></div>
-<h1><%= title %></h1>
-<% Html.RenderPartial("GameTemplate", Model); %>
+<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Games", "Index", new { id = string.Empty }, new { title="Games" })%> > <%= Html.ActionLink(Model.SeasonID.ToString(), Model.SeasonID.ToString(), null, new { title = Model.SeasonID.ToString() })%></div>
+<h1><%= (Model.SeasonID - 1) + " - " + Model.SeasonID + " Game Schedule" %></h1>
+<% Html.RenderPartial("GameTemplate", Model.GameSchedule); %>
 <asp:Image ImageUrl="~/content/images/game_scrimage.png" Height="19" Width="19" ImageAlign="Top" AlternateText="Scrimmage" runat="server"/> Scrimmage
 <asp:Image ImageUrl="~/content/images/game_divisional.png" Height="17" Width="17" ImageAlign="Top" AlternateText="Divisional Game" runat="server"/> Divisional Game
 <asp:Image ImageUrl="~/content/images/game_playoff.png" Height="17" Width="17" ImageAlign="Top" AlternateText="Playoff Game" runat="server"/> Playoff Game

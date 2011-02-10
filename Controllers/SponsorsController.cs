@@ -4,22 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
+using KSULax.Logic;
 using KSULax.Models;
+using KSULax.Models.Game;
+using KSULax.Entities;
 
 namespace KSULax.Controllers
 {
     public class SponsorsController : Controller
     {
+        private KSULaxEntities _entities;
+        private GameBL _gamesBL;
+
+        public SponsorsController()
+        {
+            _entities = new KSULaxEntities();
+            _gamesBL = new GameBL(_entities);
+        }
+
         public ActionResult Index()
         {
-            HomepageDataModel homedata = new HomepageDataModel();
+            GameListModel games = new GameListModel(_gamesBL.GamesBySeason(KSU.maxGameSeason));
 
-            GamesController gc = new GamesController();
-            homedata.games = gc.GamesList(KSU.maxGameSeason);
-
-            ViewData.Model = homedata;
-
-            return View();
+            return View(games);
         }
     }
 }
