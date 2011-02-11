@@ -24,11 +24,8 @@
 <li><fb:like href="http://ksulax.com<%= Html.Encode(Request.Path) %>" show_faces="false" layout="button_count"/></li>
 </ul>
 <% Html.RenderPartial("PlayerBio", Model.PlayerInfo); %>
-<br/>
 <% Html.RenderPartial("PlayerStats", Model.PlayerStatList); %>
-<br />
 <% Html.RenderPartial("PlayerAwards", Model.PlayerAwardList); %>
-<br />
 <%--<%
     int careerGoals = 0;
     int careerAssists = 0;
