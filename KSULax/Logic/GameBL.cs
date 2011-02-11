@@ -8,6 +8,7 @@ using KSULax.Controllers;
 using System.Data.Objects;
 using System.Web.Mvc;
 using System.Web.Routing;
+using KSULax.Interfaces;
 
 namespace KSULax.Logic
 {
@@ -17,7 +18,7 @@ namespace KSULax.Logic
 
         public GameBL(KSULaxEntities entitity) { _entities = entitity; }
 
-        public NewsBE GameDetail(int gameID)
+        public INews GameDetail(int gameID)
         {
             var result = ((from gs in _entities.GameSet
                            where gs.id == gameID
@@ -28,7 +29,7 @@ namespace KSULax.Logic
 
             if (null != result)
             {
-                return GameResult(GetEntity(result.FirstOrDefault<GameEntity>()));
+                return (INews)GetEntity(result.FirstOrDefault<GameEntity>());
             }
 
             else
@@ -165,12 +166,17 @@ namespace KSULax.Logic
             return result;
         }
 
-        public List<NewsBE> GameListNewsList(List<GameBE> gameslist)
+        /// <summary>
+        /// Takes a list of GameBE objects and returns a INews list objects
+        /// </summary>
+        /// <param name="gameslist">List of games</param>
+        /// <returns></returns>
+        public List<INews> GameBriefList(List<GameBE> gameslist)
         {
-            List<NewsBE> newslist = new List<NewsBE>();
+            var newslist = new List<INews>();
             foreach (GameBE game in gameslist)
             {
-                newslist.Add(GameResult(game));
+                newslist.Add((INews)game);
             }
             return newslist;
         }
@@ -178,9 +184,9 @@ namespace KSULax.Logic
         /// <summary>
         /// Returns a list of gamestats for official MCLA games that are not scrimages and have a game status of 0.
         /// </summary>
-        /// <param name="gameID"></param>
-        /// <param name="seasonID"></param>
-        /// <param name="playerID"></param>
+        /// <param name="gameID">Optional GameID</param>
+        /// <param name="seasonID">Optional SeasonID</param>
+        /// <param name="playerID">Optional PlayerID</param>
         /// <returns></returns>
         public List<GameStatBE> PlayerGameStats(int gameID = -1, int seasonID = -1, int playerID = -1)
         {
@@ -306,13 +312,13 @@ namespace KSULax.Logic
             var result = new GameBE
             {
                 AwayTeam = GetEntity(ge.AwayTeam),
-                AwayTeamScore = ((ge.away_team_score.HasValue) ? ge.away_team_score.Value : -1),
+                AwayTeamScore = ge.away_team_score.HasValue ? ge.away_team_score.Value : -1,
                 Date = ge.game_date,
-                Detail = (string.IsNullOrEmpty(ge.detail) ? string.Empty : ge.detail),
+                Detail = string.IsNullOrEmpty(ge.detail) ? string.Empty : ge.detail,
                 HomeTeam = GetEntity(ge.HomeTeam),
-                HomeTeamScore = ((ge.home_team_score.HasValue) ? ge.home_team_score.Value : -1),
+                HomeTeamScore = ge.home_team_score.HasValue ? ge.home_team_score.Value : -1,
                 ID = ge.id,
-                isHome = (GetEntity(ge.HomeTeam).Slug.Equals("kennesaw_state") ? true : false),
+                isHome = ge.HomeTeam.slug.Equals("kennesaw_state") ? true : false,
                 SeasonID = ge.game_season_id,
                 Status = ge.game_status,
                 Time = ge.game_time,
@@ -339,41 +345,6 @@ namespace KSULax.Logic
                 TeamURL = te.team_url
             };
             return result;
-        }
-
-        private NewsBE GameResult(GameBE game)
-        {
-            HttpContextWrapper httpContextWrapper = new HttpContextWrapper(System.Web.HttpContext.Current);
-            UrlHelper urlHelper = new UrlHelper(new RequestContext(httpContextWrapper, RouteTable.Routes.GetRouteData(httpContextWrapper)));
-            NewsBE summary = new NewsBE();
-            TeamBE ksu = new TeamBE();
-            TeamBE opp = new TeamBE();
-            bool home = true;
-
-            if (game.HomeTeam.Slug.Equals("kennesaw_state"))
-            {
-                ksu = game.HomeTeam;
-                opp = game.AwayTeam;
-                home = true;
-            }
-            else
-            {
-                ksu = game.AwayTeam;
-                opp = game.HomeTeam;
-                home = false;
-            }
-
-            summary.Date = game.Date;
-            summary.Story = (game.Detail == null) ? "" : game.Detail;
-            summary.TitlePath = urlHelper.Action("Index", "games", new { id = game.SeasonID }) + "#" + game.ID;
-            summary.Title = ksu.Abr + " "
-                //+ gameResultBL(game.HomeTeamScore, game.AwayTeamScore, home) + " "
-                + opp.Abr + " "
-                + (home ? game.HomeTeamScore : game.AwayTeamScore) + " - "
-                + (home ? game.AwayTeamScore : game.HomeTeamScore) + " "
-                + (home ? "at home" : "on the road");
-
-            return summary;
         }
     }
 }

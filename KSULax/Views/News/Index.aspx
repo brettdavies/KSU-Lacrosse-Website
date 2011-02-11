@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.News.StoryListModel>" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.News.StoryBriefListModel>" %>
 <asp:Content ContentPlaceHolderID="titleContent" runat="server">News</asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol"><% Html.RenderPartial("SponsorsTemplate"); %></div>
