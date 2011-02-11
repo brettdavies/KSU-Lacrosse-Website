@@ -89,7 +89,7 @@ namespace KSULax.Controllers
 
         public ActionResult Meta(int gameID)
         {
-            ViewData.Model = new StoryModel(_gamesBL.GameDetail(gameID), this.Request.Url.ToString());
+            ViewData.Model = new StoryBriefModel(_gamesBL.GameDetail(gameID), this.Request.Url.ToString());
 
             if (ViewData.Model != null)
             {

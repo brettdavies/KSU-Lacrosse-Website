@@ -32,7 +32,7 @@ namespace KSULax.Controllers
             HomepageDataModel homedata = new HomepageDataModel();
 
             homedata.games = new GameListModel(_gameBL.GamesBySeason(KSU.maxGameSeason));
-            homedata.Stories = new StoryListModel(_newsBL.NewsList(6), this.Request.Url.ToString());
+            homedata.Stories = new StoryBriefListModel(_newsBL.NewsList(6), this.Request.Url.ToString());
 
             return View(homedata);
         }

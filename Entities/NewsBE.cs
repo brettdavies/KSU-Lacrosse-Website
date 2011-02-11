@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using KSULax.Interfaces;
 
 namespace KSULax.Entities
 {
-    public class NewsBE
+    public class NewsBE : INews
     {
         private string _title;
         private string _titlePath;
+        private string _story;
 
         /// <summary>
         /// Date for a news story
@@ -37,7 +39,7 @@ namespace KSULax.Entities
         {
             get
             {
-                return _titlePath.ToLower();
+                return _titlePath.Trim().ToLower();
             }
 
             set
@@ -49,7 +51,17 @@ namespace KSULax.Entities
         /// <summary>
         /// Text of news story
         /// </summary>
-        public string Story { get; set; }
+        public string Story
+        {
+            get
+            {
+                return _story.Trim();
+            }
+            set
+            {
+                _story = value;
+            }
+        }
 
         /// <summary>
         /// Author of a news story
@@ -65,5 +77,30 @@ namespace KSULax.Entities
         /// URL of the source of a news story
         /// </summary>
         public string SourceUrl { get; set; }
+
+        /// <summary>
+        /// The NewsType of the current news story
+        /// </summary>
+        /// <returns>NewsType.Story</returns>
+        public NewsType getType()
+        {
+            return NewsType.Story;
+        }
+
+        int INews.SeasonID
+        {
+            get
+            {
+                return -1;
+            }
+        }
+
+        int INews.GameID
+        {
+            get
+            {
+                return -1;
+            }
+        }
     }
 }

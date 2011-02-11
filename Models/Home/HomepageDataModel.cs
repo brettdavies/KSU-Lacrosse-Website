@@ -13,6 +13,6 @@ namespace KSULax.Models.Home
     public class HomepageDataModel
     {
         public GameListModel games { get; set; }
-        public StoryListModel Stories { get; set; }
+        public StoryBriefListModel Stories { get; set; }
     }
 }

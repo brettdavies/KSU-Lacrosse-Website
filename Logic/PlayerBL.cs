@@ -16,17 +16,18 @@ namespace KSULax.Logic
 
         public PlayerBL(KSULaxEntities entitity) { _entities = entitity; }
 
-        public bool getPlayerNamebyID(short player_id, out string name)
+        public bool getPlayerNamebyID(int player_id, out string name)
         {
-            var result = ((from p in _entities.PlayerSet
+            var result = (from p in _entities.PlayerSet
                            where p.id == player_id
-                           select p) as ObjectQuery<PlayerEntity>)
-                               .Take<PlayerEntity>(1)
-                               .FirstOrDefault<PlayerEntity>();
+                           select (p.first + "-" + p.last))
+                         .Take<string>(1)
+                         .FirstOrDefault<string>()
+                         .ToLower();
 
-            if (null != result)
+            if (!string.IsNullOrEmpty(result))
             {
-                name = (result.first + "-" + result.last).ToLower();
+                name = result;
                 return true;
             }
             else
