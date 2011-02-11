@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<KSULax.Models.Player.PlayerModel>" %>
 <h1><%= Model.FullName %><% if (Model.isCurPlayer) { %> &#35;<%= Model.JerseyNum %><% } %></h1>
-<%--<img class="imgBorder" src="<%= Model.ImagePath %>" alt="Photo of <%= Model.FullName %>" title="Photo of <%= Model.FullName %>" width="100" height="133" align="left" />--%>
+<img class="imgBioBorder" src="<%= Url.Content(Model.ImagePath) %>" alt="<%= Model.FullName %>" title="<%= Model.FullName %>" align="left" />
 <table>
 <tbody><tr><td>
 <table><tbody>
@@ -21,7 +21,6 @@
 </tbody></table>
 </td></tr>
 </tbody></table>
-<br />
 <table class="mainTable" style="clear:both;">
 <thead><tr><th scope="col">Player Bio</th></tr></thead>
 <tbody><tr><td><%= Model.Bio %></td></tr></tbody></table>

@@ -100,7 +100,7 @@ namespace KSULax.Models.Player
         }
 
         /// <summary>
-        /// Returns the players FullName.
+        /// The players FullName
         /// </summary>
         public string FullName
         {
@@ -111,7 +111,7 @@ namespace KSULax.Models.Player
         }
 
         /// <summary>
-        /// Returns a URL friendly version of the player's FullName.
+        /// A URL friendly version of the player's FullName
         /// </summary>
         public string FullNameURL
         {
@@ -121,18 +121,19 @@ namespace KSULax.Models.Player
             }
         }
 
-        public string ImagePath()
+        /// <summary>
+        /// The path to the player's photo
+        /// </summary>
+        public string ImagePath
         {
-            string imagePath = "/content/images/players/" + PlayerID + ".png";
-            //if (! System.IO.File.Exists(MapPath(imagePath)))
-            //{
-            //    imagePath = "/content/images/teams/kennesaw_state_128.png";
-            //}
-            return imagePath;
+            get
+            {
+                return "~/players/image/" + PlayerID;
+            }
         }
 
         /// <summary>
-        /// Returns the players height (X"Y') based on their height in inches from their most recent season.
+        /// The players height (X"Y') based on their height in inches
         /// </summary>
         public string HeightFeet
         {
@@ -143,7 +144,7 @@ namespace KSULax.Models.Player
         }
 
         /// <summary>
-        /// Returns True if the player is a current player and False otherwise.
+        /// True if the player is a current player and False otherwise
         /// </summary>
         public bool isCurPlayer
         {

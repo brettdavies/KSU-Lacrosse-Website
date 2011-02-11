@@ -35,8 +35,8 @@ namespace KSULax.Controllers
                 return RedirectToAction("Index", "players", new { id = KSU.maxPlayerSeason });
             }
 
-            short player_id;
-            if (short.TryParse(id, out player_id))
+            int player_id;
+            if (int.TryParse(id, out player_id))
             {
                 if (player_id >= 2010 && player_id <= KSU.maxPlayerSeason)
                 {
@@ -96,6 +96,23 @@ namespace KSULax.Controllers
                     return RedirectToAction("Index", "players", new { id = id.ToLower() });
                 }
             }
+        }
+
+        public FilePathResult image(int id)
+        {
+            if (id < 0)
+            {
+                return null;
+            }
+
+            string imagePath = "/content/images/players/" + id + ".png";
+
+            if (!System.IO.File.Exists(Server.MapPath(imagePath)))
+            {
+                imagePath = "/content/images/teams/kennesaw_state_128.png";
+            }
+
+            return new FilePathResult(imagePath, "image/png");
         }
         
         private List<PlayerModel> GetPlayerModelLst(List<PlayerBE> PlayerBeLst)
