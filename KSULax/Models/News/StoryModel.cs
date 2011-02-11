@@ -6,21 +6,6 @@ using KSULax.Entities;
 
 namespace KSULax.Models.News
 {
-    public class StoryListModel
-    {
-        public StoryListModel (List<NewsBE> news, string requestUrl)
-        {
-            Stories = new List<StoryModel>();
-
-            foreach (var story in news)
-            {
-                Stories.Add(new StoryModel(story, requestUrl));
-            }
-        }
-
-        public List<StoryModel> Stories { get; set; }
-    }
-
     public class StoryModel
     {
         public StoryModel(NewsBE news, string requestUrl)
@@ -38,8 +23,8 @@ namespace KSULax.Models.News
                 SourceUrl = news.SourceUrl;
             }
             
-            Story = news.Story.Trim();
-            Title = news.Title.Trim();
+            Story = news.Story;
+            Title = news.Title;
             TitlePath = news.TitlePath;
         }
 
@@ -57,6 +42,7 @@ namespace KSULax.Models.News
                 return (!String.IsNullOrEmpty(Source) && !String.IsNullOrEmpty(SourceUrl));
             }
         }
+
         public bool HasAuthor
         {
             get
