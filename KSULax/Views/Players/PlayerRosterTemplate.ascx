@@ -17,8 +17,7 @@
 <% foreach (var player in Model) { %>
 <tr>
 <td class="nowrap"><%= player.JerseyNum %></td>
-<td class="nowrap"><%= player.FullName %></td>
-<%--<td><%= Html.ActionLink(player.FullName, player.FullNameURL, null, new { title = player.FullName })%></td>--%>
+<td><%= Html.ActionLink(player.FullName, player.FullNameURL, null, new { title = player.FullName })%></td>
 <td class="nowrap"><%= player.ClassYr %></td>
 <td class="nowrap"><%= player.EligibilityYr %></td>
 <td class="nowrap"><%= player.Position%></td>
