@@ -11,9 +11,15 @@ namespace KSULax.Models.Player
     {
         public List<PlayerGameTotalModel> GameStat { get; set; }
 
+        public bool isCurPlayer { get; set; }
+
         public PlayerGameStatListModel(List<GameStatBE> gameStatBELst)
         {
-            GameStat = GameStatCalculateTotals(gameStatBELst);
+            SortedDictionary<int, PlayerGameTotalModel> seasonTotals = GameStatCalculateTotals(gameStatBELst);
+
+            isCurPlayer = (seasonTotals.Keys.Contains<int>(KSU.maxGameSeason)) ? true : false;
+
+            GameStat = seasonTotals.Values.ToList();
         }
 
         public int CareerGames
@@ -123,7 +129,7 @@ namespace KSULax.Models.Player
             }
         }
 
-        private List<PlayerGameTotalModel> GameStatCalculateTotals(List<GameStatBE> gameStatBELst)
+        private SortedDictionary<int, PlayerGameTotalModel> GameStatCalculateTotals(List<GameStatBE> gameStatBELst)
         {
             var pgtm = new SortedDictionary<int,PlayerGameTotalModel>();
 
@@ -153,7 +159,7 @@ namespace KSULax.Models.Player
                 }
             }
 
-            return pgtm.Values.ToList();
+            return pgtm;
         }
     }
 
