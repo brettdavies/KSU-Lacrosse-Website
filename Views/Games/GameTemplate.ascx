@@ -25,7 +25,7 @@
 <img class="gametype" src="../../content/images/game_<%= Html.Encode(game.Game.Type) %>.png" alt="<%= Html.Encode(game.Game.Type) %> game" title="<%= Html.Encode(game.Game.Type) %> game" width="19" height="19" />
 <% } %>
 <img style="vertical-align:middle;" src="../../content/images/teams/<%= Html.Encode(game.Game.Opponent.Slug) %>_24.png" alt="<%= Html.Encode(game.Game.Opponent.Abr) %>" title="<%= Html.Encode(game.Game.Opponent.Abr) %>" width="24" height="24" />
-<% if(game.Game.isHome) { %>@ <% } if(!string.IsNullOrEmpty(game.Game.Opponent.TeamURL)) { %><a href="<%= Html.Encode(game.Game.Opponent.TeamURL)%>" title="<%= Html.Encode(game.Game.Opponent.Abr)%>'s Homepage"><%= Html.Encode(game.Game.Opponent.Abr)%></a><% } %>
+<% if(!game.Game.isHome) { %>@ <% } if(!string.IsNullOrEmpty(game.Game.Opponent.TeamURL)) { %><a href="<%= Html.Encode(game.Game.Opponent.TeamURL)%>" title="<%= Html.Encode(game.Game.Opponent.Abr)%>'s Homepage"><%= Html.Encode(game.Game.Opponent.Abr)%></a><% } %>
 <% else { %><%= game.Game.Opponent.Abr %><% } %>
 </td>
 <td style="width:32%;"><%= game.Game.Venue %></td>
