@@ -4,7 +4,7 @@
 <table>
 <tbody><tr><td>
 <table><tbody>
-<tr><td><strong>Name</strong></td><td><%= Model.FullName %></td></tr>
+<tr><td><strong>Full Name</strong></td><td><%= Model.FullName %></td></tr>
 <tr><td><strong>Highschool</strong></td><td><%= Model.HighSchool %></td></tr>
 <tr><td><strong>Hometown</strong></td><td><%= Model.Home %></td></tr>
 <% if (Model.isCurPlayer) { %><tr><td><strong>Class Year</strong></td><td><%= Model.ClassYr%></td></tr><% } %>
@@ -22,5 +22,5 @@
 </td></tr>
 </tbody></table>
 <table class="mainTable" style="clear:both;">
-<thead><tr><th scope="col">Player Bio</th></tr></thead>
+<thead><tr><th scope="col">Bio</th></tr></thead>
 <tbody><tr><td><%= Model.Bio %></td></tr></tbody></table>
