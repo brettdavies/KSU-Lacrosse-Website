@@ -62,7 +62,7 @@ namespace KSULax.Controllers
                     //Setup MailMessage
                     MailMessage msg = new MailMessage();
                     msg.From = new MailAddress(emailModel.Email, emailModel.Name);
-                    msg.ReplyTo = msg.From;
+                    msg.ReplyToList.Add(msg.From);
                     msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
                     msg.Subject = emailModel.Subject;
                     string body = "Name: " + emailModel.Name + "\n"
@@ -116,7 +116,7 @@ namespace KSULax.Controllers
                     //Setup MailMessage
                     MailMessage msg = new MailMessage();
                     msg.From = new MailAddress(emailModel.Email, name);
-                    msg.ReplyTo = msg.From;
+                    msg.ReplyToList.Add(msg.From);
                     msg.CC.Add(msg.From);
                     msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
                     msg.Subject = emailModel.Subject;

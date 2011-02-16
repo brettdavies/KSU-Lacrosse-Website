@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using KSULax.Models;
 using KSULax.Logic;
 using KSULax.Entities;
+using KSULax.Dal;
 
 namespace KSULax.Controllers
 {

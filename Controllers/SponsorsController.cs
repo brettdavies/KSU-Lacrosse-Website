@@ -8,6 +8,7 @@ using KSULax.Logic;
 using KSULax.Models;
 using KSULax.Models.Game;
 using KSULax.Entities;
+using KSULax.Dal;
 
 namespace KSULax.Controllers
 {

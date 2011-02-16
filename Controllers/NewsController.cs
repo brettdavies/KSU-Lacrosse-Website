@@ -8,6 +8,7 @@ using KSULax.Models;
 using KSULax.Models.News;
 using KSULax.Logic;
 using KSULax.Entities;
+using KSULax.Dal;
 
 namespace KSULax.Controllers
 {

@@ -10,6 +10,7 @@ using KSULax.Models.News;
 using KSULax.Entities;
 using KSULax.Models.Home;
 using KSULax.Models.Game;
+using KSULax.Dal;
 
 namespace KSULax.Controllers
 {
