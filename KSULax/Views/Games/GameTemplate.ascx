@@ -11,7 +11,6 @@
 <th scope="col">Opponent</th>
 <th scope="col">Location</th>
 <th scope="col">Result</th>
-<th scope="col">Details</th>
 </tr>
 </thead>
 <tbody>
@@ -29,15 +28,15 @@
 <% else { %><%= game.Game.Opponent.Abr %><% } %>
 </td>
 <td style="width:32%;"><%= game.Game.Venue %></td>
-<td class="nowrap"><% if (!game.Game.StatusNormal) { %><%= Html.Encode(game.Game.Status)%><% } else { %><%= game.Game.GameResultWL%><% } %></td>
-<td>
-<% if (game.Game.hasDetail || game.hasPhotographers || game.Game.isMCLAGame) { %><a name="<%= game.Game.ID %>"></a><span id="game_<%= game.Game.ID %>" title="Game Recap"></span><% } %>
-</td></tr>
+<td class="nowrap"><% if (!game.Game.StatusNormal) { %><%= Html.Encode(game.Game.Status)%><% } else { %>
+<% if (game.Game.hasDetail || game.hasPhotographers || game.Game.isMCLAGame) { %><a name="<%= game.Game.ID %>"></a><span id="game_<%= game.Game.ID %>" title="Game Recap"><%= game.Game.GameResultWL%></span><% }
+else { %><%= game.Game.GameResultWL%><% }} %></td>
+</tr>
 <% if (game.Game.hasDetail || game.hasPhotographers || game.Game.isMCLAGame) { %>
 <tr id="info_<%= game.Game.ID %>" class="hidden">
-<td colspan="7">
-<% if (game.Game.hasDetail) { %><h3>Game Review</h3><p><%= game.Game.Detail%></p><% } %>
-<% if (game.hasPhotographers) { if (game.Game.hasDetail) { %><br /><% } Html.RenderPartial("GamePhotoGalleries", game.PhotographerList); } %>
+<td colspan="6">
+<% if (game.Game.hasDetail) { %><h3>Game Review</h3><p><%= game.Game.Detail %></p><% } %>
+<% if (game.hasPhotographers) { Html.RenderPartial("GamePhotoGalleries", game.PhotographerList); } %>
 <% if (game.Game.isMCLAGame) { if (game.Game.hasDetail) { %><br /><% } %><h3>MCLA</h3><% } %>
 <% if (game.Game.isWin) { %>
 <ul class="sharing" style="margin-bottom:-10px;">
