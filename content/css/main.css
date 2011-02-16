@@ -113,8 +113,8 @@ TABLES
 .mainTable tbody tr.more :hover {background:#000; color:#ccc;}
 .mainTable tbody tr.more td {padding:20px;font-size:11px;}
 .mainTable tbody td.nowrap {white-space:nowrap;}
-.tableButton {padding:5px;background:#febc11;color:#000;text-transform:uppercase;font-size:9px;text-decoration:underline;cursor:pointer;}
-.mainTable tbody tr:hover td .tableButton {padding:5px;background:#000;color:#fff;text-transform:uppercase;font-size:9px;text-decoration:none;}
+.tableButton {padding:5px;background:#febc11;color:#000;text-transform:uppercase;text-decoration:underline;cursor:pointer;}
+.mainTable tbody tr:hover td .tableButton {padding:5px;background:#000;color:#fff;text-transform:uppercase;text-decoration:none;}
 .alt {background:#dbdada;}
 .gametype {float:right;margin-top:4px;margin-right:-13px;}
 

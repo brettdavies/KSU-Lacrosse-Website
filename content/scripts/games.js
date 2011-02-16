@@ -2,7 +2,7 @@
     $("span[id^='game']").each(function() {
         var id = $(this).attr('id');
         var number = id.substring(id.indexOf('_') + 1);
-        $(this).addClass('tableButton').text('Recap').toggle(
+        $(this).addClass('tableButton').toggle(
                 function() {
                     try {
                         $("tr[id='info_" + number + "']").toggleClass('hidden more');
