@@ -11,12 +11,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KSULax</RootNamespace>
     <AssemblyName>KSULax</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,16 +42,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="KSULax.Dal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DAL\bin\Release\KSULax.Dal.dll</HintPath>
+    </Reference>
     <Reference Include="SquishIt.Framework, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -58,11 +58,11 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -72,13 +72,10 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Entities\GameStatBE.cs" />
-    <Compile Include="Interfaces\INews.cs" />
-    <Compile Include="Entities\PhotoBE.cs" />
-    <Compile Include="Logic\AwardBL.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Models\Game\GameScheduleModel.cs" />
@@ -97,11 +94,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\AwardBE.cs" />
-    <Compile Include="Entities\DataBE.cs" />
-    <Compile Include="Entities\GameBE.cs" />
-    <Compile Include="Entities\NewsBE.cs" />
-    <Compile Include="Entities\PlayerBE.cs" />
     <Compile Include="Models\Game\GameModel.cs" />
     <Compile Include="Models\Game\TeamModel.cs" />
     <Compile Include="Models\News\StoryBriefModel.cs" />
@@ -109,23 +101,12 @@
     <Compile Include="Models\Player\PlayerAwardModel.cs" />
     <Compile Include="Models\Player\PlayerStatModel.cs" />
     <Compile Include="Models\Player\RosterModel.cs" />
-    <Compile Include="Entities\TeamBE.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppHelpers.cs" />
     <Compile Include="Helpers\HandleErrorAttribute.cs" />
-    <Compile Include="Logic\DataBL.cs" />
-    <Compile Include="Logic\GameBL.cs" />
-    <Compile Include="Logic\PhotoBL.cs" />
-    <Compile Include="Logic\NewsBL.cs" />
-    <Compile Include="Logic\PlayerBL.cs" />
     <Compile Include="Models\Home\HomepageDataModel.cs" />
-    <Compile Include="Models\DataModel.Designer.cs">
-      <DependentUpon>DataModel.edmx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="Models\Forms\FormsModel.cs" />
     <Compile Include="Models\News\StoryModel.cs" />
     <Compile Include="Models\Player\PlayerModel.cs" />
@@ -287,12 +268,6 @@
     <Content Include="Views\Shared\GameSidebarTemplate.ascx" />
     <Content Include="Views\Shared\SponsorsTemplate.ascx" />
     <Content Include="Views\Sponsors\Index.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Models\DataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\images\collegelax.png" />
