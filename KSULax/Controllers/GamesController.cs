@@ -11,6 +11,7 @@ using KSULax.Logic;
 using System.Web.Routing;
 using KSULax.Models.Game;
 using KSULax.Entities;
+using KSULax.Dal;
 
 namespace KSULax.Controllers
 {
