@@ -124,7 +124,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return Date.ToString("hh:mm tt");
+                return Time.ToString("hh:mm tt");
             }
         }
 
@@ -164,7 +164,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return (ID > 6000 && HomeTeamScore >= 0) ? true : false;
+                return (ID > 200 && HomeTeamScore >= 0) ? true : false;
             }
         }
 
