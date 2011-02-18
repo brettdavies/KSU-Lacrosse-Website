@@ -60,24 +60,27 @@ namespace KSULax.Controllers
                 try
                 {
                     //Setup MailMessage
-                    MailMessage msg = new MailMessage();
-                    msg.From = new MailAddress(emailModel.Email, emailModel.Name);
-                    msg.ReplyToList.Add(msg.From);
-                    msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
-                    msg.Subject = emailModel.Subject;
-                    string body = "Name: " + emailModel.Name + "\n"
-                                + "Company Name: " + emailModel.CompanyName + "\n"
-                                + "Email: " + emailModel.Email + "\n"
-                                + "Phone: " + emailModel.Phone + "\n\n"
-                                + emailModel.Comments;
+                    using (MailMessage msg = new MailMessage())
+                    {
+                        msg.From = new MailAddress(emailModel.Email, emailModel.Name);
+                        msg.ReplyToList.Add(msg.From);
+                        msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
+                        msg.Subject = emailModel.Subject;
+                        string body = "Name: " + emailModel.Name + "\n"
+                                    + "Company Name: " + emailModel.CompanyName + "\n"
+                                    + "Email: " + emailModel.Email + "\n"
+                                    + "Phone: " + emailModel.Phone + "\n\n"
+                                    + emailModel.Comments;
 
-                    msg.Body = body;
-                    msg.IsBodyHtml = false;
+                        msg.Body = body;
+                        msg.IsBodyHtml = false;
 
-                    //Send the Email
-                    smtpClient().Send(msg);
-
-                    msg.Dispose();
+                        //Send the Email
+                        using (SmtpClient client = smtpClient())
+                        {
+                            client.Send(msg);
+                        }
+                    }
 
                     MessageModel rcpt = new MessageModel();
                     rcpt.Title = "Thanks " + emailModel.Name + "!";
@@ -114,34 +117,37 @@ namespace KSULax.Controllers
                     string name = emailModel.FirstName + ' ' + emailModel.LastName;
 
                     //Setup MailMessage
-                    MailMessage msg = new MailMessage();
-                    msg.From = new MailAddress(emailModel.Email, name);
-                    msg.ReplyToList.Add(msg.From);
-                    msg.CC.Add(msg.From);
-                    msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
-                    msg.Subject = emailModel.Subject;
-                    string body = "Name: " + name + "\n"
-                                + "Email: " + emailModel.Email + "\n"
-                                + "Phone: " + emailModel.PhoneNumber + "\n"
-                                + "Position: " + emailModel.Position + "\n"
-                                + "USLaxID: " + emailModel.USLaxID + "\n"
-                                + "KSUID: " + emailModel.KSUID + "\n"
-                                + "Major: " + emailModel.Major + "\n"
-                                + "GPA: " + emailModel.GPA + "\n"
-                                + "Height: " + emailModel.Height + "\n"
-                                + "Weight: " + emailModel.Weight + "\n"
-                                + "Hometown: " + emailModel.Hometown + "\n"
-                                + "Homestate: " + emailModel.Homestate + "\n"
-                                + "Highschool: " + emailModel.Highschool + "\n"
-                                + "Highschoolyear: " + emailModel.Highschoolyear;
+                    using (MailMessage msg = new MailMessage())
+                    {
+                        msg.From = new MailAddress(emailModel.Email, name);
+                        msg.ReplyToList.Add(msg.From);
+                        msg.CC.Add(msg.From);
+                        msg.To.Add(new MailAddress("ksulacrosse@gmail.com", "KSU Lacrosse"));
+                        msg.Subject = emailModel.Subject;
+                        string body = "Name: " + name + "\n"
+                                    + "Email: " + emailModel.Email + "\n"
+                                    + "Phone: " + emailModel.PhoneNumber + "\n"
+                                    + "Position: " + emailModel.Position + "\n"
+                                    + "USLaxID: " + emailModel.USLaxID + "\n"
+                                    + "KSUID: " + emailModel.KSUID + "\n"
+                                    + "Major: " + emailModel.Major + "\n"
+                                    + "GPA: " + emailModel.GPA + "\n"
+                                    + "Height: " + emailModel.Height + "\n"
+                                    + "Weight: " + emailModel.Weight + "\n"
+                                    + "Hometown: " + emailModel.Hometown + "\n"
+                                    + "Homestate: " + emailModel.Homestate + "\n"
+                                    + "Highschool: " + emailModel.Highschool + "\n"
+                                    + "Highschoolyear: " + emailModel.Highschoolyear;
 
-                    msg.Body = body;
-                    msg.IsBodyHtml = false;
+                        msg.Body = body;
+                        msg.IsBodyHtml = false;
 
-                    //Send the Email
-                    smtpClient().Send(msg);
-
-                    msg.Dispose();
+                        //Send the Email
+                        using (SmtpClient client = smtpClient())
+                        {
+                            client.Send(msg);
+                        }
+                    }
 
                     MessageModel rcpt = new MessageModel();
                     rcpt.Title = "Thanks " + name + "!";
