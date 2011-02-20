@@ -4,6 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<meta name="google-site-verification" content="uH_owkFAkq319JgINOym-7OizGCb1UvlejogcMbKxKc" />
+<meta name="msvalidate.01" content="A24836F893DB6FD9E8E17732BA2DA967" />
+<meta name="y_key" content="0a46360bd8e12844" />
 <meta property="og:title" content="KSU Lacrosse Homepage"/>
 <meta property="og:url" content="http://ksulax.com"/>
 <meta property="og:description" name="description" content="KSU Lacrosse is a club sport at Kennesaw State University. We are members of the SELC, competing in the Central Region of Division 2." />
