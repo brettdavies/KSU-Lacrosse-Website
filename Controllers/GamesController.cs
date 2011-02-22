@@ -12,9 +12,11 @@ using System.Web.Routing;
 using KSULax.Models.Game;
 using KSULax.Entities;
 using KSULax.Dal;
+using KSULax.Interfaces;
 
 namespace KSULax.Controllers
 {
+    [HandleError]
     public class GamesController : Controller
     {
         private KSULaxEntities _entities;
@@ -28,7 +30,6 @@ namespace KSULax.Controllers
             _photoBL = new PhotoBL(_entities);
         }
 
-        [HandleError]
         public ActionResult Index(int? id)
         {
             if (!id.HasValue)
@@ -90,11 +91,12 @@ namespace KSULax.Controllers
 
         public ActionResult Meta(int gameID)
         {
-            ViewData.Model = new StoryBriefModel(_gamesBL.GameDetail(gameID), this.Request.Url.ToString());
+            INews inews = _gamesBL.GameDetail(gameID);
 
-            if (ViewData.Model != null)
+            if (inews != null)
             {
-                return View("GameMeta");
+                StoryBriefModel sblm = new StoryBriefModel(inews, this.Request.Url.ToString());
+                return View("GameMeta", sblm);
             }
 
             else
