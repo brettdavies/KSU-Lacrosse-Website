@@ -26,13 +26,16 @@ namespace KSULax.Models.News
     {
         public StoryBriefModel(INews news, string requestUrl)
         {
-            Date = news.Date;
-            Story = news.Story;
-            Title = news.Title;
-            TitlePath = news.TitlePath;
-            SeasonID = news.SeasonID;
-            GameID = news.GameID;
-            StoryType = news.getType();
+            if (null != news)
+            {
+                Date = news.Date;
+                Story = news.Story;
+                Title = news.Title;
+                TitlePath = news.TitlePath;
+                SeasonID = news.SeasonID;
+                GameID = news.GameID;
+                StoryType = news.getType();
+            }
         }
 
         public DateTime Date { get; set; }
