@@ -13,8 +13,8 @@
 <td style="width:17%;" class="nowrap"><%= game.DateShort %></td>
 <td style="width:32%;" class="nowrap"><% if (!game.StatusNormal) { %><%= game.Status %><% } %>
 <% else { var result = game.GameResultWL; if(!result.Equals("-")) { %>
-<%= Html.ActionLink(result, "index", "games", new { id = game.SeasonID + "#" + game.ID }, new { title = result })%>
-<% } else { %><%= result %><% }} %></td>
+<%= Html.ActionLink(result, "index", "games", new { id = game.SeasonID + "#" + game.ID }, new { title = result }) %>
+<% } else if (DateTime.Parse(game.Date.ToShortDateString() + ' ' + game.Time.ToShortTimeString()) > DateTime.Now) { %><%= game.TimeSchedule %><% } else { %><%= result %><% }} %></td>
 </tr>
 <% } %>
 </table>
