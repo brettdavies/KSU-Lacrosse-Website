@@ -25,10 +25,15 @@
 </div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Games", "Index", new { id = string.Empty }, new { title="Games" })%> > <%= Html.ActionLink(Model.SeasonID.ToString(), Model.SeasonID.ToString(), null, new { title = Model.SeasonID.ToString() })%></div>
-<h1><%= (Model.SeasonID - 1) + " - " + Model.SeasonID + " Game Schedule" %></h1>
+<h1><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h1>
 <% Html.RenderPartial("GameTemplate", Model.GameSchedule); %>
 <asp:Image ImageUrl="~/content/images/game_scrimage.png" Height="19" Width="19" ImageAlign="Top" AlternateText="Scrimmage" runat="server"/> Scrimmage
 <asp:Image ImageUrl="~/content/images/game_divisional.png" Height="17" Width="17" ImageAlign="Top" AlternateText="Divisional Game" runat="server"/> Divisional Game
 <asp:Image ImageUrl="~/content/images/game_playoff.png" Height="17" Width="17" ImageAlign="Top" AlternateText="Playoff Game" runat="server"/> Playoff Game
+<br/><br/>
+<h2><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h2>
+<a href="http://mcla.us/teams/kennesaw_state/<%= Model.SeasonID %>/schedule.html">MCLA</a>
+<a href="http://www.laxpower.com/update<%=Model.SeasonID.ToString().Substring(2,2)%>/binmen/XKNSXX.PHP">LaxPower</a>
+<a href="http://www.collegelax.us/team.php?team=kennesaw_state">CollegeLax</a>
 </div>
 </asp:Content>
