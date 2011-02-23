@@ -2,7 +2,7 @@
 <asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">The Owl's Nest</asp:Content>
 
 <asp:Content ContentPlaceHolderID="HeaderAbout" runat="server">
-<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=3"></script>
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA5mnG-nHWx4T2uxzDifOJ1xSz5OOLHx8ZE6Lt-yONCZuQDiaiHBT0uchdFySg8YHnYludq4rxBsClwA"></script>
 <%= Bundle.JavaScript()
     .Add("~/content/scripts/jquery.gmap-1.1.0-min.js")
     .Render("~/content/scripts/maps_#.js")
