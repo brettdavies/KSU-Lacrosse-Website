@@ -130,9 +130,9 @@
     <Content Include="content\scripts\MicrosoftMvcValidation.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="lib\HtmlAgilityPack\HtmlAgilityPack.dll" />
-    <Content Include="lib\HtmlAgilityPack\HtmlAgilityPack.pdb" />
-    <Content Include="lib\HtmlAgilityPack\HtmlAgilityPack.XML" />
+    <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.dll" />
+    <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.pdb" />
+    <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.XML" />
     <Content Include="Views\Forms\Winter-Skills-Clinic.aspx" />
     <Content Include="Views\Forms\Player-Registration.aspx" />
     <Content Include="Views\About\Index.aspx" />
