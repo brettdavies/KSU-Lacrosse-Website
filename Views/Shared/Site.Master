@@ -29,10 +29,10 @@
 <li><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%></li>
 <li><%= Html.ActionLink("Players", "index", "players", new { id = string.Empty }, new { title = "KSU Lax Players" })%></li>
 <li><%= Html.ActionLink("Games", "index", "games", new { id = string.Empty }, new { title = "KSU Lax Games" })%></li>
+<li><%= Html.ActionLink("Owl's Nest", "owls-nest", "about", null, new { title = "KSU Lax Owl's Nest" })%></li>
 <li><%= Html.ActionLink("News", "index", "news", new { year = string.Empty, month = string.Empty, day = string.Empty, title = string.Empty }, new { title = "KSU Lax News" })%></li>
 <li><%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "KSU Lax Media Guides" })%></li>
 <li><%= Html.ActionLink("Sponsors", "index", "sponsors", null, new { title = "KSU Lax Sponsors" })%></li>
-<li><%= Html.ActionLink("About", "index", "about", null, new { title = "About KSU Lax" })%></li>
 <li class="last"><%= Html.ActionLink("Contact Us", "contact-us", "forms", null, new { title="Contact KSU Lax" })%></li>
 </ul>
 </div>

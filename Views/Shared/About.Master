@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" MasterPageFile="~/Views/Shared/Site.Master" %>
 <asp:Content ContentPlaceHolderID="titleContent" runat="server"><asp:ContentPlaceHolder ID="titleContentAbout" runat="server"></asp:ContentPlaceHolder></asp:Content>
+
+<asp:Content ContentPlaceHolderID="Header" runat="server"><asp:ContentPlaceHolder ID="HeaderAbout" runat="server"></asp:ContentPlaceHolder></asp:Content>
+
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
 <div class="boxItem menu">
@@ -9,11 +12,11 @@
 <li><%= Html.ActionLink("About", "index", "about", null, new { title = "About" })%></li>
 <li><%= Html.ActionLink("Alumni", "alumni", "about", null, new { title = "Alumni" })%></li>
 <li><%= Html.ActionLink("Associations", "associations", "about", null, new { title = "Associations" })%></li>
-<li><%= Html.ActionLink("Facilities", "facilities", "about", null, new { title = "Facilities" })%></li>
 <li><%= Html.ActionLink("FAQ", "faq", "about", null, new { title = "FAQ" })%></li>
 <li><%= Html.ActionLink("History", "history", "about", null, new { title = "History" })%></li>
 <li><%= Html.ActionLink("Management", "management", "about", null, new { title = "Management" })%></li>
 <li><%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "Media Guides" })%></li>
+<li><%= Html.ActionLink("Owl's Nest", "owls-nest", "about", null, new { title = "Owl's Nest" })%></li>
 </ul>
 </div>
 <div class="boxBottom"></div>
