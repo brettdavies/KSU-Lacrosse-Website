@@ -27,7 +27,7 @@
 <% if(!game.Game.isHome) { %>@ <% } if(!string.IsNullOrEmpty(game.Game.Opponent.TeamURL)) { %><a href="<%= Html.Encode(game.Game.Opponent.TeamURL)%>" title="<%= Html.Encode(game.Game.Opponent.Abr)%>'s Homepage"><%= Html.Encode(game.Game.Opponent.Abr)%></a><% } %>
 <% else { %><%= game.Game.Opponent.Abr %><% } %>
 </td>
-<td style="width:32%;"><%= game.Game.Venue %></td>
+<td style="width:32%;"><% if(!game.Game.isHome) { %><%= game.Game.Venue %><% } else { %><%= Html.ActionLink(game.Game.Venue, "owls-nest", "about", null, new { title = "The Owl's Nest" })%><%}%></td>
 <td class="nowrap"><% if (!game.Game.StatusNormal) { %><%= Html.Encode(game.Game.Status)%><% } else { %>
 <% if (game.Game.hasDetail || game.hasPhotographers || game.Game.isMCLAGame) { %><a name="<%= game.Game.ID %>"></a><span id="game_<%= game.Game.ID %>" title="Game Recap"><%= game.Game.GameResultWL%></span><% }
 else { %><%= game.Game.GameResultWL%><% }} %></td>
