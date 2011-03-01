@@ -37,8 +37,7 @@ namespace KSULax.Models.Game
         {
             ID = game.ID;
             SeasonID = game.SeasonID;
-            Date = game.Date;
-            Time = game.Time;
+            Datetime = game.Datetime;
             Type = game.Type;
             Status = game.Status;
             Venue = game.Venue;
@@ -52,8 +51,7 @@ namespace KSULax.Models.Game
        
         public int ID { get; set; }
         public int SeasonID { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime Datetime { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
         public string Venue { get; set; }
@@ -92,7 +90,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return ((SeasonID > Date.Year) ? "fall" : "spring");
+                return ((SeasonID > Datetime.Year) ? "fall" : "spring");
             }
         }
 
@@ -100,7 +98,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return Date.ToString("M / d");
+                return Datetime.ToString("M / d");
             }
         }
 
@@ -108,7 +106,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return Date.ToString("ddd");
+                return Datetime.ToString("ddd");
             }
         }
 
@@ -116,7 +114,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return Date.ToString("MMM dd");
+                return Datetime.ToString("MMM dd");
             }
         }
 
@@ -124,7 +122,7 @@ namespace KSULax.Models.Game
         {
             get
             {
-                return Time.ToString("hh:mm tt");
+                return Datetime.ToString("hh:mm tt");
             }
         }
 

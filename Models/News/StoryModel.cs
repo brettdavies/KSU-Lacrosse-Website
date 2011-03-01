@@ -11,7 +11,7 @@ namespace KSULax.Models.News
         public StoryModel(NewsBE news, string requestUrl)
         {
             Author = news.Author;
-            Date = news.Date;
+            Date = news.Datetime;
             Source = news.Source;
 
             if (String.IsNullOrEmpty(news.SourceUrl))

@@ -28,7 +28,7 @@ namespace KSULax.Models.News
         {
             if (null != news)
             {
-                Date = news.Date;
+                Date = news.Datetime;
                 Story = news.Story;
                 Title = news.Title;
                 TitlePath = news.TitlePath;
