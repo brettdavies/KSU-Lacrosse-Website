@@ -47,6 +47,7 @@ namespace KSULax.Models.Game
             AwayTeam = new TeamModel(game.AwayTeam);
             HomeTeam = new TeamModel(game.HomeTeam);
             isHome = game.isHome;
+            CollegeLaxID = game.CollegeLaxID;
         }
        
         public int ID { get; set; }
@@ -61,6 +62,7 @@ namespace KSULax.Models.Game
         public TeamModel HomeTeam { get; set; }
         public TeamModel AwayTeam { get; set; }
         public bool isHome { get; set; }
+        public int CollegeLaxID { get; set; }
 
         public string HomeOrAway
         {

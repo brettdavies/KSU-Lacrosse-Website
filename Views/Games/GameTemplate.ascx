@@ -37,12 +37,11 @@ else { %><%= game.Game.GameResultWL%><% }} %></td>
 <td colspan="6">
 <% if (game.Game.hasDetail) { %><h3>Game Review</h3><p><%= game.Game.Detail %></p><% } %>
 <% if (game.hasPhotographers) { Html.RenderPartial("GamePhotoGalleries", game.PhotographerList); } %>
-<% if (game.Game.isMCLAGame) { if (game.Game.hasDetail) { %><br /><% } %><h3>MCLA</h3><% } %>
+<% if (game.Game.isMCLAGame) { if (game.Game.hasDetail) { %><br /><% } %><h3>GAME RECAP</h3><% } %>
 <% if (game.Game.isWin) { %>
 <ul class="sharing" style="margin-bottom:-10px;">
 <li><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ksulax.com/games/<%= game.Game.ID %>" data-counturl="http://ksulax.com<%= Html.Encode(Request.Path) %>" data-count="horizontal" data-via="kstatelax"></a></li>
 <li><fb:like href="http://ksulax.com/games/<%= game.Game.ID %>" show_faces="false" layout="button_count"/></li>
 </ul>
-<% } %>
-<% if (game.Game.isMCLAGame) { %><p><a href="http://mcla.us/scores/games/<%= game.Game.ID %>" title="MCLA Game Recap">GAME RECAP</a></p><% } %>
+<% } %><% if (game.Game.isMCLAGame) { %><p><a href="http://mcla.us/scores/games/<%= game.Game.ID %>" title="MCLA Game Recap">MCLA</a> <a href="http://www.collegelax.us/game.php?game=<%= game.Game.CollegeLaxID %>" title="CollegeLax Game Recap">CollegeLax</a></p><% } %>
 </td></tr><% } } %></tbody></table>
