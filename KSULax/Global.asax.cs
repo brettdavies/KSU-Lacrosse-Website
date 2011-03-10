@@ -31,13 +31,6 @@ namespace KSULax
             );
 
             routes.MapRoute(
-                "PlayerImage",
-                "players/image/{id}",
-                new { controller = "players", action = "image", id = "" }
-            );
-
-
-            routes.MapRoute(
                 "Players",
                 "players/{id}",
                 new { controller = "players", action = "Index", id = "" }
