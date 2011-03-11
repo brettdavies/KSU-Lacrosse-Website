@@ -80,6 +80,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
+    <Compile Include="Helpers\CachingService.cs" />
     <Compile Include="Models\Game\GameScheduleModel.cs" />
     <Compile Include="Models\Game\GameStatModel.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -115,6 +116,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\images\polls\CollegeLax_24.png" />
+    <Content Include="content\images\polls\CollegeLax_32.png" />
+    <Content Include="content\images\polls\CollegeLax_40.png" />
+    <Content Include="content\images\polls\Laxpower_24.png" />
+    <Content Include="content\images\polls\Laxpower_32.png" />
+    <Content Include="content\images\polls\Laxpower_40.png" />
+    <Content Include="content\images\polls\MCLAmag_24.png" />
+    <Content Include="content\images\polls\MCLAmag_32.png" />
+    <Content Include="content\images\polls\MCLAmag_40.png" />
     <Content Include="content\images\teams\berry_24.png" />
     <Content Include="content\images\teams\berry_32.png" />
     <Content Include="content\images\teams\coast_gaurd_24.png" />
