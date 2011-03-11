@@ -11,6 +11,7 @@ using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using System.Drawing;
 using System.IO;
+using KSULax.Helpers;
 
 namespace KSULax.Controllers
 {
@@ -36,6 +37,7 @@ namespace KSULax.Controllers
             return this.Json(_dataBL.GetRanking(), JsonRequestBehavior.AllowGet);
         }
 
+        //[OutputCache(Duration = 3600, VaryByParam = "id")]
         [ActionName("ranking-chart")]
         public FileContentResult rankingChart(int id)
         {
@@ -44,25 +46,48 @@ namespace KSULax.Controllers
                 return null;
             }
 
-            // Get Data
+            // Get Dates
+            List<double> pollDates = _dataBL.GetRankingDates(id);
+            double maxDate = pollDates.Max();
+
+            var cacheService = new CachingService();
+
+            var cacheMaxDate = cacheService.Get<double>("chart" + id + "maxdate");
+
+            if (cacheMaxDate == null || cacheMaxDate < maxDate)
+            {
+                createChart(id, maxDate, pollDates);
+            }
+            
+            return new FileContentResult(cacheService.Get<byte[]>("chart" + id + "array"), "image/png");
+        }
+
+        /// <summary>
+        /// Creates a chart for the specified season and stores it in the cache
+        /// </summary>
+        /// <param name="id">season id to draw a chart for</param>
+        /// <param name="maxDate">maxDate from in double format (ToOADate)</param>
+        /// <param name="pollDates">double format of all the dates that have rankings for the specified season</param>
+        private void createChart(int id, double maxDate, List<double> pollDates)
+        {
+            // Get Rankings
             List<TeamRankingBE> rankingsMCLA = _dataBL.GetRanking(1, id);
             List<TeamRankingBE> rankingsCL = _dataBL.GetRanking(2, id);
             List<TeamRankingBE> rankingsLP = _dataBL.GetRanking(3, id);
-            double minDate = new DateTime(id, 1, 1).ToOADate();
-            double maxDate = new DateTime(id, 12, 31).ToOADate();
 
             var chart = new Chart();
 
             chart.RenderType = RenderType.ImageTag;
             chart.AntiAliasing = AntiAliasingStyles.All;
-            chart.Palette = ChartColorPalette.BrightPastel;
-            chart.Titles.Add(new Title(id + " Ranking", Docking.Top, new Font("Segoe UI", 14, FontStyle.Bold), Color.DarkRed));
-            chart.Width = 500;
-            chart.Height = 400;
+            chart.Titles.Add(new Title("Kennesaw State Owls " + id + " National Ranking", Docking.Top, new Font("Segoe UI", 14, FontStyle.Bold), Color.FromArgb(254, 188, 7)));
+            chart.Width = 650;
+            chart.Height = 520;
 
             // ChartArea
             chart.ChartAreas.Add("Default");
             chart.ChartAreas["Default"].Area3DStyle.Enable3D = false;
+            chart.ChartAreas["Default"].AxisX.LabelStyle.IntervalType = DateTimeIntervalType.Days;
+            chart.ChartAreas["Default"].AxisX.LabelStyle.ForeColor = Color.Black;
             chart.ChartAreas["Default"].AxisX.LabelStyle.Interval = 1;
             chart.ChartAreas["Default"].AxisX.LabelStyle.Format = "MMM dd";
             chart.ChartAreas["Default"].AxisX.MajorGrid.Interval = 1;
@@ -74,54 +99,100 @@ namespace KSULax.Controllers
             // Legend
             chart.Legends.Add("Default");
             chart.Legends["Default"].Docking = Docking.Bottom;
+            chart.Legends["Default"].Font = new Font("Segoe UI", 12);
             chart.Legends["Default"].BorderColor = Color.Black;
             chart.Legends["Default"].BorderWidth = 1;
             chart.Legends["Default"].BorderDashStyle = ChartDashStyle.Solid;
             chart.Legends["Default"].ShadowOffset = 4;
             chart.Legends["Default"].Alignment = StringAlignment.Center;
 
-            chart.Series.Add("MCLA");
-            chart.Series["MCLA"].ChartType = SeriesChartType.Line;
-            chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank");
-            chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 0;
-            chart.Series["MCLA"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
-            chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag.png";
-            chart.Series["MCLA"].MarkerImageTransparentColor = Color.White;
-            chart.Series["MCLA"].Url = rankingsMCLA[0].Url;
-            chart.Series["MCLA"].LegendUrl = rankingsMCLA[0].Url;
-            chart.Series["MCLA"].ToolTip = "#VALY";
-            //chart.Series["MCLA"].IsXValueIndexed = true;
-
-            chart.Series.Add("CollegeLax");
-            chart.Series["CollegeLax"].ChartType = SeriesChartType.Line;
-            chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank");
-            chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 0;
-            chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
-            chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax.png";
-            chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.White;
-            chart.Series["CollegeLax"].Url = rankingsCL[0].Url;
-            chart.Series["CollegeLax"].LegendUrl = rankingsCL[0].Url;
-            chart.Series["CollegeLax"].ToolTip = "#VALY";
-            //chart.Series["CollegeLax"].IsXValueIndexed = true;
-
+            // LaxPower Series
             chart.Series.Add("LaxPower");
             chart.Series["LaxPower"].ChartType = SeriesChartType.Line;
-            chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank");
+            chart.Series["LaxPower"].Color = Color.Red;
+            chart.Series["LaxPower"].BorderWidth = 5;
             chart.Series["LaxPower"].EmptyPointStyle.BorderWidth = 0;
             chart.Series["LaxPower"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
-            chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower.png";
-            chart.Series["LaxPower"].MarkerImageTransparentColor = Color.White;
+            chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower_32.png";
+            chart.Series["LaxPower"].MarkerImageTransparentColor = Color.Empty;
             chart.Series["LaxPower"].Url = rankingsLP[0].Url;
             chart.Series["LaxPower"].LegendUrl = rankingsLP[0].Url;
             chart.Series["LaxPower"].ToolTip = "#VALY";
-            //chart.Series["LaxPower"].IsXValueIndexed = true;
+            chart.Series["LaxPower"].IsXValueIndexed = true;
+
+            // MCLA Series
+            chart.Series.Add("MCLA");
+            chart.Series["MCLA"].ChartType = SeriesChartType.Line;
+            chart.Series["MCLA"].Color = Color.FromArgb(111, 162, 138);
+            chart.Series["MCLA"].BorderWidth = 5;
+            chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 0;
+            chart.Series["MCLA"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+            chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag_32.png";
+            chart.Series["MCLA"].MarkerImageTransparentColor = Color.Empty;
+            chart.Series["MCLA"].Url = rankingsMCLA[0].Url;
+            chart.Series["MCLA"].LegendUrl = rankingsMCLA[0].Url;
+            chart.Series["MCLA"].ToolTip = "#VALY";
+            chart.Series["MCLA"].IsXValueIndexed = true;
+
+            // CollegeLax Series
+            chart.Series.Add("CollegeLax");
+            chart.Series["CollegeLax"].ChartType = SeriesChartType.Line;
+            chart.Series["CollegeLax"].Color = Color.FromArgb(167, 152, 109);
+            chart.Series["CollegeLax"].BorderWidth = 5;
+            chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 0;
+            chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+            chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax_32.png";
+            chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.Empty;
+            chart.Series["CollegeLax"].Url = rankingsCL[0].Url;
+            chart.Series["CollegeLax"].LegendUrl = rankingsCL[0].Url;
+            chart.Series["CollegeLax"].ToolTip = "#VALY";
+            chart.Series["CollegeLax"].IsXValueIndexed = true;
+
+            // Populate All Data Points
+            chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank");
+            chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank");
+            chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank");
+
+            // Fill remaining data points with empty values
+            // allows for .IsXValueIndexed = true on the series.
+            foreach (double pollDate in pollDates)
+            {
+                var data = chart.Series["MCLA"].Points.Count(dp => dp.XValue == pollDate);
+                if (data == 0)
+                {
+                    chart.Series["MCLA"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                }
+
+                data = chart.Series["CollegeLax"].Points.Count(dp => dp.XValue == pollDate);
+                if (data == 0)
+                {
+                    chart.Series["CollegeLax"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                }
+
+                data = chart.Series["LaxPower"].Points.Count(dp => dp.XValue == pollDate);
+                if (data == 0)
+                {
+                    chart.Series["LaxPower"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                }
+            }
+
+            // Sort data points by X value
+            // allows for .IsXValueIndexed = true on the series.
+            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "MCLA");
+            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "CollegeLax");
+            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "LaxPower");
 
             var imageStream = new MemoryStream();
+
             chart.SaveImage(imageStream, ChartImageFormat.Png);
 
             string imagemap = chart.GetHtmlImageMap("ranking");
 
-            return new FileContentResult(imageStream.ToArray(), "image/png");
+            var cacheService = new CachingService();
+
+            cacheService.Insert("chart" + id + "maxdate", maxDate);
+            cacheService.Insert("chart" + id + "array", imageStream.ToArray());
+            cacheService.Insert("chart" + id + "imagemap", imagemap);
         }
     }
 }
