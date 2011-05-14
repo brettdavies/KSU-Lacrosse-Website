@@ -10,33 +10,33 @@
 
     $.getJSON(url, function(rankings) {
         $.each(rankings, function(i, ranks) {
-            var date = new Date(ranks.datestr);
+            var date = new Date(ranks.Datestr);
             if (date > enddate) {
-                enddatestr = ranks.datestr;
-                enddate = new Date(ranks.datestr);
+                enddatestr = ranks.Datestr;
+                enddate = new Date(ranks.Datestr);
             }
 
             switch (ranks.pollSource) {
                 case 1:
                     {
-                        pole1 = pole1.replace(ranks.pollSource + 'rankUrl', ranks.rankUrl);
-                        pole1 = pole1.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.datestr);
-                        pole1 = pole1.replace(ranks.pollSource + 'date', ranks.datestr);
-                        pole1 = pole1.replace(ranks.pollSource + 'rank', ranks.rank);
+                        pole1 = pole1.replace(ranks.pollSource + 'rankUrl', ranks.Url);
+                        pole1 = pole1.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.Datestr);
+                        pole1 = pole1.replace(ranks.pollSource + 'date', ranks.Datestr);
+                        pole1 = pole1.replace(ranks.pollSource + 'rank', ranks.Rank);
                     }
                 case 2:
                     {
-                        pole2 = pole2.replace(ranks.pollSource + 'rankUrl', ranks.rankUrl);
-                        pole2 = pole2.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.datestr);
-                        pole2 = pole2.replace(ranks.pollSource + 'date', ranks.datestr);
-                        pole2 = pole2.replace(ranks.pollSource + 'rank', ranks.rank);
+                        pole2 = pole2.replace(ranks.pollSource + 'rankUrl', ranks.Url);
+                        pole2 = pole2.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.Datestr);
+                        pole2 = pole2.replace(ranks.pollSource + 'date', ranks.Datestr);
+                        pole2 = pole2.replace(ranks.pollSource + 'rank', ranks.Rank);
                     }
                 case 3:
                     {
-                        pole3 = pole3.replace(ranks.pollSource + 'rankUrl', ranks.rankUrl);
-                        pole3 = pole3.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.datestr);
-                        pole3 = pole3.replace(ranks.pollSource + 'date', ranks.datestr);
-                        pole3 = pole3.replace(ranks.pollSource + 'rank', ranks.rank);
+                        pole3 = pole3.replace(ranks.pollSource + 'rankUrl', ranks.Url);
+                        pole3 = pole3.replace(ranks.pollSource + 'rankUrltitle', 'Poll from ' + ranks.Datestr);
+                        pole3 = pole3.replace(ranks.pollSource + 'date', ranks.Datestr);
+                        pole3 = pole3.replace(ranks.pollSource + 'rank', ranks.Rank);
                     }
                 default: { }
             }
