@@ -37,6 +37,12 @@ namespace KSULax
             );
 
             routes.MapRoute(
+                "Data",
+                "data/{id}",
+                new { controller = "data", action = "Index", id = "" }
+            );
+
+            routes.MapRoute(
                 "News",
                 "news/{year}/{month}/{day}/{url_title}",
                 new { controller = "news", action = "Index", year = "", month = "", day = "", url_title = "" }
