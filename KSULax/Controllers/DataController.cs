@@ -12,6 +12,8 @@ using System.Web.UI.WebControls;
 using System.Drawing;
 using System.IO;
 using KSULax.Helpers;
+using KSULax.Models.Data;
+using KSULax.Models.Game;
 
 namespace KSULax.Controllers
 {
@@ -19,16 +21,40 @@ namespace KSULax.Controllers
     {
         private KSULaxEntities _entities;
         private DataBL _dataBL;
+        private GameBL _gameBL;
 
         public DataController()
         {
             _entities = new KSULaxEntities();
             _dataBL = new DataBL(_entities);
+            _gameBL = new GameBL(_entities);
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return null;
+            if (!id.HasValue || !(id >= 2009 && id <= KSU.maxPlayerSeason))
+            {
+                return RedirectToAction("Index", "data", new { id = KSU.maxGameSeason });
+            }
+
+            int year = id.Value;
+
+            // Get Dates
+            List<double> pollDates = _dataBL.GetRankingDates(year);
+            double maxDate = pollDates.Max();
+
+            var cacheService = new CachingService();
+
+            var cacheMaxDate = cacheService.Get<double>("chart" + year + "maxdate");
+
+            if (cacheMaxDate < maxDate)
+            {
+                createChart(year, maxDate, pollDates);
+            }
+
+            RankingModel ranking = new RankingModel(new GameListModel(_gameBL.GamesBySeason(year)), year, cacheService.Get<string>("chart" + year + "imagemap"));
+
+            return View(ranking);
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -39,27 +65,29 @@ namespace KSULax.Controllers
 
         //[OutputCache(Duration = 3600, VaryByParam = "id")]
         [ActionName("ranking-chart")]
-        public FileContentResult rankingChart(int id)
+        public FileContentResult rankingChart(int? id)
         {
-            if (!(id >= 2009 && id <= KSU.maxPlayerSeason))
+            if (!id.HasValue || !(id >= 2009 && id <= KSU.maxPlayerSeason))
             {
                 return null;
             }
 
+            int year = id.Value;
+
             // Get Dates
-            List<double> pollDates = _dataBL.GetRankingDates(id);
+            List<double> pollDates = _dataBL.GetRankingDates(year);
             double maxDate = pollDates.Max();
 
             var cacheService = new CachingService();
 
-            var cacheMaxDate = cacheService.Get<double>("chart" + id + "maxdate");
+            var cacheMaxDate = cacheService.Get<double>("chart" + year + "maxdate");
 
-            if (cacheMaxDate == null || cacheMaxDate < maxDate)
+            if (cacheMaxDate < maxDate)
             {
-                createChart(id, maxDate, pollDates);
+                createChart(year, maxDate, pollDates);
             }
             
-            return new FileContentResult(cacheService.Get<byte[]>("chart" + id + "array"), "image/png");
+            return new FileContentResult(cacheService.Get<byte[]>("chart" + year + "array"), "image/png");
         }
 
         /// <summary>
@@ -95,7 +123,7 @@ namespace KSULax.Controllers
             chart.ChartAreas["Default"].AxisY.IsReversed = true;
             chart.ChartAreas["Default"].AxisY.Minimum = 0;
             chart.ChartAreas["Default"].AxisY.Maximum = 25;
-
+            
             // Legend
             chart.Legends.Add("Default");
             chart.Legends["Default"].Docking = Docking.Bottom;
@@ -111,11 +139,11 @@ namespace KSULax.Controllers
             chart.Series["LaxPower"].ChartType = SeriesChartType.Line;
             chart.Series["LaxPower"].Color = Color.Red;
             chart.Series["LaxPower"].BorderWidth = 5;
-            chart.Series["LaxPower"].EmptyPointStyle.BorderWidth = 0;
-            chart.Series["LaxPower"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+            chart.Series["LaxPower"].EmptyPointStyle.BorderWidth = 5;
+            chart.Series["LaxPower"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
+            chart.Series["LaxPower"]["EmptyPointValue"] = "Average";
             chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower_32.png";
             chart.Series["LaxPower"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["LaxPower"].Url = rankingsLP[0].Url;
             chart.Series["LaxPower"].LegendUrl = rankingsLP[0].Url;
             chart.Series["LaxPower"].ToolTip = "#VALY";
             chart.Series["LaxPower"].IsXValueIndexed = true;
@@ -125,11 +153,11 @@ namespace KSULax.Controllers
             chart.Series["MCLA"].ChartType = SeriesChartType.Line;
             chart.Series["MCLA"].Color = Color.FromArgb(111, 162, 138);
             chart.Series["MCLA"].BorderWidth = 5;
-            chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 0;
+            chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 5;
             chart.Series["MCLA"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+            chart.Series["MCLA"]["EmptyPointValue"] = "Average";
             chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag_32.png";
             chart.Series["MCLA"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["MCLA"].Url = rankingsMCLA[0].Url;
             chart.Series["MCLA"].LegendUrl = rankingsMCLA[0].Url;
             chart.Series["MCLA"].ToolTip = "#VALY";
             chart.Series["MCLA"].IsXValueIndexed = true;
@@ -139,11 +167,11 @@ namespace KSULax.Controllers
             chart.Series["CollegeLax"].ChartType = SeriesChartType.Line;
             chart.Series["CollegeLax"].Color = Color.FromArgb(167, 152, 109);
             chart.Series["CollegeLax"].BorderWidth = 5;
-            chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 0;
-            chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+            chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 5;
+            chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
+            chart.Series["CollegeLax"]["EmptyPointValue"] = "Average";
             chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax_32.png";
             chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["CollegeLax"].Url = rankingsCL[0].Url;
             chart.Series["CollegeLax"].LegendUrl = rankingsCL[0].Url;
             chart.Series["CollegeLax"].ToolTip = "#VALY";
             chart.Series["CollegeLax"].IsXValueIndexed = true;
@@ -152,6 +180,27 @@ namespace KSULax.Controllers
             chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank");
             chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank");
             chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank");
+
+            int i = 0;
+            foreach (DataPoint dp in chart.Series["LaxPower"].Points)
+            {
+                dp.Url = rankingsLP[i].Url;
+                i++;
+            }
+            
+            i = 0;
+            foreach (DataPoint dp in chart.Series["CollegeLax"].Points)
+            {
+                dp.Url = rankingsCL[i].Url;
+                i++;
+            }
+
+            i = 0;
+            foreach (DataPoint dp in chart.Series["MCLA"].Points)
+            {
+                dp.Url = rankingsMCLA[i].Url;
+                i++;
+            }
 
             // Fill remaining data points with empty values
             // allows for .IsXValueIndexed = true on the series.
