@@ -1,5 +1,16 @@
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Data.NationalRankingModel>" %>
+
 <asp:Content ContentPlaceHolderID="titleContent" runat="server">National Ranking</asp:Content>
+
+<asp:Content ContentPlaceHolderID="Header" runat="server">
+<meta property="og:title" content="<%= Model.Year %> National Ranking"/>
+<meta property="og:url" content="<%= Html.Encode(Request.Url.ToString())%>"/>
+<meta property="og:description" name="description" content="Chart showing the national ranking in <%= Model.Year %> for the Kennesaw State Owls. Rankings tracked are CollegeLax, MCLA, and LaxPower."/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="http://ksulax.com/national-ranking/ranking-chart/<%= Model.Year %>"/>
+<% Html.RenderPartial("FacebookGraph");%>
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.Games); %></div>
 <div id="mainCol">
