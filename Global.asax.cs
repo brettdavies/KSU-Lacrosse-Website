@@ -37,9 +37,16 @@ namespace KSULax
             );
 
             routes.MapRoute(
-                "Data",
-                "data/{id}",
-                new { controller = "data", action = "Index", id = "" }
+                "NationalRanking",
+                "national-ranking/{id}",
+                new { controller = "nationalranking", action = "national-ranking", id = "" },
+                new { id = @"\d+" }
+            );
+
+            routes.MapRoute(
+                "NationalRanking2",
+                "national-ranking/{action}/{id}",
+                new { controller = "nationalranking", action = "Index", id = "" }
             );
 
             routes.MapRoute(
