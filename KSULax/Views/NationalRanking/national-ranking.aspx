@@ -1,4 +1,4 @@
-<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Data.RankingModel>" %>
+<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<KSULax.Models.Data.NationalRankingModel>" %>
 <asp:Content ContentPlaceHolderID="titleContent" runat="server">National Ranking</asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.Games); %></div>

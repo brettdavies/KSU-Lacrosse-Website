@@ -8,9 +8,9 @@ using KSULax.Models.Game;
 
 namespace KSULax.Models.Data
 {
-    public class RankingModel
+    public class NationalRankingModel
     {
-        public RankingModel()
+        public NationalRankingModel()
         {
             Games = null;
             Year = int.MinValue;
@@ -18,11 +18,11 @@ namespace KSULax.Models.Data
             ChartMap = string.Empty;
         }
 
-        public RankingModel(GameListModel GameList, int year, string chartmap)
+        public NationalRankingModel(GameListModel GameList, int year, string chartmap)
         {
             Games = GameList;
             Year = year;
-            ChartPath = "/data/ranking-chart/" + year;
+            ChartPath = "/national-ranking/ranking-chart/" + year;
             ChartMap = chartmap;
         }
 

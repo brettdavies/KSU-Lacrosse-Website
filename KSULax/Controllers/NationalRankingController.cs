@@ -17,24 +17,36 @@ using KSULax.Models.Game;
 
 namespace KSULax.Controllers
 {
-    public class DataController : Controller
+    public class NationalRankingController : Controller
     {
         private KSULaxEntities _entities;
         private DataBL _dataBL;
         private GameBL _gameBL;
 
-        public DataController()
+        public NationalRankingController()
         {
             _entities = new KSULaxEntities();
             _dataBL = new DataBL(_entities);
             _gameBL = new GameBL(_entities);
         }
 
-        public ActionResult Index(int? id)
+        public ActionResult Index()
+        {
+            return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxGameSeason });
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult GetRanking()
+        {
+            return this.Json(_dataBL.GetRanking(), JsonRequestBehavior.AllowGet);
+        }
+
+        [ActionName("national-ranking")]
+        public ActionResult nationalRanking(int? id)
         {
             if (!id.HasValue || !(id >= 2009 && id <= KSU.maxPlayerSeason))
             {
-                return RedirectToAction("Index", "data", new { id = KSU.maxGameSeason });
+                return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxGameSeason });
             }
 
             int year = id.Value;
@@ -52,15 +64,9 @@ namespace KSULax.Controllers
                 createChart(year, maxDate, pollDates);
             }
 
-            RankingModel ranking = new RankingModel(new GameListModel(_gameBL.GamesBySeason(year)), year, cacheService.Get<string>("chart" + year + "imagemap"));
+            NationalRankingModel ranking = new NationalRankingModel(new GameListModel(_gameBL.GamesBySeason(year)), year, cacheService.Get<string>("chart" + year + "imagemap"));
 
             return View(ranking);
-        }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public JsonResult GetRanking()
-        {
-            return this.Json(_dataBL.GetRanking(), JsonRequestBehavior.AllowGet);
         }
 
         //[OutputCache(Duration = 3600, VaryByParam = "id")]
