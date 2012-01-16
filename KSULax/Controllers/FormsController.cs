@@ -40,7 +40,7 @@ namespace KSULax.Controllers
             return err;
         }
 
-        public ActionResult Index() { return RedirectToAction("winter-skills-clinic", "forms", null); }
+        public ActionResult Index() { return RedirectToAction("skills-clinic", "forms", null); }
 
         [ActionName("contact-us")]
         [HttpGet]
@@ -163,7 +163,7 @@ namespace KSULax.Controllers
             }
         }
 
-        [ActionName("winter-skills-clinic")]
-        public ActionResult WinterSkillsClinic() { return View(); }
+        [ActionName("skills-clinic")]
+        public ActionResult SkillsClinic() { return View(); }
     }
 }
