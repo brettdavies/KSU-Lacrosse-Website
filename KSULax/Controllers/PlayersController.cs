@@ -46,7 +46,11 @@ namespace KSULax.Controllers
                     data.Players = GetPlayerModelLst(_playerBL.PlayersBySeason(player_id));
                     data.Games = new GameListModel(_gameBL.GamesBySeason(player_id));
 
-                    if (data.Players.Count.Equals(0))
+                    if (data.Players.Count.Equals(0) && player_id.Equals(KSU.maxGameSeason))
+                    {
+                        throw new Exception("KSULAX||Player profiles for " + player_id + " coming soon!");
+                    }
+                    else if (data.Players.Count.Equals(0))
                     {
                         throw new Exception("KSULAX||we can't find the roster you requested");
                     }
