@@ -28,6 +28,13 @@
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Forms", "Index", null, null, new { title = "Forms" })%> > <%= Html.ActionLink("Contact Us", "contact-us", null, new { title = "Contact Us" })%></div>
 <h1>Contact Us</h1>
 <p>Kennesaw State University Lacrosse extends the opportunity for upcoming freshmen or transfer students enrolling at KSU to join the team. All players must be students of Kennesaw State University (no exceptions). If you are interested in participating in this program, please fill out the form below to receive more information. If you are not a student of the university, but would like to attend, please go to <a href="http://www.kennesaw.edu/admissions/ugadm.shtml" title="KSU Admissions">admissions</a> to apply.</p>
+<br/>
+<h3>Call Us</h3>
+<ul>
+<li>Casey Newton (678-333-3766)</li>
+<li>Bradley Jones (770-856-2557)</li>
+</ul>
+<h3>Email Us</h3>
 <% Html.EnableClientValidation(); %>
 <% using (Html.BeginForm("contact-us", "forms", FormMethod.Post, new { id = "email_form" })) {%>
 <%= Html.ValidationSummary(true) %>
