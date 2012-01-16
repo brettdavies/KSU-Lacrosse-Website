@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\NationalRankingController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Helpers\CachingService.cs" />
     <Compile Include="Models\Game\GameScheduleModel.cs" />
@@ -113,9 +113,14 @@
     <Compile Include="Models\Forms\FormsModel.cs" />
     <Compile Include="Models\News\StoryModel.cs" />
     <Compile Include="Models\Player\PlayerModel.cs" />
+    <Compile Include="Models\NationalRanking\NationalRankingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic.png" />
     <Content Include="content\images\polls\CollegeLax_24.png" />
     <Content Include="content\images\polls\CollegeLax_32.png" />
     <Content Include="content\images\polls\CollegeLax_40.png" />
@@ -129,12 +134,24 @@
     <Content Include="content\images\teams\berry_32.png" />
     <Content Include="content\images\teams\coast_gaurd_24.png" />
     <Content Include="content\images\teams\coast_gaurd_32.png" />
+    <Content Include="content\images\teams\dayton_24.png" />
+    <Content Include="content\images\teams\dayton_32.png" />
+    <Content Include="content\images\teams\georgia_tech_24.png" />
+    <Content Include="content\images\teams\georgia_tech_32.png" />
+    <Content Include="content\images\teams\indiana_tech_24.png" />
+    <Content Include="content\images\teams\indiana_tech_32.png" />
+    <Content Include="content\images\teams\northern_colorado_24.png" />
+    <Content Include="content\images\teams\northern_colorado_32.png" />
+    <Content Include="content\images\teams\north_dakota_state_24.png" />
+    <Content Include="content\images\teams\north_dakota_state_32.png" />
     <Content Include="content\images\teams\stonehill_24.png" />
     <Content Include="content\images\teams\stonehill_32.png" />
     <Content Include="content\images\teams\st_marys_24.png" />
     <Content Include="content\images\teams\st_marys_32.png" />
     <Content Include="content\images\teams\valdosta_24.png" />
     <Content Include="content\images\teams\valdosta_32.png" />
+    <Content Include="content\images\teams\washington_st_louis_24.png" />
+    <Content Include="content\images\teams\washington_st_louis_32.png" />
     <Content Include="content\scripts\jquery.gmap-1.1.0-min.js" />
     <Content Include="content\scripts\MicrosoftAjax.debug.js" />
     <Content Include="content\scripts\MicrosoftAjax.js" />
@@ -145,7 +162,9 @@
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.dll" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.pdb" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.XML" />
-    <Content Include="Views\Forms\Winter-Skills-Clinic.aspx" />
+    <Content Include="humans.txt" />
+    <Content Include="Views\NationalRanking\national-ranking.aspx" />
+    <Content Include="Views\Forms\Skills-Clinic.aspx" />
     <Content Include="Views\Forms\Player-Registration.aspx" />
     <Content Include="Views\About\Index.aspx" />
     <Content Include="Views\About\Management.aspx" />
