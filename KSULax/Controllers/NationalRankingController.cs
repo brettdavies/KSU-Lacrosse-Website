@@ -109,6 +109,10 @@ namespace KSULax.Controllers
             List<TeamRankingBE> rankingsCL = _dataBL.GetRanking(2, id);
             List<TeamRankingBE> rankingsLP = _dataBL.GetRanking(3, id);
 
+            var mclaExist = rankingsMCLA.Count > 0 ? 1 : 0;
+            var clExist = rankingsCL.Count > 0 ? 1 : 0;
+            var lpExist = rankingsLP.Count > 0 ? 1 : 0;
+            
             var chart = new Chart();
 
             chart.RenderType = RenderType.ImageTag;
@@ -141,101 +145,138 @@ namespace KSULax.Controllers
             chart.Legends["Default"].Alignment = StringAlignment.Center;
 
             // LaxPower Series
-            chart.Series.Add("LaxPower");
-            chart.Series["LaxPower"].ChartType = SeriesChartType.Line;
-            chart.Series["LaxPower"].Color = Color.Red;
-            chart.Series["LaxPower"].BorderWidth = 5;
-            chart.Series["LaxPower"].EmptyPointStyle.BorderWidth = 5;
-            chart.Series["LaxPower"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
-            chart.Series["LaxPower"]["EmptyPointValue"] = "Average";
-            chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower_32.png";
-            chart.Series["LaxPower"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["LaxPower"].LegendUrl = rankingsLP[0].Url;
-            chart.Series["LaxPower"].ToolTip = "#VALY";
-            chart.Series["LaxPower"].IsXValueIndexed = true;
+            if (lpExist.Equals(1))
+            {
+                chart.Series.Add("LaxPower");
+                chart.Series["LaxPower"].ChartType = SeriesChartType.Line;
+                chart.Series["LaxPower"].Color = Color.Red;
+                chart.Series["LaxPower"].BorderWidth = 5;
+                chart.Series["LaxPower"].EmptyPointStyle.BorderWidth = 5;
+                chart.Series["LaxPower"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
+                chart.Series["LaxPower"]["EmptyPointValue"] = "Average";
+                chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower_32.png";
+                chart.Series["LaxPower"].MarkerImageTransparentColor = Color.Empty;
+                chart.Series["LaxPower"].LegendUrl = rankingsLP[0].Url;
+                chart.Series["LaxPower"].ToolTip = "#VALY";
+                chart.Series["LaxPower"].IsXValueIndexed = true;
+            }
 
             // MCLA Series
-            chart.Series.Add("MCLA");
-            chart.Series["MCLA"].ChartType = SeriesChartType.Line;
-            chart.Series["MCLA"].Color = Color.FromArgb(111, 162, 138);
-            chart.Series["MCLA"].BorderWidth = 5;
-            chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 5;
-            chart.Series["MCLA"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
-            chart.Series["MCLA"]["EmptyPointValue"] = "Average";
-            chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag_32.png";
-            chart.Series["MCLA"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["MCLA"].LegendUrl = rankingsMCLA[0].Url;
-            chart.Series["MCLA"].ToolTip = "#VALY";
-            chart.Series["MCLA"].IsXValueIndexed = true;
+            if (mclaExist.Equals(1))
+            {
+                chart.Series.Add("MCLA");
+                chart.Series["MCLA"].ChartType = SeriesChartType.Line;
+                chart.Series["MCLA"].Color = Color.FromArgb(111, 162, 138);
+                chart.Series["MCLA"].BorderWidth = 5;
+                chart.Series["MCLA"].EmptyPointStyle.BorderWidth = 5;
+                chart.Series["MCLA"].EmptyPointStyle.MarkerStyle = MarkerStyle.None;
+                chart.Series["MCLA"]["EmptyPointValue"] = "Average";
+                chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag_32.png";
+                chart.Series["MCLA"].MarkerImageTransparentColor = Color.Empty;
+                chart.Series["MCLA"].LegendUrl = rankingsMCLA[0].Url;
+                chart.Series["MCLA"].ToolTip = "#VALY";
+                chart.Series["MCLA"].IsXValueIndexed = true;
+            }
 
             // CollegeLax Series
-            chart.Series.Add("CollegeLax");
-            chart.Series["CollegeLax"].ChartType = SeriesChartType.Line;
-            chart.Series["CollegeLax"].Color = Color.FromArgb(167, 152, 109);
-            chart.Series["CollegeLax"].BorderWidth = 5;
-            chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 5;
-            chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
-            chart.Series["CollegeLax"]["EmptyPointValue"] = "Average";
-            chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax_32.png";
-            chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.Empty;
-            chart.Series["CollegeLax"].LegendUrl = rankingsCL[0].Url;
-            chart.Series["CollegeLax"].ToolTip = "#VALY";
-            chart.Series["CollegeLax"].IsXValueIndexed = true;
+            if (clExist.Equals(1))
+            {
+                chart.Series.Add("CollegeLax");
+                chart.Series["CollegeLax"].ChartType = SeriesChartType.Line;
+                chart.Series["CollegeLax"].Color = Color.FromArgb(167, 152, 109);
+                chart.Series["CollegeLax"].BorderWidth = 5;
+                chart.Series["CollegeLax"].EmptyPointStyle.BorderWidth = 5;
+                chart.Series["CollegeLax"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
+                chart.Series["CollegeLax"]["EmptyPointValue"] = "Average";
+                chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax_32.png";
+                chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.Empty;
+                chart.Series["CollegeLax"].LegendUrl = rankingsCL[0].Url;
+                chart.Series["CollegeLax"].ToolTip = "#VALY";
+                chart.Series["CollegeLax"].IsXValueIndexed = true;
+            }
 
             // Populate All Data Points
-            chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank");
-            chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank");
-            chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank");
+            if (mclaExist.Equals(1)) { chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank"); }
+            if (clExist.Equals(1)) { chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank"); }
+            if (lpExist.Equals(1)) { chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank"); }
 
             int i = 0;
-            foreach (DataPoint dp in chart.Series["LaxPower"].Points)
+            if (lpExist.Equals(1))
             {
-                dp.Url = rankingsLP[i].Url;
-                i++;
+                foreach (DataPoint dp in chart.Series["LaxPower"].Points)
+                {
+                    dp.Url = rankingsLP[i].Url;
+                    i++;
+                }
             }
             
-            i = 0;
-            foreach (DataPoint dp in chart.Series["CollegeLax"].Points)
+            if (clExist.Equals(1))
             {
-                dp.Url = rankingsCL[i].Url;
-                i++;
+                i = 0;
+                foreach (DataPoint dp in chart.Series["CollegeLax"].Points)
+                {
+                    dp.Url = rankingsCL[i].Url;
+                    i++;
+                }
             }
 
-            i = 0;
-            foreach (DataPoint dp in chart.Series["MCLA"].Points)
+            if (mclaExist.Equals(1))
             {
-                dp.Url = rankingsMCLA[i].Url;
-                i++;
+                i = 0;
+                foreach (DataPoint dp in chart.Series["MCLA"].Points)
+                {
+                    dp.Url = rankingsMCLA[i].Url;
+                    i++;
+                }
             }
 
             // Fill remaining data points with empty values
             // allows for .IsXValueIndexed = true on the series.
             foreach (double pollDate in pollDates)
             {
-                var data = chart.Series["MCLA"].Points.Count(dp => dp.XValue == pollDate);
-                if (data == 0)
+                var data = (int)1;
+                if (mclaExist.Equals(1))
                 {
-                    chart.Series["MCLA"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    data = chart.Series["MCLA"].Points.Count(dp => dp.XValue == pollDate);
+                    if (data == 0)
+                    {
+                        chart.Series["MCLA"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    }
                 }
 
-                data = chart.Series["CollegeLax"].Points.Count(dp => dp.XValue == pollDate);
-                if (data == 0)
+                if (clExist.Equals(1))
                 {
-                    chart.Series["CollegeLax"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    data = chart.Series["CollegeLax"].Points.Count(dp => dp.XValue == pollDate);
+                    if (data == 0)
+                    {
+                        chart.Series["CollegeLax"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    }
                 }
 
-                data = chart.Series["LaxPower"].Points.Count(dp => dp.XValue == pollDate);
-                if (data == 0)
+                if (lpExist.Equals(1))
                 {
-                    chart.Series["LaxPower"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    data = chart.Series["LaxPower"].Points.Count(dp => dp.XValue == pollDate);
+                    if (data == 0)
+                    {
+                        chart.Series["LaxPower"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    }
                 }
             }
 
             // Sort data points by X value
             // allows for .IsXValueIndexed = true on the series.
-            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "MCLA");
-            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "CollegeLax");
-            chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "LaxPower");
+            if (mclaExist.Equals(1))
+            {
+                chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "MCLA");
+            }
+            if (clExist.Equals(1))
+            {
+                chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "CollegeLax");
+            }
+            if (lpExist.Equals(1))
+            {
+                chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "LaxPower");
+            }
 
             var imageStream = new MemoryStream();
 
