@@ -157,7 +157,7 @@ namespace KSULax.Controllers
                 chart.Series["LaxPower"].MarkerImage = @"~/content/images/polls/Laxpower_32.png";
                 chart.Series["LaxPower"].MarkerImageTransparentColor = Color.Empty;
                 chart.Series["LaxPower"].LegendUrl = rankingsLP[rankingsLP.Count-1].Url;
-                chart.Series["LaxPower"].ToolTip = "#VALY";
+                chart.Series["LaxPower"].ToolTip = "LaxPower: ##VALY";
                 chart.Series["LaxPower"].IsXValueIndexed = true;
             }
 
@@ -174,7 +174,7 @@ namespace KSULax.Controllers
                 chart.Series["MCLA"].MarkerImage = @"~/content/images/polls/MCLAmag_32.png";
                 chart.Series["MCLA"].MarkerImageTransparentColor = Color.Empty;
                 chart.Series["MCLA"].LegendUrl = rankingsMCLA[rankingsMCLA.Count-1].Url;
-                chart.Series["MCLA"].ToolTip = "#VALY";
+                chart.Series["MCLA"].ToolTip = "MCLA: ##VALY";
                 chart.Series["MCLA"].IsXValueIndexed = true;
             }
 
@@ -191,7 +191,7 @@ namespace KSULax.Controllers
                 chart.Series["CollegeLax"].MarkerImage = @"~/content/images/polls/CollegeLax_32.png";
                 chart.Series["CollegeLax"].MarkerImageTransparentColor = Color.Empty;
                 chart.Series["CollegeLax"].LegendUrl = rankingsCL[rankingsCL.Count - 1].Url;
-                chart.Series["CollegeLax"].ToolTip = "#VALY";
+                chart.Series["CollegeLax"].ToolTip = "CollegeLax: ##VALY";
                 chart.Series["CollegeLax"].IsXValueIndexed = true;
             }
 
