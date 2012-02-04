@@ -2,7 +2,7 @@
     var url = '/national-ranking/getranking';
     var begin = '<table style="width:100%;"><tbody><tr>';
     var begin1 = '<td style="text-align:center;"><a href="http://mclamag.com/top23/" title="MCLA Magazine Poll"><img src="../../content/images/polls/MCLAmag.png" height="48" width="55" alt="MCLA Magazine Poll" title="MCLA Magazine Poll" style="border:0px;" /></a></td>';
-    var begin2 = '<td style="text-align:center;"><a href="http://www.collegelax.us/polls.php" title="CollegeLax Poll"><img src="../../content/images/polls/CollegeLax.png" height="48" width="44" alt="CollegeLax Poll" title="CollegeLax Poll" style="border:0px;" /></a></td>';
+    var begin2 = '<td style="text-align:center;"><img src="../../content/images/polls/CollegeLax.png" height="48" width="44" alt="CollegeLax Poll" title="CollegeLax Poll" style="border:0px;" /></td>';
     var begin3 = '<td style="text-align:center;"><a href="http://www.laxpower.com/update12/binmen/rating06.php" title="LaxPower Poll"><img src="../../content/images/polls/Laxpower.png" height="48" width="47" alt="LaxPower Poll" title="LaxPower Poll" style="border:0px;" /></a></td>';
     var beginend = '</tr><tr style="text-align:center;">'
     var pole1 = '<td><a href="#">-</a></td>';
