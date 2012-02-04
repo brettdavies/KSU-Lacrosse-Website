@@ -34,6 +34,5 @@
 <h2><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h2>
 <a href="http://mcla.us/teams/kennesaw_state/<%= Model.SeasonID %>/schedule.html">MCLA</a>
 <a href="http://www.laxpower.com/update<%=Model.SeasonID.ToString().Substring(2,2)%>/binmen/XKNSXX.PHP">LaxPower</a>
-<a href="http://www.collegelax.us/team.php?team=kennesaw_state">CollegeLax</a>
 </div>
 </asp:Content>
