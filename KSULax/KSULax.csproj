@@ -140,6 +140,8 @@
     <Content Include="content\images\teams\coast_gaurd_32.png" />
     <Content Include="content\images\teams\dayton_24.png" />
     <Content Include="content\images\teams\dayton_32.png" />
+    <Content Include="content\images\teams\emmanuel_24.png" />
+    <Content Include="content\images\teams\emmanuel_32.png" />
     <Content Include="content\images\teams\georgia_tech_24.png" />
     <Content Include="content\images\teams\georgia_tech_32.png" />
     <Content Include="content\images\teams\indiana_tech_24.png" />
