@@ -47,11 +47,11 @@ function displayGames() {
 
     $(selector.join(', ')).show();
 
+    //$('#gamesBoxTable tr.fall').hide();
+
     if ($('#gamesBoxTable tr:visible').size() == 0) {
         $('#gamesBoxTable tr.nogame').show();
     }
-
-    $('#gamesBoxTable tr.fall').hide();
 };
 
 function gameSelector() {

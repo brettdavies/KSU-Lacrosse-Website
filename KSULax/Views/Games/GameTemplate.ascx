@@ -15,7 +15,7 @@
 </thead>
 <tbody>
 <% foreach (var game in Model) { %>
-<tr class="game_<%= game.Game.ID %> <%= game.Game.HomeOrAway %> <%= game.Game.Type %> <%= game.Game.FallOrSpring %>" style="<%= (game.Game.SeasonID > game.Game.Datetime.Year) ? "display:none;" : "" %>">
+<tr class="game_<%= game.Game.ID %> <%= game.Game.HomeOrAway %> <%= game.Game.Type %> <%= game.Game.FallOrSpring %>" <%--style="<%= (game.Game.SeasonID > game.Game.Datetime.Year) ? "display:none;" : "" %>"--%>>
 <td class="nowrap"><%= game.Game.DateDay %></td>
 <td class="nowrap"><%= game.Game.DateSchedule%></td>
 <td class="nowrap"><%= game.Game.TimeSchedule%></td>
