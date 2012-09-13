@@ -18,6 +18,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PublishDatabases>true</PublishDatabases>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Elmah, Version=1.1.11517.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -130,6 +132,8 @@
     <Content Include="content\images\polls\MCLAmag_24.png" />
     <Content Include="content\images\polls\MCLAmag_32.png" />
     <Content Include="content\images\polls\MCLAmag_40.png" />
+    <Content Include="content\images\teams\appalachian_state_24.png" />
+    <Content Include="content\images\teams\appalachian_state_32.png" />
     <Content Include="content\images\teams\berry_24.png" />
     <Content Include="content\images\teams\berry_32.png" />
     <Content Include="content\images\teams\coast_gaurd_24.png" />
@@ -150,8 +154,12 @@
     <Content Include="content\images\teams\st_marys_32.png" />
     <Content Include="content\images\teams\valdosta_24.png" />
     <Content Include="content\images\teams\valdosta_32.png" />
+    <Content Include="content\images\teams\virginia_tech_24.png" />
+    <Content Include="content\images\teams\virginia_tech_32.png" />
     <Content Include="content\images\teams\washington_st_louis_24.png" />
     <Content Include="content\images\teams\washington_st_louis_32.png" />
+    <Content Include="content\images\teams\wofford_24.png" />
+    <Content Include="content\images\teams\wofford_32.png" />
     <Content Include="content\scripts\jquery.gmap-1.1.0-min.js" />
     <Content Include="content\scripts\MicrosoftAjax.debug.js" />
     <Content Include="content\scripts\MicrosoftAjax.js" />
