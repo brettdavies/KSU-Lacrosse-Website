@@ -30,10 +30,35 @@
 <p>Kennesaw State University Lacrosse extends the opportunity for upcoming freshmen or transfer students enrolling at KSU to join the team. All players must be students of Kennesaw State University (no exceptions). If you are interested in participating in this program, please fill out the form below to receive more information. If you are not a student of the university, but would like to attend, please go to <a href="http://www.kennesaw.edu/admissions/ugadm.shtml" title="KSU Admissions">admissions</a> to apply.</p>
 <br/>
 <h3>Call Us</h3>
-<ul>
-<li>Casey Newton (678-333-3766)</li>
-<li>Bradley Jones (770-856-2557)</li>
-</ul>
+<table>
+<tr>
+<td>
+President: Casey Newton<br />
+678-333-3766<br />
+case2931@comcast.net<br /><br />
+</td>
+<td></td>
+<td>
+Vice President: Brad Jones<br />
+770-856-2557<br />
+bjones8987@hotmail.com<br /><br />
+</td>
+</tr>
+
+<tr>
+<td>
+Secretary: Tom Mudrak<br />
+706-399-7218<br />
+bmudrak@students.kennesaw.edu<br /><br />
+</td>
+<td></td>
+<td>
+Coach: Anthony Grizanti<br />
+315-727-9044<br />
+anthony.grizanti@gmail.com<br /><br />
+</td>
+</tr>
+</table>
 <h3>Email Us</h3>
 <% Html.EnableClientValidation(); %>
 <% using (Html.BeginForm("contact-us", "forms", FormMethod.Post, new { id = "email_form" })) {%>
