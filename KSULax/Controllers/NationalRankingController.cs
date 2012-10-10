@@ -32,7 +32,7 @@ namespace KSULax.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxGameSeason });
+            return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxPlayerSeason });
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -46,7 +46,7 @@ namespace KSULax.Controllers
         {
             if (!id.HasValue || !(id >= 2009 && id <= KSU.maxPlayerSeason))
             {
-                return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxGameSeason });
+                return RedirectToAction("national-ranking", "nationalranking", new { id = KSU.maxPlayerSeason });
             }
 
             int year = id.Value;
