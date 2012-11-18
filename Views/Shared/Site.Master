@@ -1,6 +1,8 @@
 <%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %><%@ Import Namespace="SquishIt.Framework" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head runat="server">
+<script type="text/javascript" src="http://m.ksulax.com/mdotredir.js"></script>
+<script type="text/javascript">mdotredir('http://m.ksulax.com')</script>
 <title><asp:Literal runat="server">KSU Lax : </asp:Literal><asp:ContentPlaceHolder ID="titleContent" runat="server" /></title>
 <% if (false) { %><script type="text/javascript" src="../../content/scripts/jquery-1.4.1.js"></script><% } %>
 <% if (false) { %><link href="../../content/css/main.css" rel="Stylesheet" type="text/css" /><% } %>
