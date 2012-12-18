@@ -146,12 +146,16 @@
     <Content Include="content\images\teams\georgia_tech_32.png" />
     <Content Include="content\images\teams\indiana_tech_24.png" />
     <Content Include="content\images\teams\indiana_tech_32.png" />
+    <Content Include="content\images\teams\missouri_baptist_24.png" />
+    <Content Include="content\images\teams\missouri_baptist_32.png" />
     <Content Include="content\images\teams\northern_colorado_24.png" />
     <Content Include="content\images\teams\northern_colorado_32.png" />
     <Content Include="content\images\teams\north_dakota_state_24.png" />
     <Content Include="content\images\teams\north_dakota_state_32.png" />
     <Content Include="content\images\teams\stonehill_24.png" />
     <Content Include="content\images\teams\stonehill_32.png" />
+    <Content Include="content\images\teams\st_andrews_24.png" />
+    <Content Include="content\images\teams\st_andrews_32.png" />
     <Content Include="content\images\teams\st_marys_24.png" />
     <Content Include="content\images\teams\st_marys_32.png" />
     <Content Include="content\images\teams\valdosta_24.png" />
