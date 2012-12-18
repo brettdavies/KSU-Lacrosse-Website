@@ -6,7 +6,7 @@
 <div class="boxContent" id="gamesBox">
 <table style="width:100%;" id="gamesBoxTable">
 <% foreach (var game in Model.Games) { %>
-<tr class="<%= game.HomeOrAway %> <%= game.Type %> <%= game.FallOrSpring %>" <%--style="<%= (game.SeasonID > game.Datetime.Year) ? "display:none;" : "" %>"--%>>
+<tr class="<%= game.HomeOrAway %> <%= game.Type %> <%= game.FallOrSpring %>" style="<%= (game.SeasonID > game.Datetime.Year) ? "display:none;" : "" %>">
 <td style="width:28%;"><div style="text-align:center;"><img style="vertical-align:middle;" src="../../content/images/teams/
 <%= Html.Encode(game.Opponent.Slug)%>_32.png" alt="<%= Html.Encode(game.Opponent.Abr) %>" title="<%= Html.Encode(game.Opponent.Abr) %>" width="32" height="32" /></div></td>
 <td style="width:23%;"><%= Html.Encode(game.Opponent.Abr)%></td>
