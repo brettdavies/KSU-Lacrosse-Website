@@ -2,6 +2,11 @@
 <asp:Content ContentPlaceHolderID="titleContentAbout" runat="server">Media Guides</asp:Content>
 <asp:Content ContentPlaceHolderID="AboutContent" runat="server">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("About", "Index", "about", null, new { title = "About" })%> > <%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "Media Guides" })%></div>
+<h1>Printable Schedules</h1>
+<ul class="mg">
+<li><asp:HyperLink NavigateUrl="~/content/pdf/KSU-Lax-2013-Schedule.pdf" title="2013 Schedule" Height="225" Width="300" runat="server"><%= Html.Image("", "~/content/images/KSU-Lax-2013-Schedule.png", "2013 Schedule", new { height = 225, width = 300, title = "2013 Schedule", style = "border-width:0"})%></asp:HyperLink><br />2013 Schedule</li>
+</ul>
+<br style="clear:both;"/>
 <h1>Media Guides</h1>
 <p>Beginning in 2007, the Kennesaw State Lacrosse Club has published an annual media guide. Click on a cover below to read the media guide.</p><br />
 <ul class="mg">
