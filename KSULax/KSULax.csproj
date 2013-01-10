@@ -122,6 +122,8 @@
     <Content Include="apple-touch-icon-114x114.png" />
     <Content Include="apple-touch-icon-57x57.png" />
     <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="content\images\KSU-Lax-2013-Schedule.png" />
+    <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic-2013.png" />
     <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic.png" />
     <Content Include="content\images\polls\CollegeLax_24.png" />
     <Content Include="content\images\polls\CollegeLax_32.png" />
@@ -144,6 +146,8 @@
     <Content Include="content\images\teams\emmanuel_32.png" />
     <Content Include="content\images\teams\georgia_tech_24.png" />
     <Content Include="content\images\teams\georgia_tech_32.png" />
+    <Content Include="content\images\teams\grove_city_24.png" />
+    <Content Include="content\images\teams\grove_city_32.png" />
     <Content Include="content\images\teams\indiana_tech_24.png" />
     <Content Include="content\images\teams\indiana_tech_32.png" />
     <Content Include="content\images\teams\missouri_baptist_24.png" />
@@ -152,6 +156,8 @@
     <Content Include="content\images\teams\northern_colorado_32.png" />
     <Content Include="content\images\teams\north_dakota_state_24.png" />
     <Content Include="content\images\teams\north_dakota_state_32.png" />
+    <Content Include="content\images\teams\south_florida_24.png" />
+    <Content Include="content\images\teams\south_florida_32.png" />
     <Content Include="content\images\teams\stonehill_24.png" />
     <Content Include="content\images\teams\stonehill_32.png" />
     <Content Include="content\images\teams\st_andrews_24.png" />
@@ -173,6 +179,7 @@
     <Content Include="content\scripts\MicrosoftMvcValidation.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="content\pdf\KSU-Lax-2013-Schedule.pdf" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.dll" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.pdb" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.XML" />
