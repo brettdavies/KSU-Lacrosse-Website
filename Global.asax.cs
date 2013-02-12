@@ -23,6 +23,7 @@ namespace KSULax
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("{resource}.png/{*pathInfo}");
 
             routes.MapRoute(
                 "Games",
