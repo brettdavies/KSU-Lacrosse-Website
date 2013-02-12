@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-144x144.png" />
     <Content Include="apple-touch-icon-57x57.png" />
     <Content Include="apple-touch-icon-72x72.png" />
     <Content Include="content\images\KSU-Lax-2013-Schedule.png" />
