@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
-using KSULax.Models;
 using System.Net.Mail;
+using KSULax.Models;
+using Elmah;
+
 
 namespace KSULax.Controllers
 {
@@ -23,7 +25,7 @@ namespace KSULax.Controllers
             client.Host = "smtp.gmail.com";
             client.Port = 587;
             client.UseDefaultCredentials = false;
-            client.Credentials = new System.Net.NetworkCredential("ksulaxwebsite@gmail.com", "ksuowlslax");
+            client.Credentials = new System.Net.NetworkCredential("ksulaxwebsite@gmail.com", "puicowvykumykxlj");
 
             return client;
         }
@@ -38,6 +40,16 @@ namespace KSULax.Controllers
             err.Title = "Email Error";
             err.Content = "The website is having an issue with sending email at this time. Sorry for the inconvenience.";
             return err;
+        }
+
+        /// <summary>
+        /// Log error in ELMAH
+        /// </summary>
+        /// <returns></returns>
+        private void logELMAH(Exception e)
+        {
+            var context = System.Web.HttpContext.Current;
+            ErrorLog.GetDefault(context).Log(new Error(e, context));
         }
 
         public ActionResult Index() { return RedirectToAction("skills-clinic", "forms", null); }
@@ -88,10 +100,12 @@ namespace KSULax.Controllers
                     return View("Message", rcpt);
                 }
 
-                catch (Exception)
+                catch (Exception e)
                 {
+                    //Log in ELMAH
+                    logELMAH(e);
+
                     //Show an error
-                    MessageModel err = new MessageModel();
                     return View("Message", errorMessage());
                 }
             }
@@ -155,8 +169,11 @@ namespace KSULax.Controllers
                     return View("Message", rcpt);
                 }
 
-                catch (Exception)
+                catch (Exception e)
                 {
+                    //Log in ELMAH
+                    logELMAH(e);
+
                     //Show an error
                     return View("Message", errorMessage());
                 }
