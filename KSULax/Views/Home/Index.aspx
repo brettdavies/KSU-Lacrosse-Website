@@ -23,5 +23,5 @@
 <div class="homeNews"><%= Html.ActionLink("News & Updates", "Index", "News", null, new { title = "News & Updates" })%></div>
 <% Html.RenderPartial("NewsTemplate", Model.Stories); %>
 </div>
-<div id="rightCol"><% Html.RenderPartial("SponsorsTemplate"); %><% Html.RenderPartial("RankingTemplate"); %><% Html.RenderPartial("FacebookTemplate"); %><% Html.RenderPartial("TwitterTemplate"); %></div>
+<div id="rightCol"><% Html.RenderPartial("RankingTemplate"); %><% Html.RenderPartial("FacebookTemplate"); %><% Html.RenderPartial("TwitterTemplate"); %></div>
 </asp:Content>
