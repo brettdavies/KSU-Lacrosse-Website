@@ -14,7 +14,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-<div id="leftCol"><% Html.RenderPartial("SponsorsTemplate"); %></div>
+<div id="leftCol"><% Html.RenderPartial("DonationTemplate"); %></div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("News", "Index", new { year = string.Empty, month = string.Empty, day = string.Empty, url_title = string.Empty }, new { title = "News" })%> > <%= Html.ActionLink(Html.Encode(Model.Title), "Index", new { year = Model.Date.Year, month = Model.Date.Month, day = Model.Date.Day, url_title = Html.Encode(Model.TitlePath) }, new { title = Html.Encode(Model.Title) })%></div>
 <h1><%= Html.Encode(Model.Title)%></h1>

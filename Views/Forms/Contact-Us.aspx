@@ -22,7 +22,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
-<% Html.RenderPartial("SponsorsTemplate"); %>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Forms", "Index", null, null, new { title = "Forms" })%> > <%= Html.ActionLink("Contact Us", "contact-us", null, new { title = "Contact Us" })%></div>

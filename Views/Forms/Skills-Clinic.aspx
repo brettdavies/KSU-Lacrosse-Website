@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
-<% Html.RenderPartial("SponsorsTemplate"); %>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Forms", "Index", null, new { title="Forms" })%> > <%= Html.ActionLink("Skills Clinic Information and Registration", "skills-clinic", null, new { title = "Skills Clinic Information and Registration" })%></div>
