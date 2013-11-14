@@ -23,7 +23,7 @@
 </div>
 <div class="boxBottom"></div>
 </div>
-<% Html.RenderPartial("SponsorsTemplate"); %>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Games", "Index", new { id = string.Empty }, new { title="Games" })%> > <%= Html.ActionLink(Model.SeasonID.ToString(), Model.SeasonID.ToString(), null, new { title = Model.SeasonID.ToString() })%></div>

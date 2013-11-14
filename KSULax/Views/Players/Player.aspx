@@ -14,7 +14,7 @@
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
-<% Html.RenderPartial("SponsorsTemplate"); %>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs">
