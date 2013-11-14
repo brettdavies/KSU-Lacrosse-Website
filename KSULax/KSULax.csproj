@@ -120,9 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-114x114.png" />
+    <Content Include="apple-touch-icon-120x120.png" />
     <Content Include="apple-touch-icon-144x144.png" />
+    <Content Include="apple-touch-icon-152x152.png" />
     <Content Include="apple-touch-icon-57x57.png" />
+    <Content Include="apple-touch-icon-60x60.png" />
     <Content Include="apple-touch-icon-72x72.png" />
+    <Content Include="apple-touch-icon-76x76.png" />
     <Content Include="content\images\KSU-Lax-2013-Schedule.png" />
     <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic-2013.png" />
     <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic.png" />
