@@ -33,6 +33,12 @@ namespace KSULax
             );
 
             routes.MapRoute(
+                "Schedule",
+                "schedule/{id}",
+                new { controller = "schedule", action = "Index", id = "" }
+            );
+
+            routes.MapRoute(
                 "Games",
                 "games/{id}",
                 new { controller = "games", action = "Index", id = "" }
