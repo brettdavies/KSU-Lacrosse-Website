@@ -27,6 +27,12 @@ namespace KSULax
             routes.IgnoreRoute("{resource}.png/{*pathInfo}");
 
             routes.MapRoute(
+                "Roster",
+                "roster/{id}",
+                new { controller = "roster", action = "Index", id = "" }
+            );
+
+            routes.MapRoute(
                 "Games",
                 "games/{id}",
                 new { controller = "games", action = "Index", id = "" }
