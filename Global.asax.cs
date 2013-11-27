@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using KSULax.Models;
+using System.Configuration;
 
 namespace KSULax
 {
@@ -65,8 +66,8 @@ namespace KSULax
 
         protected void Application_Start()
         {
-            KSU.maxGameSeason = 2013;
-            KSU.maxPlayerSeason = 2013;
+            KSU.maxGameSeason = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["maxGameSeason"].ToString());
+            KSU.maxPlayerSeason = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["maxPlayerSeason"].ToString());     
 
             RegisterRoutes(RouteTable.Routes);
 
