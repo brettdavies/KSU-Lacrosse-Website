@@ -32,7 +32,6 @@
 <script type="text/javascript" src="http://api.mcla.us/simple/?api_key=f62001122589294193682bb5ac6897c7&version=1.2&method=schedule_widget&team=kennesaw_state&season=<%= Model.SeasonID %>&width=750"></script>
 
 <h2><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h2>
-<a href="http://mcla.us/teams/kennesaw_state/<%= Model.SeasonID %>/schedule.html">MCLA</a>
 <a href="http://www.laxpower.com/update<%=Model.SeasonID.ToString().Substring(2,2)%>/binmen/XKNSXX.PHP">LaxPower</a>
 </div>
 </asp:Content>
