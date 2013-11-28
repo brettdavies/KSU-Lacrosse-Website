@@ -7,7 +7,7 @@
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol">
 <div class="boxItem menu">
-<div class="boxTitle"><%= Html.ActionLink("Seasons", DateTime.Now.Year.ToString(), null, new { title="Seasons" })%></div>
+<div class="boxTitle"><%= Html.ActionLink("Seasons", Model.SeasonID.ToString(), null, new { title = "Seasons" })%></div>
 <div class="boxContent">
 <ul>
 <li><%= Html.ActionLink("2013 - 2014", "2014", null, new { title = "2013 - 2014" })%></li>
@@ -29,7 +29,7 @@
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("Schedule", "Index", new { id = string.Empty }, new { title = "Schedule" })%> > <%= Html.ActionLink(Model.SeasonID.ToString(), Model.SeasonID.ToString(), null, new { title = Model.SeasonID.ToString() })%></div>
 <h1><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h1>
 
-<script type="text/javascript" src="http://api.mcla.us/simple/?api_key=f62001122589294193682bb5ac6897c7&version=1.2&method=schedule_widget&team=kennesaw_state&season=<%= Model.SeasonID %>&width=750"></script>
+<script type="text/javascript" src="http://api.mcla.us/simple/?api_key=994f29431bdc1b09f6e00876d98ef2b6&version=1.2&method=schedule_widget&team=kennesaw_state&season=<%= Model.SeasonID %>&width=692"></script>
 
 <h2><%= (Model.SeasonID - 1) + " - " + Model.SeasonID%> Game Schedule</h2>
 <a href="http://www.laxpower.com/update<%=Model.SeasonID.ToString().Substring(2,2)%>/binmen/XKNSXX.PHP">LaxPower</a>
