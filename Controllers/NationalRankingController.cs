@@ -108,10 +108,12 @@ namespace KSULax.Controllers
             List<TeamRankingBE> rankingsMCLA = _dataBL.GetRanking(1, id);
             List<TeamRankingBE> rankingsCL = _dataBL.GetRanking(2, id);
             List<TeamRankingBE> rankingsLP = _dataBL.GetRanking(3, id);
+            List<TeamRankingBE> rankingsMCLACoaches = _dataBL.GetRanking(4, id);
 
             var mclaExist = rankingsMCLA.Count > 0 ? 1 : 0;
             var clExist = rankingsCL.Count > 0 ? 1 : 0;
             var lpExist = rankingsLP.Count > 0 ? 1 : 0;
+            var mclacoachesExist = rankingsMCLACoaches.Count > 0 ? 1 : 0;
             
             var chart = new Chart();
 
@@ -195,10 +197,28 @@ namespace KSULax.Controllers
                 chart.Series["CollegeLax"].IsXValueIndexed = true;
             }
 
+            // MCLA Coaches Series
+            if (mclacoachesExist.Equals(1))
+            {
+                chart.Series.Add("MCLACoaches");
+                chart.Series["MCLACoaches"].ChartType = SeriesChartType.Line;
+                chart.Series["MCLACoaches"].Color = Color.FromArgb(167, 152, 109);
+                chart.Series["MCLACoaches"].BorderWidth = 5;
+                chart.Series["MCLACoaches"].EmptyPointStyle.BorderWidth = 5;
+                chart.Series["MCLACoaches"].EmptyPointStyle.MarkerStyle = MarkerStyle.Cross;
+                chart.Series["MCLACoaches"]["EmptyPointValue"] = "Average";
+                chart.Series["MCLACoaches"].MarkerImage = @"~/content/images/polls/MCLACoaches_32.png";
+                chart.Series["MCLACoaches"].MarkerImageTransparentColor = Color.Empty;
+                chart.Series["MCLACoaches"].LegendUrl = rankingsMCLACoaches[rankingsMCLACoaches.Count - 1].Url;
+                chart.Series["MCLACoaches"].ToolTip = "MCLA Coaches: ##VALY";
+                chart.Series["MCLACoaches"].IsXValueIndexed = true;
+            }
+
             // Populate All Data Points
             if (mclaExist.Equals(1)) { chart.Series["MCLA"].Points.DataBindXY(rankingsMCLA, "Date", rankingsMCLA, "Rank"); }
             if (clExist.Equals(1)) { chart.Series["CollegeLax"].Points.DataBindXY(rankingsCL, "Date", rankingsCL, "Rank"); }
             if (lpExist.Equals(1)) { chart.Series["LaxPower"].Points.DataBindXY(rankingsLP, "Date", rankingsLP, "Rank"); }
+            if (mclacoachesExist.Equals(1)) { chart.Series["MCLACoaches"].Points.DataBindXY(rankingsMCLACoaches, "Date", rankingsMCLACoaches, "Rank"); }
 
             int i = 0;
             if (lpExist.Equals(1))
@@ -226,6 +246,16 @@ namespace KSULax.Controllers
                 foreach (DataPoint dp in chart.Series["MCLA"].Points)
                 {
                     dp.Url = rankingsMCLA[i].Url;
+                    i++;
+                }
+            }
+
+            if (mclacoachesExist.Equals(1))
+            {
+                i = 0;
+                foreach (DataPoint dp in chart.Series["MCLACoaches"].Points)
+                {
+                    dp.Url = rankingsMCLACoaches[i].Url;
                     i++;
                 }
             }
@@ -261,6 +291,15 @@ namespace KSULax.Controllers
                         chart.Series["LaxPower"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
                     }
                 }
+
+                if (mclacoachesExist.Equals(1))
+                {
+                    data = chart.Series["MCLACoaches"].Points.Count(dp => dp.XValue == pollDate);
+                    if (data == 0)
+                    {
+                        chart.Series["MCLACoaches"].Points.Add(new DataPoint { XValue = pollDate, YValues = new double[1] { 0 }, IsEmpty = true });
+                    }
+                }
             }
 
             // Sort data points by X value
@@ -276,6 +315,10 @@ namespace KSULax.Controllers
             if (lpExist.Equals(1))
             {
                 chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "LaxPower");
+            }
+            if (mclacoachesExist.Equals(1))
+            {
+                chart.DataManipulator.Sort(PointSortOrder.Ascending, "X", "MCLACoaches");
             }
 
             var imageStream = new MemoryStream();
