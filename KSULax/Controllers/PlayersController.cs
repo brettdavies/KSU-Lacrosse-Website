@@ -33,46 +33,49 @@ namespace KSULax.Controllers
         {
             if (string.IsNullOrEmpty(id))
             {
-                return RedirectToAction("Index", "players", new { id = KSU.maxPlayerSeason });
+                return RedirectToAction("Index", "roster", new { id = KSU.maxPlayerSeason });
+                //return RedirectToAction("Index", "players", new { id = KSU.maxPlayerSeason });
             }
 
             int player_id;
             if (int.TryParse(id, out player_id))
             {
-                if (player_id >= 2010 && player_id <= KSU.maxPlayerSeason)
-                {
-                    RosterModel data = new RosterModel();
+                return RedirectToAction("Index", "roster", new { id = player_id });
 
-                    data.Players = GetPlayerModelLst(_playerBL.PlayersBySeason(player_id));
-                    data.Games = new GameListModel(_gameBL.GamesBySeason(player_id));
+                //if (player_id >= 2010 && player_id <= KSU.maxPlayerSeason)
+                //{
+                //    RosterModel data = new RosterModel();
 
-                    if (data.Players.Count.Equals(0) && player_id.Equals(KSU.maxGameSeason))
-                    {
-                        throw new Exception("KSULAX||Player profiles for " + player_id + " coming soon!");
-                    }
-                    else if (data.Players.Count.Equals(0))
-                    {
-                        throw new Exception("KSULAX||we can't find the roster you requested");
-                    }
-                    else
-                    {
-                        return View(data);
-                    }
-                }
+                //    data.Players = GetPlayerModelLst(_playerBL.PlayersBySeason(player_id));
+                //    data.Games = new GameListModel(_gameBL.GamesBySeason(player_id));
 
-                //find player by id
-                else
-                {
-                    string name = string.Empty;
-                    if (_playerBL.getPlayerNamebyID(player_id, out name))
-                    {
-                        return RedirectToAction("Index", "players", new { id = name });
-                    }
-                    else
-                    {
-                        throw new Exception("KSULAX||we can't find the player id you requested");
-                    }
-                }
+                //    if (data.Players.Count.Equals(0) && player_id.Equals(KSU.maxGameSeason))
+                //    {
+                //        throw new Exception("KSULAX||Player profiles for " + player_id + " coming soon!");
+                //    }
+                //    else if (data.Players.Count.Equals(0))
+                //    {
+                //        throw new Exception("KSULAX||we can't find the roster you requested");
+                //    }
+                //    else
+                //    {
+                //        return View(data);
+                //    }
+                //}
+
+                ////find player by id
+                //else
+                //{
+                //    string name = string.Empty;
+                //    if (_playerBL.getPlayerNamebyID(player_id, out name))
+                //    {
+                //        return RedirectToAction("Index", "players", new { id = name });
+                //    }
+                //    else
+                //    {
+                //        throw new Exception("KSULAX||we can't find the player id you requested");
+                //    }
+                //}
             }
 
             //find player by full name

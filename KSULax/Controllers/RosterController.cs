@@ -30,7 +30,7 @@ namespace KSULax.Controllers
 
             int gsID = id.Value;
 
-            if (gsID >= 2006 && gsID <= KSU.maxPlayerSeason)
+            if (gsID >= 2007 && gsID <= KSU.maxPlayerSeason)
             {
                 RosterModel rm = new RosterModel();
                 rm.SeasonID = gsID;

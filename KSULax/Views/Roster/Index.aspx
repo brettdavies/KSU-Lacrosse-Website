@@ -15,7 +15,6 @@
 <li><%= Html.ActionLink("2008 - 2009", "2009", null, new { title = "2008 - 2009" })%></li>
 <li><%= Html.ActionLink("2007 - 2008", "2008", null, new { title = "2007 - 2008" })%></li>
 <li><%= Html.ActionLink("2006 - 2007", "2007", null, new { title = "2006 - 2007" })%></li>
-<li><%= Html.ActionLink("2005 - 2006", "2006", null, new { title = "2005 - 2006" })%></li>
 </ul>
 </div>
 <div class="boxBottom"></div>
@@ -26,5 +25,8 @@
 <%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("Roster", "Index", new { id = string.Empty }, new { title = "Roster" })%> > <%= Html.ActionLink(Model.SeasonID.ToString(), Model.SeasonID.ToString(), null, new { title = Model.SeasonID.ToString() })%></div>
 <h1><%= (Model.SeasonID - 1) + " - " + Model.SeasonID + " Roster"%></h1>
 <script type="text/javascript" src="http://api.mcla.us/simple/?api_key=994f29431bdc1b09f6e00876d98ef2b6&version=1.2&method=roster_widget&team=kennesaw_state&season=<%= Model.SeasonID %>&width=692"></script>
+<style type="text/css">
+#roster_widget #team_roster tr td {font-size:11px;}
+</style>
 </div>
 </asp:Content>
