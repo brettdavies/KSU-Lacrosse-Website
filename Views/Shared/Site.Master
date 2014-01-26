@@ -15,7 +15,6 @@
     .Add("~/content/scripts/date.format.js")
     .Add("~/content/scripts/extendGA.js")
     .Add("~/content/scripts/games.js")
-    .Add("~/content/scripts/twitter.js")
     .Add("~/content/scripts/ksulax.js")
     .Render("~/content/scripts/main_#.js")
 %>
