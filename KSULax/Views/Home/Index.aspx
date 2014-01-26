@@ -16,12 +16,12 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-<div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.games); %></div>
+<div id="leftCol"><% Html.RenderPartial("UpcomingGamesTemplate"); %><% Html.RenderPartial("StandingTemplate"); %><% Html.RenderPartial("RankingTemplate"); %></div>
 <div id="midCol">
 <div id="homeSlide"><img src="../../content/images/home-side.jpg" width="440" height="267" alt="" /></div>
 <div id="homeFeature"><img src="../../content/images/yellow-arrow.png" width="11" height="10" alt="" /> <b><%= Html.ActionLink("Register for the Skills Camp!", "skills-clinic", "forms", null, new { title = "Skills Camp Registration" })%></b></div>
 <div class="homeNews"><%= Html.ActionLink("News & Updates", "Index", "News", null, new { title = "News & Updates" })%></div>
 <% Html.RenderPartial("NewsTemplate", Model.Stories); %>
 </div>
-<div id="rightCol"><% Html.RenderPartial("DonationTemplate"); %><% Html.RenderPartial("StandingTemplate"); %><% Html.RenderPartial("FacebookTemplate"); %><% Html.RenderPartial("TwitterTemplate"); %></div>
+<div id="rightCol"><% Html.RenderPartial("DonationTemplate"); %><% Html.RenderPartial("FacebookTemplate"); %><% Html.RenderPartial("TwitterTemplate"); %></div>
 </asp:Content>
