@@ -44,7 +44,7 @@
 <div id="nav">
 <ul>
 <li><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%></li>
-<li><%= Html.ActionLink("Players", "index", "players", new { id = string.Empty }, new { title = "KSU Lax Players" })%></li>
+<li><%= Html.ActionLink("Roster", "index", "roster", new { id = string.Empty }, new { title = "KSU Lax Roster" })%></li>
 <li><%= Html.ActionLink("Schedule", "index", "games", new { id = string.Empty }, new { title = "KSU Lax Schedule" })%></li>
 <li><%= Html.ActionLink("Owl's Nest", "owls-nest", "about", null, new { title = "KSU Lax Owl's Nest" })%></li>
 <li><%= Html.ActionLink("News", "index", "news", new { year = string.Empty, month = string.Empty, day = string.Empty, title = string.Empty }, new { title = "KSU Lax News" })%></li>
