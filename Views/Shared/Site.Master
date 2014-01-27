@@ -58,7 +58,7 @@
 </div>
 <div id="footer">
 <ul>
-<li>&copy; <%= DateTime.Now.Year %> by KSU Lacrosse Club</li>
+<li>&copy; KSU Lacrosse Club</li>
 <li><asp:HyperLink NavigateUrl="http://www.ksuclubsports.com" Text="KSU Club Sports" ToolTip="KSU Club Sports" runat="server" /></li>
 <li><asp:HyperLink NavigateUrl="http://katie-keenan.com/" Text="Web Design" ToolTip="Web Design by Katie Keenan" runat="server" /></li>
 <li><asp:HyperLink NavigateUrl="http://www.arvixe.com/" Text="Web Hosting" ToolTip="Web Hosting by Arvixe" runat="server" /></li>
