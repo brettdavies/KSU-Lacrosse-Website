@@ -66,7 +66,7 @@ namespace KSULax
             routes.MapRoute(
                 "News",
                 "news/{year}/{month}/{day}/{url_title}",
-                new { controller = "news", action = "Index", year = "", month = "", day = "", url_title = "" }
+                new { controller = "news", action = "Index", year = UrlParameter.Optional, month = UrlParameter.Optional, day = UrlParameter.Optional, url_title = UrlParameter.Optional }
             );
 
             routes.MapRoute(

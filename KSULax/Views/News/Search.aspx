@@ -3,7 +3,7 @@
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="leftCol"><% Html.RenderPartial("DonationTemplate"); %></div>
 <div id="mainCol">
-<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("News", "Index", new { year = string.Empty, month = string.Empty, day = string.Empty, title = string.Empty }, new { title = "News" })%></div>
+<div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title="Home" })%> > <%= Html.ActionLink("News", "Index", new { year = string.Empty, month = string.Empty, day = string.Empty, url_title = string.Empty }, new { title = "News" })%></div>
 <h1>News Search</h1>
 <% Html.RenderPartial("NewsTemplate", Model); %>
 </div>
