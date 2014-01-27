@@ -23,6 +23,7 @@
 </div>
 <div class="boxBottom"></div>
 </div>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol"><asp:ContentPlaceHolder ID="AboutContent" runat="server" /></div>
 </asp:Content>
