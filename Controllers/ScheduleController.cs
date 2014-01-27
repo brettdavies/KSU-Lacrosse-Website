@@ -30,7 +30,12 @@ namespace KSULax.Controllers
 
             int gsID = id.Value;
 
-            if (gsID >= 2006 && gsID <= KSU.maxGameSeason)
+            if (gsID.Equals(2006))
+            {
+                return RedirectToAction("Index", "games", new { id = gsID });
+            }
+
+            if (gsID >= 2007)
             {
                 ScheduleModel sm = new ScheduleModel();
                 sm.SeasonID = gsID;

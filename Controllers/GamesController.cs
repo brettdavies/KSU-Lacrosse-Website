@@ -34,18 +34,25 @@ namespace KSULax.Controllers
         {
             if (!id.HasValue)
             {
-                return RedirectToAction("Index", "games", new { id = KSU.maxGameSeason });
+                return RedirectToAction("Index", "schedule", new { id = KSU.maxGameSeason });
+                //return RedirectToAction("Index", "games", new { id = KSU.maxGameSeason });
             }
 
             int gsID = id.Value;
 
-            if (gsID >= 2006 && gsID <= KSU.maxGameSeason)
+            if (gsID.Equals(2006))
             {
                 return Schedule(gsID);
             }
 
+            else if (gsID >= 2007 && gsID <= KSU.maxGameSeason)
+            {
+                return RedirectToAction("Index", "schedule", new { id = gsID });
+            }
+            
             else
             {
+                // this is used to return the specific game meta data information (by mcla game id)
                 return Meta(gsID);
             }
         }
