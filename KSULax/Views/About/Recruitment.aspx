@@ -15,7 +15,7 @@ ksulacrosse@gmail.com<br /><br />
 </td>
 <td></td>
 <td>
-Coach: Tyler Yelkin<br />
+Coach: Tyler Yelken<br />
 404-542-0094<br />
 tyelken@ksulax.com<br /><br />
 </td>
