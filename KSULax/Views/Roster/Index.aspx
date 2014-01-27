@@ -19,6 +19,7 @@
 </div>
 <div class="boxBottom"></div>
 </div>
+<% Html.RenderPartial("DonationTemplate"); %>
 </div>
 <div id="mainCol">
 <div class="breadcrumbs">

@@ -12,7 +12,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-<div id="leftCol"><% Html.RenderPartial("GameSidebarTemplate", Model.Games); %></div>
+<div id="leftCol"><% Html.RenderPartial("UpcomingGamesTemplate"); %><% Html.RenderPartial("StandingTemplate"); %><% Html.RenderPartial("DonationTemplate"); %></div>
 <div id="mainCol">
 <div class="breadcrumbs"><%= Html.ActionLink("Home", "", "", null, new { title = "Home" })%> > <%= Html.ActionLink("National Ranking", "index", "national-ranking", null, new { title = "National Ranking" })%> > <%= Html.ActionLink(Model.Year.ToString(), null, null, new { id = Model.Year }, new { title = Model.Year.ToString() + " National Ranking" })%></div>
 <h1><%= Model.Year %> National Ranking</h1>
