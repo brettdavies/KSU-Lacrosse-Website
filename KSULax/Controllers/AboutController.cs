@@ -18,6 +18,10 @@ namespace KSULax.Controllers
         public ActionResult History() { return View(); }
         public ActionResult Management() { return View(); }
         public ActionResult Media() { return View(); }
+        public ActionResult Recruitment() { return View(); }
+
+        [ActionName("contact-us")]
+        public ActionResult ContactUs() { return View(); }
 
         [ActionName("owls-nest")]
         public ActionResult OwlsNest() { return View(); }
