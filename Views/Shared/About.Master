@@ -12,11 +12,13 @@
 <li><%= Html.ActionLink("About", "index", "about", null, new { title = "About" })%></li>
 <li><%= Html.ActionLink("Alumni", "alumni", "about", null, new { title = "Alumni" })%></li>
 <li><%= Html.ActionLink("Associations", "associations", "about", null, new { title = "Associations" })%></li>
+<li><%= Html.ActionLink("Contact Us", "contact-us", "about", null, new { title = "Contact Us" })%></li>
 <li><%= Html.ActionLink("FAQ", "faq", "about", null, new { title = "FAQ" })%></li>
 <li><%= Html.ActionLink("History", "history", "about", null, new { title = "History" })%></li>
 <li><%= Html.ActionLink("Management", "management", "about", null, new { title = "Management" })%></li>
 <li><%= Html.ActionLink("Media Guides", "media-guides", "about", null, new { title = "Media Guides" })%></li>
 <li><%= Html.ActionLink("Owl's Nest", "owls-nest", "about", null, new { title = "Owl's Nest" })%></li>
+<li><%= Html.ActionLink("Recruitment", "recruitment", "about", null, new { title = "Recruitment" })%></li>
 </ul>
 </div>
 <div class="boxBottom"></div>

@@ -50,7 +50,7 @@
 <li><%= Html.ActionLink("News", "index", "news", new { year = string.Empty, month = string.Empty, day = string.Empty, title = string.Empty }, new { title = "KSU Lax News" })%></li>
 <li><%= Html.ActionLink("Media", "media-guides", "about", null, new { title = "KSU Lax Media Guides" })%></li>
 <li><%= Html.ActionLink("About", "index", "about", null, new { title = "About KSU Lax" })%></li>
-<li class="last"><%= Html.ActionLink("Contact Us", "contact-us", "forms", null, new { title="Contact KSU Lax" })%></li>
+<li class="last"><%= Html.ActionLink("Contact Us", "contact-us", "about", null, new { title="Contact KSU Lax" })%></li>
 </ul>
 </div>
 <div id="main"><asp:ContentPlaceHolder ID="MainContent" runat="server" />
