@@ -80,9 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\RosterController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\NationalRankingController.cs" />
     <Compile Include="Controllers\FormsController.cs" />
     <Compile Include="Helpers\CachingService.cs" />
+    <Compile Include="Models\Roster\RosterModel.cs" />
     <Compile Include="Models\Game\GameScheduleModel.cs" />
     <Compile Include="Models\Game\GameStatModel.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -116,6 +119,7 @@
     <Compile Include="Models\News\StoryModel.cs" />
     <Compile Include="Models\Player\PlayerModel.cs" />
     <Compile Include="Models\NationalRanking\NationalRankingModel.cs" />
+    <Compile Include="Models\Schedule\ScheduleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -127,9 +131,13 @@
     <Content Include="apple-touch-icon-60x60.png" />
     <Content Include="apple-touch-icon-72x72.png" />
     <Content Include="apple-touch-icon-76x76.png" />
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="apple-touch-icon.png" />
+    <Content Include="browserconfig.xml" />
     <Content Include="content\images\KSU-Lax-2013-Schedule.png" />
     <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic-2013.png" />
     <Content Include="content\images\ksu-mens-lacrosse-winter-skills-clinic.png" />
+    <Content Include="content\images\KSU-Lax-2014-Schedule.png" />
     <Content Include="content\images\players\21204.png" />
     <Content Include="content\images\players\22284.png" />
     <Content Include="content\images\players\22749.png" />
@@ -164,6 +172,10 @@
     <Content Include="content\images\polls\Laxpower_24.png" />
     <Content Include="content\images\polls\Laxpower_32.png" />
     <Content Include="content\images\polls\Laxpower_40.png" />
+    <Content Include="content\images\polls\MCLACoaches.png" />
+    <Content Include="content\images\polls\MCLACoaches_24.png" />
+    <Content Include="content\images\polls\MCLACoaches_32.png" />
+    <Content Include="content\images\polls\MCLACoaches_40.png" />
     <Content Include="content\images\polls\MCLAmag_24.png" />
     <Content Include="content\images\polls\MCLAmag_32.png" />
     <Content Include="content\images\polls\MCLAmag_40.png" />
@@ -183,6 +195,8 @@
     <Content Include="content\images\teams\grove_city_32.png" />
     <Content Include="content\images\teams\indiana_tech_24.png" />
     <Content Include="content\images\teams\indiana_tech_32.png" />
+    <Content Include="content\images\teams\miami_ohio_24.png" />
+    <Content Include="content\images\teams\miami_ohio_32.png" />
     <Content Include="content\images\teams\missouri_baptist_24.png" />
     <Content Include="content\images\teams\missouri_baptist_32.png" />
     <Content Include="content\images\teams\northern_colorado_24.png" />
@@ -211,12 +225,25 @@
     <Content Include="content\scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="content\scripts\MicrosoftMvcValidation.js" />
     <Content Include="Default.aspx" />
+    <Content Include="favicon-160x160.png" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-196x196.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="favicon-96x96.png" />
     <Content Include="Global.asax" />
     <Content Include="content\pdf\KSU-Lax-2013-Schedule.pdf" />
+    <Content Include="content\pdf\KSU-Lax-2014-Schedule.pdf" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.dll" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.pdb" />
     <None Include="lib\HtmlAgilityPack\HtmlAgilityPack.XML" />
     <Content Include="humans.txt" />
+    <Content Include="mstile-144x144.png" />
+    <Content Include="mstile-150x150.png" />
+    <Content Include="mstile-310x150.png" />
+    <Content Include="mstile-310x310.png" />
+    <Content Include="mstile-70x70.png" />
+    <Content Include="Views\About\Contact-Us.aspx" />
+    <Content Include="Views\About\Recruitment.aspx" />
     <Content Include="Views\NationalRanking\national-ranking.aspx" />
     <Content Include="Views\Forms\Skills-Clinic.aspx" />
     <Content Include="Views\Forms\Player-Registration.aspx" />
@@ -226,6 +253,11 @@
     <Content Include="Views\Players\PlayerAwards.ascx" />
     <Content Include="Views\Players\PlayerBio.ascx" />
     <Content Include="Views\Players\PlayerStats.ascx" />
+    <Content Include="Views\Roster\Index.aspx" />
+    <Content Include="Views\Schedule\Index.aspx" />
+    <Content Include="Views\Shared\UpcomingGamesTemplate.ascx" />
+    <Content Include="Views\Shared\StandingTemplate.ascx" />
+    <Content Include="Views\Shared\DonationTemplate.ascx" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
