@@ -17,16 +17,16 @@ $(document).ready(function(){$('#map').gMap({markers:[{address:"3220 Busbee Driv
 <h1>The Owl's Nest</h1>
 <p>The KSU Fighting Owls play their home games at the KSU Owls Nest Sports and Recreation Park. The complex is located next to the Town Center Ice Area and across from BrandsMart USA in Kennesaw.</p>
 <br />
-<h2>Ticket Prices:</h2>
-<ul>
+<h2>Ticket Prices</h2>
+<ul style="margin:0;">
 <li>KSU Students and Facility (with KSU ID) are <b>FREE</b></li>
+<li>Lacrosse Players wearing their jersies are <b>FREE</b></li>
 <li>Children 12 and under are <b>FREE</b></li>
-<li>Kids 13-18 are $2</li>
+<li>Kids 13 - 17 are $2</li>
 <li>Adults 18 and older are $5</li>
 </ul>
 <br />
 <h2>Field Location</h2>
-<br />
 <p>The field is located less than 1 mile from the main campus at 3220 Busbee Drive Kennesaw, GA 30144.</p>
 <br />
 <div id="map" style="width:500px;height:300px;margin-left:50px;"></div>
