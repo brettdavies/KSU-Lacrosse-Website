@@ -23,18 +23,18 @@
                     case 3:
                         {
                             pole3 = '<td><a href="rankUrl" title="rankUrltitle">rank</a></td>';
-                            pole3 = pole3.replace('rankUrl', ranks.Url);
                             pole3 = pole3.replace('rankUrltitle', 'Poll from ' + ranks.Datestr);
                             pole3 = pole3.replace('date', ranks.Datestr);
+                            pole3 = pole3.replace('rankUrl', ranks.Url);
                             pole3 = pole3.replace('rank', ranks.Rank);
                             break;
                         }
                     case 4:
                         {
                             pole1 = '<td><a href="rankUrl" title="rankUrltitle">rank</a></td>';
-                            pole1 = pole1.replace('rankUrl', ranks.Url);
                             pole1 = pole1.replace('rankUrltitle', 'Poll from ' + ranks.Datestr);
                             pole1 = pole1.replace('date', ranks.Datestr);
+                            pole1 = pole1.replace('rankUrl', ranks.Url);
                             pole1 = pole1.replace('rank', ranks.Rank);
                             break;
                         }
