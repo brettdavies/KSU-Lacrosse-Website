@@ -1,5 +1,5 @@
 <%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %><%@ Import Namespace="SquishIt.Framework" %><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://ogp.me/ns/fb#">
 <head runat="server">
 <script type="text/javascript" src="http://m.ksulax.com/mdotredir.js"></script>
 <script type="text/javascript">mdotredir('http://m.ksulax.com')</script>
@@ -20,7 +20,6 @@
 %>
 <script type="text/javascript">    $(document).ready(ga);</script>
 <asp:ContentPlaceHolder ID="Header" runat="server" />
-
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
