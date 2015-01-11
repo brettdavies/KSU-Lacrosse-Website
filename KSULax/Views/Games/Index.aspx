@@ -11,6 +11,7 @@
 <div class="boxTitle"><%= Html.ActionLink("Seasons", DateTime.Now.Year.ToString(), null, new { title="Seasons" })%></div>
 <div class="boxContent">
 <ul>
+<li><%= Html.ActionLink("2014 - 2015", "index", "schedule", new { id = "2015" }, new { title = "About" })%></li>
 <li><%= Html.ActionLink("2013 - 2014", "index", "schedule", new { id = "2014" }, new { title = "About" })%></li>
 <li><%= Html.ActionLink("2012 - 2013", "index", "schedule", new { id = "2013" }, new { title = "About" })%></li>
 <li><%= Html.ActionLink("2011 - 2012", "index", "schedule", new { id = "2012" }, new { title = "About" })%></li>

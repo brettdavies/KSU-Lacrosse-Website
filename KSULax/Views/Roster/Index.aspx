@@ -7,6 +7,7 @@
 <div class="boxTitle"><%= Html.ActionLink("Seasons", Model.SeasonID.ToString(), null, new { title = "Seasons" })%></div>
 <div class="boxContent">
 <ul>
+<li><%= Html.ActionLink("2014 - 2015", "2015", null, new { title = "2014 - 2015" })%></li>
 <li><%= Html.ActionLink("2013 - 2014", "2014", null, new { title = "2013 - 2014" })%></li>
 <li><%= Html.ActionLink("2012 - 2013", "2013", null, new { title = "2012 - 2013" })%></li>
 <li><%= Html.ActionLink("2011 - 2012", "2012", null, new { title = "2011 - 2012" })%></li>
