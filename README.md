@@ -9,6 +9,11 @@ This repository contains the source code for the Kennesaw State University (KSU)
 - **News and Updates**: Shares the latest news, announcements, and events related to the team.
 - **Contact Information**: Offers ways to get in touch with the team for inquiries or support.
 
+## Screenshots
+The website is no longer live, but key pages have been preserved as screenshots to document the layout, functionality, and content. These screenshots provide a visual record of the website and include both the main pages and subpages.
+
+You can find the full list of screenshots and their descriptions in the [Screenshots README](./screenshots/README.md).
+
 ## Technologies Used
 - **Programming Language**: C#
 - **Framework**: ASP.NET MVC
